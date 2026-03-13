@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 5 · Proposed System Overview — Kinetix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
+    <nav class="chapter-nav">
+      <a href="index.html">Home</a>
+      <a href="chapter1.html">Ch 1 · Introduction</a>
+      <a href="chapter2.html">Ch 2 · Literature Review</a>
+      <a href="chapter3.html">Ch 3 · User Needs</a>
+      <a href="chapter4.html">Ch 4 · Concept Dev.</a>
+      <a href="chapter5.html" class="active">Ch 5 · System Overview</a>
+      <a href="chapter6.html">Ch 6 · Testing</a>
+      <a href="chapter7.html">Ch 7 · Conclusion</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="chapter-label">Chapter 5</div>
+    <h1>Proposed System Overview</h1>
+  </div>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#sketch">4.9 Final Design Sketch</a></li>
+      <li><a href="#blockdiagram">4.10 System Block Diagram</a></li>
+      <li><a href="#bootup" class="sub">Boot-Up Sequence</a></li>
+      <li><a href="#passive" class="sub">Passive Mode</a></li>
+      <li><a href="#active" class="sub">Active Mode</a></li>
+      <li><a href="#emergency" class="sub">Emergency Override</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <h2 id="sketch">4.9 Proposed System Overview — Final Sketch</h2>
+    <p>The sketches below show the proposed design for Kinetix. The first sketch provides an overview of the main components while the second shows sensor placement, connections, and the tablet user interface.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="16" width="20" height="3" rx="1"/>
+          <path d="M4 16V10l4-4h8l4 4v6"/>
+          <path d="M10 10h4v6h-4z"/>
+          <circle cx="7" cy="19" r="1.5"/>
+          <circle cx="17" cy="19" r="1.5"/>
+        </svg>
+        <div class="fig-label">Figure 36</div>
+        <div class="fig-desc">Final design sketch of Kinetix — labelled components: aluminium tube frame, leg rest support, foot rest, slots (adjustable length), lead screw, slider, stepper motor (linear movement), belt system (lateral movement), housing, arc rail (lateral movement), caster wheel support.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 36.</em> Final design sketch of Kinetix with component labels.</p>
+    </div>
+
+    <h2 id="blockdiagram">4.10 System Block Diagram</h2>
+    <p>The system block diagrams below describe the operational flow of Kinetix across four scenarios: Boot-Up, Passive Mode, Active Mode, and Emergency Override.</p>
+
+    <h3 id="bootup">Boot-Up Sequence</h3>
+    <p>When KINETIX is plugged in, the mechanical switch determines the device state. In the 'On' state, the device enters Warm-Up Mode — the MCU commands the motor driver (horizontal), which drives the motor and ball-screw nut, placing the footrest at the starting position (full flexion). The device then awaits commands from the tablet via Wi-Fi.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="8" y="2" width="8" height="3" rx="1"/>
+          <path d="M12 5v3"/>
+          <rect x="6" y="8" width="12" height="3" rx="1"/>
+          <path d="M12 11v2"/>
+          <rect x="7" y="13" width="10" height="3" rx="1"/>
+          <path d="M12 16v2"/>
+          <rect x="8" y="18" width="8" height="3" rx="1"/>
+        </svg>
+        <div class="fig-label">Figure 37</div>
+        <div class="fig-desc">KINETIX Boot-Up Sequence flowchart — KINETIX plugged in → Mechanical Switch (Open → Off State / Closed → On State) → On State → Warm Up Mode → MCU → Motor Driver (Horizontal) → Motor → Ball-Screw Nut → Footrest at start position (Full Flexion) → Awaits tablet command to determine Active or Passive Mode.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 37.</em> KINETIX Boot-Up Sequence.</p>
+    </div>
+
+    <h3 id="passive">Passive Mode</h3>
+    <p>In passive mode, the device automatically drives the footrest along the screw bar for horizontal motion and along the arc rail for lateral motion. An <strong>ultrasonic sensor</strong> is used to track the footrest's position during horizontal movement.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="9" height="3" rx="1"/>
+          <rect x="13" y="2" width="9" height="3" rx="1"/>
+          <path d="M6.5 5v2M17.5 5v2"/>
+          <rect x="4" y="7" width="5" height="3" rx="1"/>
+          <rect x="15" y="7" width="5" height="3" rx="1"/>
+          <path d="M6.5 10v2M17.5 10v2"/>
+          <rect x="4" y="12" width="5" height="3" rx="1"/>
+          <rect x="15" y="12" width="5" height="3" rx="1"/>
+          <path d="M6.5 15v2M17.5 15v2"/>
+          <rect x="3" y="17" width="7" height="3" rx="1"/>
+          <rect x="14" y="17" width="7" height="3" rx="1"/>
+          <rect x="1" y="10" width="3" height="5" rx="1"/>
+        </svg>
+        <div class="fig-label">Figure 38</div>
+        <div class="fig-desc">KINETIX Passive Mode Flowchart — Exercise commands issued; splits into Horizontal Movement path (MCU → Motor Driver Horizontal → Motor → Ball-Screw Nut → Linear Motion ← Ultrasonic Sensor feedback) and Lateral Movement path (MCU → Motor Driver Lateral → Motor → Arc-Rail Joint → Lateral Motion). Both paths loop.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 38.</em> KINETIX Passive Mode Flowchart — automatic footrest actuation for horizontal and lateral movement.</p>
+    </div>
+
+    <h3 id="active">Active Mode</h3>
+    <p>Active mode adds force and IMU sensors. The force sensors set a resistance threshold the user must overcome, recording exerted force to adjust difficulty and track progress. The IMU monitors range of motion, providing further rehabilitation performance data. Sensor data is transmitted via Wi-Fi to a database.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="9" height="3" rx="1"/>
+          <rect x="13" y="2" width="9" height="3" rx="1"/>
+          <path d="M6.5 5v2M17.5 5v2"/>
+          <rect x="4" y="7" width="5" height="3" rx="1"/>
+          <rect x="15" y="7" width="5" height="3" rx="1"/>
+          <path d="M6.5 10v2M17.5 10v2M12 5v4"/>
+          <rect x="9" y="9" width="6" height="3" rx="1"/>
+          <rect x="4" y="12" width="5" height="3" rx="1"/>
+          <rect x="15" y="12" width="5" height="3" rx="1"/>
+          <path d="M6.5 15v2M17.5 15v2"/>
+          <rect x="3" y="17" width="7" height="3" rx="1"/>
+          <rect x="14" y="17" width="7" height="3" rx="1"/>
+          <rect x="1" y="10" width="3" height="5" rx="1"/>
+          <rect x="20" y="10" width="3" height="5" rx="1"/>
+        </svg>
+        <div class="fig-label">Figure 39</div>
+        <div class="fig-desc">KINETIX Active Mode Flowchart — extends Passive Mode with: Ultrasonic + IMU + Force Sensors on horizontal path; IMU &amp; Force Sensors on lateral path; Database node connected via Wi-Fi from MCU for data storage and progress tracking.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 39.</em> KINETIX Active Mode Flowchart — force and IMU sensing added for interactive rehabilitation.</p>
+    </div>
+
+    <h3 id="emergency">Emergency Override</h3>
+    <p>Upon pressing the physical emergency stop button (or issuing an emergency stop command from the tablet), the MCU immediately halts both motor drivers (horizontal and lateral), causing the device to cease all movement. The physiotherapist then uses the tablet to recalibrate the footrest to its starting position before beginning a new session.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 7v5M12 16h.01"/>
+        </svg>
+        <div class="fig-label">Figures 40–41</div>
+        <div class="fig-desc">KINETIX Emergency Override Sub-System (2 parts): Part 1 — Emergency Stop Button or Tablet Wi-Fi command → MCU → Motor Driver (Horizontal + Lateral) → Motors stop → KINETIX ceases movement. Part 2 — Tablet → Wi-Fi → Warm Up Mode → MCU → Motor w/ Encoder → Ball-Screw Nut → Footrest at start position (Full Flexion), completing reset cycle.</div>
+      </div>
+      <p class="figure-caption"><em>Figures 40–41.</em> KINETIX Emergency Override system — immediate stop and reset via tablet recalibration.</p>
+    </div>
+
+    <div class="callout">
+      <strong>Key System Properties</strong>
+      <ul style="margin-top:0.5rem;">
+        <li>Two motors: one for horizontal (linear) movement, one for lateral movement.</li>
+        <li>Wireless control via Wi-Fi (Raspberry Pi Pico W2 MCU).</li>
+        <li>Ultrasonic sensor for horizontal position tracking in passive mode.</li>
+        <li>IMU + force sensors added in active mode for biomechanical feedback.</li>
+        <li>Physical emergency stop button plus tablet-based software stop.</li>
+      </ul>
+    </div>
+
+    <nav class="chapter-nav-footer">
+      <a href="chapter4.html" class="nav-btn ghost">
+        <span class="arrow">←</span>
+        <span><span class="label">Previous</span>Ch 4 · Concept Development</span>
+      </a>
+      <a href="chapter6.html" class="nav-btn">
+        <span><span class="label">Next Chapter</span>Testing &amp; Evaluation</span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+  </main>
+</div>
+
+</body>
+</html>

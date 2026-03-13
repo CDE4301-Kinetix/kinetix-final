@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3 · User Needs — Kinetix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
+    <nav class="chapter-nav">
+      <a href="index.html">Home</a>
+      <a href="chapter1.html">Ch 1 · Introduction</a>
+      <a href="chapter2.html">Ch 2 · Literature Review</a>
+      <a href="chapter3.html" class="active">Ch 3 · User Needs</a>
+      <a href="chapter4.html">Ch 4 · Concept Dev.</a>
+      <a href="chapter5.html">Ch 5 · System Overview</a>
+      <a href="chapter6.html">Ch 6 · Testing</a>
+      <a href="chapter7.html">Ch 7 · Conclusion</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="chapter-label">Chapter 3</div>
+    <h1>User Needs &amp; Design Requirements</h1>
+  </div>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#users">3.1 Target Users</a></li>
+      <li><a href="#needs">3.2 User Needs</a></li>
+      <li><a href="#anthropometric">3.2 Anthropometric Data</a></li>
+      <li><a href="#dimensions" class="sub">Lower Limb Dimensions</a></li>
+      <li><a href="#rom" class="sub">Range of Motion</a></li>
+      <li><a href="#weight" class="sub">Weight Data</a></li>
+      <li><a href="#requirements">3.3 Design Requirements</a></li>
+      <li><a href="#journey">3.3 User Journey</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <p>This chapter translates the clinical requirements identified in Chapter 2 into engineering design requirements for the Kinetix rehabilitation device. User needs were first identified through literature review and consultations with rehabilitation specialists.</p>
+
+    <h2 id="users">3.1 Target Users &amp; Demographics</h2>
+    <p>For this project:</p>
+    <ul>
+      <li><strong>Client</strong> — stroke patients typically aged 40–80 undergoing lower-limb rehabilitation.</li>
+      <li><strong>Physiotherapist</strong> — used broadly to include all rehabilitation specialists, such as occupational therapists and physiotherapists.</li>
+    </ul>
+
+    <h2 id="needs">3.2 User Needs</h2>
+    <p>Each feature directly addresses a specific user requirement, ordered by priority to ensure the device is clinically effective, user-friendly, and compliant with medical regulations.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Code</th><th>Category</th><th>Proposed Feature</th><th>Rationale</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>S01</td><td>Safety</td><td>Comply with IEC 60601</td><td>Ensures client safety and regulatory approval</td></tr>
+          <tr><td>S02</td><td>Safety</td><td>Emergency stop button</td><td>Prevents injury in case of malfunction or discomfort</td></tr>
+          <tr><td>S03</td><td>Safety</td><td>Fixed ROM limits per joint</td><td>Ensures motion does not exceed stipulated range</td></tr>
+          <tr><td>S04</td><td>Safety</td><td>Device status indicators</td><td>Visual feedback for 'power on', 'in progress', 'device error'</td></tr>
+          <tr><td>S05</td><td>Safety</td><td>Device cooling system</td><td>Prevent overheating from friction and mechanical stress</td></tr>
+          <tr><td>H01</td><td>Hygiene</td><td>Biocompatible, non-porous surfaces</td><td>Prevents cross-contamination between clients</td></tr>
+          <tr><td>H02</td><td>Hygiene</td><td>Smooth, easy-to-disassemble surfaces</td><td>Allows for cleaning and maintenance</td></tr>
+          <tr><td>H03</td><td>Hygiene</td><td>Dust &amp; fluid ingress-resistant structure</td><td>Enhances safety and device longevity</td></tr>
+          <tr><td>R01</td><td>Recovery</td><td>Active and Passive Modes</td><td>Supports clients with and without voluntary muscle contractions</td></tr>
+          <tr><td>R02</td><td>Recovery</td><td>Adjustable difficulty in Active Mode</td><td>Supports progressive recovery tailored to current ability</td></tr>
+          <tr><td>R03</td><td>Recovery</td><td>6 exercise types (supine &amp; semi-Fowler)</td><td>Hip/knee flexion &amp; extension, abduction/adduction, ankle</td></tr>
+          <tr><td>R04</td><td>Recovery</td><td>ADL and full-range modes</td><td>Customisable ROM for critical recovery and long-term improvement</td></tr>
+          <tr><td>R05</td><td>Recovery</td><td>Positional and force sensing for all joints</td><td>Facilitates customised treatment through biomechanical analysis</td></tr>
+          <tr><td>R06</td><td>Recovery</td><td>4 recovery metrics</td><td>ROM, Strength Estimation, Rep Counting, Jerk (Smoothness)</td></tr>
+          <tr><td>D01</td><td>Durability</td><td>Withstand daily use</td><td>Ensures long-term clinical and home use viability</td></tr>
+          <tr><td>D02</td><td>Durability</td><td>Run continuously for 20 min without malfunction</td><td>Supports full rehabilitation session duration</td></tr>
+          <tr><td>D03</td><td>Durability</td><td>Easy-to-replace components</td><td>Reduces downtime and maintenance costs</td></tr>
+          <tr><td>U01</td><td>UX</td><td>Intuitive UI for clients and therapists</td><td>Improves adoption and reduces training time</td></tr>
+          <tr><td>U02</td><td>UX</td><td>Interactive UI with visual cues and feedback</td><td>Motivates and engages clients; helps achieve target settings</td></tr>
+          <tr><td>U03</td><td>UX</td><td>Setup in ≤5 minutes</td><td>Ensures ease of setup to encourage usage</td></tr>
+          <tr><td>DS01</td><td>Storage</td><td>Safe cable management &amp; accessory storage</td><td>Prevents tripping hazards; supports workflow efficiency</td></tr>
+          <tr><td>DS02</td><td>Storage</td><td>Adjustable sizing for diverse lower limb dimensions</td><td>Ensures ergonomic fit for a wide range of clients</td></tr>
+          <tr><td>DS03</td><td>Storage</td><td>Compact and lightweight (≤10 kg)</td><td>Allows ease of transport and carrying</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 11. User needs and proposed features.</p>
+
+    <h2 id="anthropometric">3.2 Anthropometric Data</h2>
+    <p>To ensure the device accommodates the physical characteristics of the target population, anthropometric and biomechanical data were analysed to determine key design parameters.</p>
+
+    <h3 id="dimensions">3.2.1 Lower Limb Dimensions</h3>
+    <p>Key anthropometric parameters of Singaporean adult males and females were referenced from Lee et al. (2019). Lower-limb length was estimated using segments 18 and 22, while foot dimensions were derived from segments 35 and 36.</p>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 8v12M8 22h8"/></svg>
+        <div class="fig-label">Figure 5</div>
+        <div class="fig-desc">Diagram of anthropometric segment lengths — seated posture, side view, and foot measurements referenced from Lee et al. (2019).</div>
+      </div>
+      <p class="figure-caption"><em>Figure 5.</em> Diagram of segment lengths used for lower-limb dimension estimation.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Segment</th><th>Dimension Name</th><th>Male Mean ± SD (cm)</th><th>Female Mean ± SD (cm)</th><th>Range — incl. 3SD (cm)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>18</td><td>Sitting Popliteal Height</td><td>40.2 ± 2.5</td><td>43.3 ± 2.3</td><td>34.6 – 49.0</td></tr>
+          <tr><td>22</td><td>Buttock–Popliteal Depth</td><td>42.3 ± 3.5</td><td>44.9 ± 3.5</td><td>33.1 – 54.1</td></tr>
+          <tr><td>35</td><td>Foot Length</td><td>23.6 ± 1.1</td><td>26.4 ± 1.4</td><td>21.3 – 28.8</td></tr>
+          <tr><td>36</td><td>Foot Breadth</td><td>9.2 ± 0.6</td><td>10.3 ± 0.7</td><td>7.8 – 11.7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 2. Combined anthropometric data (±3SD covers ~99.7% of population, n≈100).</p>
+
+    <p>Data from the PHASE study (CARES, Duke-NUS) for Singaporeans aged 60+ with cerebrovascular disease extends the popliteal height range:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Dimension</th><th>Mean ± SD (cm)</th><th>Range — incl. 3SD (cm)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sitting Popliteal Height (elderly, PHASE)</td><td>44.1 ± 4.8</td><td>29.6 – 58.6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 3. PHASE study popliteal height data for elderly stroke population.</p>
+
+    <h3 id="rom">3.2.2 Range of Motion (ROM)</h3>
+    <p>Kinetix supports both <strong>ADL</strong> and <strong>Full ROM</strong> modes. Based on Hyodo et al. (2017), average joint ranges required for selected activities of daily living are:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2">Activity</th>
+            <th colspan="4">Hip (°)</th>
+            <th colspan="2">Knee (°)</th>
+            <th colspan="2">Ankle (°)</th>
+          </tr>
+          <tr>
+            <th>Flex.</th><th>Ext.</th><th>Add.</th><th>Abd.</th>
+            <th>Flex.</th><th>Ext.</th>
+            <th>Dorsi.</th><th>Plantar.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Putting on pants (Sitting)</td><td>86</td><td>−35</td><td>11</td><td>14</td><td>119</td><td>−42</td><td>11</td><td>37</td></tr>
+          <tr><td>Putting on shoes (Sitting)</td><td>85</td><td>−45</td><td>17</td><td>4</td><td>84</td><td>−55</td><td>5</td><td>19</td></tr>
+          <tr><td>Picking up objects (Sitting)</td><td>92</td><td>−53</td><td>10</td><td>2</td><td>76</td><td>−70</td><td>2</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 4. Average ADL joint ranges. A negative angle indicates the absolute value of flexion rather than extension.</p>
+
+    <h4>Full Range of Motion Values</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Joint</th><th>Movement</th><th>Maximum ROM (°)</th></tr></thead>
+        <tbody>
+          <tr><td>Knee</td><td>Flexion</td><td>150°</td></tr>
+          <tr><td rowspan="4">Ankle</td><td>Inversion</td><td>30°</td></tr>
+          <tr><td>Eversion</td><td>20°</td></tr>
+          <tr><td>Plantar Flexion</td><td>40°</td></tr>
+          <tr><td>Dorsiflexion</td><td>20°</td></tr>
+          <tr><td rowspan="5">Hip</td><td>Backward Extension</td><td>30°</td></tr>
+          <tr><td>Flexion (Knee Flexed)</td><td>100°</td></tr>
+          <tr><td>Flexion (Knee Extended)</td><td>100°</td></tr>
+          <tr><td>Adduction</td><td>20°</td></tr>
+          <tr><td>Abduction</td><td>40°</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 5. Full ROM values for hip, knee, and ankle joints (Washington State DSHS, 2019).</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c-4 0-7-2-7-6V8a7 7 0 0 1 14 0v8c0 4-3 6-7 6z"/></svg>
+        <div class="fig-label">Figure 6</div>
+        <div class="fig-desc">Range of motion diagrams for hip flexion (100°), hip adduction/abduction (20°/40°), and knee flexion (150°), and ankle flexion–extension (40°/20°).</div>
+      </div>
+      <p class="figure-caption"><em>Figure 6.</em> ROM evaluation charts for joints in the different exercises.</p>
+    </div>
+
+    <h3 id="weight">3.2.3 Weight</h3>
+    <p>Using data from Roystonn (2021), the mean weight of adult male Singaporeans is <strong>72.7 ± 14.4 kg</strong>. In consideration of safety, the device is designed to withstand up to <strong>150 kg</strong>, or roughly twice the mean weight.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>Mean ± SD</th><th>Maximum (incl. 3SD)</th></tr></thead>
+        <tbody>
+          <tr><td>Weight (elderly stroke clients, PHASE)</td><td>59.5 ± 12.3 kg</td><td>96.4 kg</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 6. Range of weight for elderly stroke clients.</p>
+
+    <p>Body segment weight percentages from Ramachandran et al. (2016) yield approximate lower-limb contributions:</p>
+    <div class="spec-grid">
+      <div class="spec-cell"><div class="label">Thigh</div><div class="value">10.70<span class="unit">%</span></div></div>
+      <div class="spec-cell"><div class="label">Calf</div><div class="value">4.59<span class="unit">%</span></div></div>
+      <div class="spec-cell"><div class="label">Foot</div><div class="value">1.68<span class="unit">%</span></div></div>
+      <div class="spec-cell"><div class="label">Combined Lower Limb</div><div class="value">~16.97<span class="unit">%</span></div></div>
+      <div class="spec-cell"><div class="label">Estimated Limb Weight (150 kg)</div><div class="value">25.5<span class="unit"> kg</span></div></div>
+    </div>
+
+    <h2 id="requirements">3.3 Design Requirements</h2>
+    <p>Key quantitative design specifications based on user needs are summarised below.</p>
+
+    <h4>Sensing Sub-System</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Sub-System</th><th>Variable</th><th>Specification</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Plantar Force</td><td>Force Range</td><td>0–1500 N (SF 1.5)</td><td>Knee extension can reach 930 N; plantar force up to 1000 N for &lt;100 kg clients</td></tr>
+          <tr><td>Plantar Force</td><td>Sampling Rate</td><td>5 Hz</td><td>Nyquist criterion for slow rehab movements (step freq. 1–2 Hz)</td></tr>
+          <tr><td>Medial–Lateral Force</td><td>Force Range</td><td>0–300 N</td><td>Hip adduction/abduction up to ~181 N/169 N in healthy adults; ×safety factor</td></tr>
+          <tr><td>Thigh Force</td><td>Force Range</td><td>0–450 N</td><td>Hip flexion up to 300 N in healthy males; ×safety factor for &gt;40 year age range</td></tr>
+          <tr><td>Positional</td><td>Maximum Angle</td><td>150°</td><td>Largest ROM value on evaluation chart</td></tr>
+          <tr><td>Positional</td><td>Accuracy</td><td>&lt;6° MSE</td><td>Half of reported "by-eye" clinical error (~12°)</td></tr>
+          <tr><td>Data Latency</td><td>End-to-End</td><td>&lt;100 ms</td><td>Human visual perception threshold</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Mechanical Sub-System — ROM (ADL Mode)</h4>
+    <div class="spec-grid">
+      <div class="spec-cell"><div class="label">Hip Adduction</div><div class="value">0–15<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Hip Abduction</div><div class="value">0–20<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Hip Flexion</div><div class="value">0–100<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Knee Flexion</div><div class="value">0–120<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Ankle Dorsiflexion</div><div class="value">0–15<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Ankle Plantarflexion</div><div class="value">0–40<span class="unit">°</span></div></div>
+    </div>
+
+    <h4>Mechanical Sub-System — ROM (Full Range Mode)</h4>
+    <div class="spec-grid">
+      <div class="spec-cell"><div class="label">Hip Adduction</div><div class="value">0–20<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Hip Abduction</div><div class="value">0–40<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Hip Flexion</div><div class="value">0–100<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Knee Flexion</div><div class="value">0–150<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Ankle Dorsiflexion</div><div class="value">0–20<span class="unit">°</span></div></div>
+      <div class="spec-cell"><div class="label">Ankle Plantarflexion</div><div class="value">0–40<span class="unit">°</span></div></div>
+    </div>
+
+    <h4>General Mechanical &amp; Electrical</h4>
+    <div class="spec-grid">
+      <div class="spec-cell"><div class="label">Device Weight</div><div class="value">&lt;10<span class="unit"> kg</span></div></div>
+      <div class="spec-cell"><div class="label">Dimensions</div><div class="value" style="font-size:0.9rem;">100×33×33<span class="unit"> cm</span></div></div>
+      <div class="spec-cell"><div class="label">Min. Motor Holding Torque</div><div class="value">&gt;1.0<span class="unit"> Nm</span></div></div>
+      <div class="spec-cell"><div class="label">Screw Lead</div><div class="value">10<span class="unit"> mm</span></div></div>
+      <div class="spec-cell"><div class="label">MCU Clock Speed</div><div class="value">&gt;16<span class="unit"> MHz</span></div></div>
+      <div class="spec-cell"><div class="label">MCU RAM</div><div class="value">&gt;32<span class="unit"> kB</span></div></div>
+    </div>
+
+    <h2 id="journey">3.3 User Journey</h2>
+    <p>Following an in-person interview with a physiotherapist from S3, the team mapped out a user journey documenting actions done by both the client and physiotherapist at every stage of the rehabilitation session.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7-7 7 7"/></svg>
+        <div class="fig-label">Figure 12</div>
+        <div class="fig-desc">User journey map — five stages: Before client arrives → After client arrives → Before starting session → During session → After session. Showing actions for both Client and Rehabilitation Specialist at each stage.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 12.</em> User journey map for a Kinetix rehabilitation session.</p>
+    </div>
+
+    <nav class="chapter-nav-footer">
+      <a href="chapter2.html" class="nav-btn ghost">
+        <span class="arrow">←</span>
+        <span><span class="label">Previous</span>Ch 2 · Literature Review</span>
+      </a>
+      <a href="chapter4.html" class="nav-btn">
+        <span><span class="label">Next Chapter</span>Concept Development</span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+  </main>
+</div>
+
+</body>
+</html>

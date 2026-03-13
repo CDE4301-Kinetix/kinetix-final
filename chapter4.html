@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 4 · Concept Development — Kinetix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
+    <nav class="chapter-nav">
+      <a href="index.html">Home</a>
+      <a href="chapter1.html">Ch 1 · Introduction</a>
+      <a href="chapter2.html">Ch 2 · Literature Review</a>
+      <a href="chapter3.html">Ch 3 · User Needs</a>
+      <a href="chapter4.html" class="active">Ch 4 · Concept Dev.</a>
+      <a href="chapter5.html">Ch 5 · System Overview</a>
+      <a href="chapter6.html">Ch 6 · Testing</a>
+      <a href="chapter7.html">Ch 7 · Conclusion</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="chapter-label">Chapter 4</div>
+    <h1>Concept Development</h1>
+  </div>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#mechanical">4.1 Mechanical Design</a></li>
+      <li><a href="#inspiration" class="sub">Design Inspiration</a></li>
+      <li><a href="#concepts" class="sub">Design Concepts</a></li>
+      <li><a href="#folding" class="sub">Folding Concept</a></li>
+      <li><a href="#linear" class="sub">Linear Movement</a></li>
+      <li><a href="#lateral" class="sub">Lateral Movement</a></li>
+      <li><a href="#sensing">4.5 Sensing Design</a></li>
+      <li><a href="#fimu" class="sub">FIMU Concept</a></li>
+      <li><a href="#hff" class="sub">HFF Concept</a></li>
+      <li><a href="#cv" class="sub">Computer Vision</a></li>
+      <li><a href="#eval" class="sub">Concept Evaluation</a></li>
+      <li><a href="#components" class="sub">Component Table</a></li>
+      <li><a href="#electrical">4.7 Electrical Design</a></li>
+      <li><a href="#motors" class="sub">Motor Selection</a></li>
+      <li><a href="#mcu" class="sub">MCU Selection</a></li>
+      <li><a href="#schematic" class="sub">Electrical Schematic</a></li>
+      <li><a href="#ui">4.8 UI Design</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <h2 id="mechanical">4.1 Mechanical Design</h2>
+    <p>The mechanical design encompasses design inspiration, initial sketches, sub-assemblies of the device, and mechanism comparisons.</p>
+
+    <h3 id="inspiration">4.1.1 Design Inspiration</h3>
+    <p>The initial device concept uses a motor-driven ball screw to create linear motion along an aluminium profile, transferred through a linkage system to produce controlled angular movement of the footrest for simulating lower-limb flexion and extension. Several issues were identified in this version:</p>
+    <ul>
+      <li>Many components are difficult to fabricate.</li>
+      <li>Custom rod assemblies limit part interchangeability.</li>
+      <li>The frame lacks structural rigidity.</li>
+      <li>The CPM-based design only supports passive motion, preventing active or resistive rehabilitation.</li>
+    </ul>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="14" width="20" height="6" rx="1"/><path d="M6 14V8l5-4 5 4v6M10 20v-4h4v4"/></svg>
+        <div class="fig-label">Figure 13</div>
+        <div class="fig-desc">CAD model of Version 0 design — shows rod ends, barrel dampers, bearing house, links, footrest, rod 1 &amp; 2, aluminium profile, base plate, ball screw conveyor, motor, conveyor covers, and standing cover.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 13.</em> Initial prototype CAD model (Version 0) with component labels.</p>
+    </div>
+
+    <h3 id="concepts">4.1.2 Design Concepts</h3>
+    <p>Based on preliminary research from an SGH exercise video (SingHealth, 2011), the team narrowed exercise capabilities to focus on <strong>6 key movements</strong>:</p>
+    <ul>
+      <li>Hip flexion &amp; extension</li>
+      <li>Hip abduction &amp; adduction</li>
+      <li>Knee flexion &amp; extension</li>
+      <li>Ankle plantarflexion &amp; dorsiflexion</li>
+    </ul>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c-4 0-7-2-7-6V8a7 7 0 0 1 14 0v8c0 4-3 6-7 6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="fig-label">Figure 15</div>
+        <div class="fig-desc">Version 0 CAD prototype (two views) — lower-limb actuation system driven by a linear actuator on a ball screw with parallel multi-link mechanism for coordinated leg flexion and extension.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 15.</em> Version 0 prototype — ball screw linear actuator with parallel multi-link mechanism.</p>
+    </div>
+
+    <h3 id="folding">4.4.2.1 Folding Concept</h3>
+    <p>For the second prototype, interviews with physiotherapists indicated the device should support both sitting and lying positions. Three design concepts were developed:</p>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+        <div class="fig-label">Figure 17 — Concept 1</div>
+        <div class="fig-desc">Stand Design — separate metal stand supporting the leg assembly; sketches for sitting-down and lying-down positions.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 17.</em> Concept 1 — Stand Design.</p>
+    </div>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        <div class="fig-label">Figure 18 — Concept 2</div>
+        <div class="fig-desc">Scissors Design — scissor linkage mechanism for both sitting and lying positions; adjustable base structure.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 18.</em> Concept 2 — Scissors Design.</p>
+    </div>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14l8-8 8 8"/><path d="M4 18h16"/></svg>
+        <div class="fig-label">Figure 19 — Concept 3</div>
+        <div class="fig-desc">Foldable Design — device folds between sitting and lying positions; aluminium structure with fold point, moveable pivot, and lateral motor integration.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 19.</em> Concept 3 — Foldable Design (selected).</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Criteria</th><th>Stand Design</th><th>Scissors Design</th><th>Foldable Design</th></tr></thead>
+        <tbody>
+          <tr><td>Usability</td><td class="check-no">−</td><td class="check-yes">+</td><td class="check-yes">+</td></tr>
+          <tr><td>Portability</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
+          <tr><td>Stability</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
+          <tr><td>Adjustability</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-yes">+</td></tr>
+          <tr><td>Manufacturability</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
+          <tr><td>Safety</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
+          <tr><td><strong>Net Score</strong></td><td><strong>−2</strong></td><td><strong>−1</strong></td><td style="color:var(--green);font-weight:700;">6 ✓ Selected</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 13. Design concept evaluation matrix.</p>
+
+    <h3 id="linear">4.4.3 Linear Movement</h3>
+    <p>Several mechanisms were evaluated for linear motion. A <strong>ball screw linear actuator</strong> was selected for its relative simplicity, proven reliability, low maintenance, and high user ergonomics.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mechanism</th><th>Reliability</th><th>Maintenance</th><th>Mechanical Complexity</th><th>User Ergonomics</th></tr></thead>
+        <tbody>
+          <tr><td>Linear Actuator (ball screw)</td><td>High (proven tech)</td><td>Low (minimal upkeep)</td><td>Low</td><td>High (easy to use)</td></tr>
+          <tr><td>Hydraulic Resistance (motor pump)</td><td>High (precise control)</td><td>High (oil changes, pump maintenance)</td><td>High</td><td>Medium (effective but noisy, heavy)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Figure 20. Linear movement mechanism comparison.</p>
+
+    <h3 id="lateral">4.4.4 Lateral Movement</h3>
+    <p>The device must move ±40° laterally. An <strong>arc rail mechanism</strong> was selected, building on an initial concept from the UROP predecessor, with the arc rail repositioned beneath the linear sub-assembly to improve load distribution.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mechanism</th><th>Reliability</th><th>Maintenance</th><th>Mech. Complexity</th><th>User Ergonomics</th><th>Net Score</th></tr></thead>
+        <tbody>
+          <tr><td>Linear Rail (2 rails)</td><td>+</td><td>−</td><td>−</td><td>+</td><td><strong>0</strong></td></tr>
+          <tr><td>Arc Rail (Rotating Base)</td><td>+</td><td>−</td><td>+</td><td>+</td><td style="color:var(--green);font-weight:700;"><strong>3 ✓</strong></td></tr>
+          <tr><td>Pivot (Motorised Slider)</td><td>+</td><td>−</td><td>+</td><td>+</td><td><strong>3</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 14. Lateral movement mechanism comparison.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 8v8M8 12h8"/></svg>
+        <div class="fig-label">Figure 21</div>
+        <div class="fig-desc">CAD model of final lateral movement assembly with arc rail mechanism repositioned beneath the linear sub-assembly. Nema 23 motor with belt-and-pulley transmission shown.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 21.</em> Final arc-rail-based lateral movement assembly.</p>
+    </div>
+
+    <p>The lateral movement is driven by a <strong>Nema 23 motor</strong> mounted at the rear of the assembly, with power transmitted through a <strong>belt-and-pulley system</strong> chosen for its light weight and ease of installation compared to gear or chain mechanisms.</p>
+
+    <h2 id="sensing">4.5 Sensing Design Concepts</h2>
+    <p>Three sensing subsystem concepts were evaluated.</p>
+
+    <h3 id="fimu">4.5.1 FIMU (Force + IMU) Design Concept</h3>
+    <p>The IMU subsystem combines an accelerometer, gyroscope, and optionally a magnetometer to measure motion and angular velocity across three axes. This concept employs a <strong>four-IMU setup</strong> (lower back, thigh, shank, and foot).</p>
+    <p>Force sensors target key pressure points on the foot: hallux, metatarsals, midfoot, and heels. For medial-lateral force sensing, sensors are placed near the medial and lateral malleoli.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 10v12M8 22h8"/><circle cx="8" cy="14" r="1.5" fill="currentColor"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="19" r="1.5" fill="currentColor"/></svg>
+        <div class="fig-label">Figure 31</div>
+        <div class="fig-desc">FIMU sensor placement diagram — IMU sensors (green) at lower back, thigh, shank, and foot for positional sensing; force sensors (orange) for plantar and lateral force sensing at key foot pressure points.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 31.</em> FIMU sensor placement for positional and force sensing.</p>
+    </div>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="18" rx="6" ry="4"/><path d="M6 18V8c0-3.3 2.7-6 6-6s6 2.7 6 6v10"/></svg>
+        <div class="fig-label">Figure 32</div>
+        <div class="fig-desc">Detailed foot pressure map showing 14 force sensor positions (0–13) covering hallux, big toe area, toes 3–5, metatarsal area, middle foot area, and heel area (medial and lateral).</div>
+      </div>
+      <p class="figure-caption"><em>Figure 32.</em> Foot pressure map for plantar force sensor placement.</p>
+    </div>
+
+    <h3 id="hff">4.5.2 Hall-Force-Flex (HFF) Design Concept</h3>
+    <p>The HFF subsystem combines Hall-effect sensors, force sensors, and flex sensors to capture biomechanical data. These sensors are positioned at key regions for hip/knee positional sensing, plantar force sensing, lateral force sensing, and ankle positional sensing.</p>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 10v12"/><circle cx="7" cy="13" r="1.5" fill="currentColor" opacity="0.4"/><circle cx="17" cy="13" r="1.5" fill="currentColor" opacity="0.7"/><circle cx="12" cy="20" r="1.5" fill="currentColor" opacity="0.2"/></svg>
+        <div class="fig-label">Figure 33</div>
+        <div class="fig-desc">HFF sensor placement — Force sensors (orange), Hall sensors (blue), and Flex sensors (pink) at hip/knee, lateral, plantar, and ankle positions.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 33.</em> HFF sensor placement diagram.</p>
+    </div>
+
+    <h3 id="cv">4.5.3 Computer Vision Design Concept</h3>
+    <p>A computer vision sensor uses an RGB camera and pose-estimation algorithms to track 3D joint positions (e.g., hip, knee, ankle) and compute joint angles from relative body segment orientations. Markers are placed on key joints, and movements are processed using Tracker Software to determine marker positions and calculate joint angles.</p>
+
+    <h3 id="eval">4.5.4 Concept Evaluation</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Criteria</th><th>FIMU</th><th>HFF</th><th>Computer Vision</th></tr></thead>
+        <tbody>
+          <tr><td>Force Sensing — Plantar</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
+          <tr><td>Force Sensing — Lateral</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
+          <tr><td>Positional Sensing</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
+          <tr><td>Metrics (ROM, Strength, Reps, Jerk)</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
+          <tr><td>Processing Time</td><td class="check-no">−</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
+          <tr><td>Ease of Set-Up</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-yes">+</td></tr>
+          <tr><td>Output Quality</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-no">−</td></tr>
+          <tr><td>Cost</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
+          <tr><td>Feasibility for Stroke Rehab</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
+          <tr><td><strong>Net Score</strong></td><td style="color:var(--green);font-weight:700;"><strong>6 ✓ Selected</strong></td><td><strong>1</strong></td><td><strong>0</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>Selected: FIMU</strong>
+      FIMU balances cost, usability, and clinical relevance. It captures both kinematics and kinetics while remaining wearable and lightweight. IMU drift can be corrected algorithmically.
+    </div>
+
+    <h3 id="components">4.5.5 Component Selection — Force Sensors</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Attribute</th><th>FlexiForce A401</th><th>FlexiForce A502</th><th>FlexiForce A301</th></tr></thead>
+        <tbody>
+          <tr><td>Cost (USD)</td><td>$22.56</td><td>$27.61</td><td>$14.58</td></tr>
+          <tr><td>Sensing Width / Diameter</td><td>56.9 mm (Ø)</td><td>50.8 × 50.8 mm</td><td>9.53 mm (Ø)</td></tr>
+          <tr><td>Shape</td><td>Circle</td><td>Rectangle</td><td>Circle</td></tr>
+          <tr><td>Maximum Force Range</td><td>31,137 N</td><td>44,482 N</td><td>4,448 N</td></tr>
+          <tr><td>Linearity Error</td><td>&lt;±3% FS</td><td>±3% FS</td><td>±3% FS</td></tr>
+          <tr><td><strong>Selection</strong></td><td></td><td></td><td style="color:var(--green);font-weight:600;">✓ Selected — lower cost, shorter lead time, meets 0–1000 N plantar and 0–200 N lateral force ranges; circular shape better conforms to anatomical surfaces.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 15. Force sensor component comparison — FlexiForce A301 selected.</p>
+
+    <h2 id="electrical">4.7 Electrical Design</h2>
+    <p>For motor selection, the maximum torque that the screw bar can resist before backdriving must be determined. Using a 150 kg load and a 10 mm screw lead:</p>
+
+    <div class="formula">
+      T<sub>b</sub> = (F · P · η<sub>2</sub>) / 2π
+    </div>
+    <p class="text-muted text-sm">Where F = load, P = screw lead, η₂ = efficiency of the bar (assumed 0.9). Calculated backdriving torque = <strong>2.15 Nm</strong>.</p>
+
+    <h3 id="motors">4.7.1 Motor Selection</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Criteria</th><th>Brushed DC</th><th>Brushless DC</th><th>Stepper</th><th>Servo</th></tr></thead>
+        <tbody>
+          <tr><td>Efficiency</td><td>Low</td><td>High</td><td>Low</td><td>Medium</td></tr>
+          <tr><td>Torque Characteristics</td><td>Moderate at low speeds</td><td>High across RPM range</td><td>Excellent at low speeds; decreases at high RPM</td><td>Moderate across RPM range</td></tr>
+          <tr><td>Torque / Weight Ratio</td><td>Low</td><td>Low</td><td>Moderate</td><td>High</td></tr>
+          <tr><td>Control Type</td><td>Closed-loop</td><td>Closed-loop</td><td><strong>Open-loop</strong></td><td>Closed-loop</td></tr>
+          <tr><td>Control Complexity</td><td>High</td><td>High</td><td><strong>Low</strong></td><td>High</td></tr>
+          <tr><td><strong>Total Grade</strong></td><td>−5</td><td>0</td><td style="color:var(--green);font-weight:700;"><strong>4 ✓</strong></td><td>−2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Figure 25. Motor concept evaluation.</p>
+
+    <div class="callout">
+      <strong>Selected: Nema 23 Bipolar Stepper Motor</strong>
+      Selected for its high torque at low speeds and ability to maintain stable fixed positions — ideal for active mode where users must overcome a preset force threshold. Its open-loop control avoids jitter issues found in closed-loop systems under static loads.
+      <br><br>Holding torque: <strong>3.0 Nm</strong> (exceeds the 2.15 Nm backdriving torque requirement).
+    </div>
+
+    <h3 id="mcu">4.7.3 MCU Selection</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Attribute</th><th>Teensy 4.1</th><th>Arduino UNO R4 Wi-Fi</th><th>Raspberry Pi Pico W2</th><th>STM32F103RCT6</th></tr></thead>
+        <tbody>
+          <tr><td>Architecture</td><td>ARM Cortex-M7 (32-bit)</td><td>ARM Cortex-M4 (32-bit)</td><td>Dual ARM Cortex-M33 / Hazard3 RISC-V (32-bit)</td><td>ARM Cortex-M3 (32-bit)</td></tr>
+          <tr><td>Clock Speed</td><td>600 MHz</td><td>48 MHz</td><td>150 MHz</td><td>72 MHz</td></tr>
+          <tr><td>Flash Memory</td><td>7936 kB</td><td>256 kB</td><td>4 MB</td><td>512 kB</td></tr>
+          <tr><td>RAM</td><td>1024 kB</td><td>32 kB</td><td>520 kB</td><td>64 kB</td></tr>
+          <tr><td>Network Protocol</td><td>Ext. Wi-Fi module</td><td>Wi-Fi &amp; Bluetooth</td><td>Wi-Fi &amp; Bluetooth</td><td>Ext. Wi-Fi module</td></tr>
+          <tr><td>Cost</td><td>$50.80–$57.80</td><td>$38.02</td><td>$9.62</td><td>$10.86</td></tr>
+          <tr><td><strong>Total Grade</strong></td><td>2</td><td>−1</td><td style="color:var(--green);font-weight:700;"><strong>7 ✓ Selected</strong></td><td>3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Figure 26. MCU comparison. Raspberry Pi Pico W2 selected for best price-to-performance ratio with built-in Wi-Fi and Bluetooth.</p>
+
+    <h3 id="schematic">4.7.4 Simplified Electrical Schematic</h3>
+    <p>The power architecture flows as follows:</p>
+    <ol>
+      <li><strong>230V / 50Hz</strong> wall plug → AC-DC Power Adapter → <strong>48 VDC</strong> for motors.</li>
+      <li>DC-DC Buck Converter → <strong>5 VDC</strong> for the MCU (Raspberry Pi Pico W2).</li>
+      <li>Low-Dropout Regulator (LDO) → <strong>3.3 VDC</strong> for sensors (IMU, force sensors).</li>
+    </ol>
+    <p>Communication protocols: IMU uses <strong>I2C</strong> via multiplexer; force sensors and other peripherals use standard <strong>GPIO and ADC</strong>.</p>
+    <p>The MCU connects to the tablet/smartphone via <strong>Wi-Fi</strong> for user interface communication.</p>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="5" height="4" rx="1"/><rect x="10" y="4" width="5" height="4" rx="1"/><rect x="18" y="4" width="4" height="4" rx="1"/><path d="M4.5 8v4h7V8M12.5 8v4h7V8M7 10h3M15 10h3"/><rect x="2" y="14" width="20" height="4" rx="1"/></svg>
+        <div class="fig-label">Figure 27–30</div>
+        <div class="fig-desc">Simplified electrical schematic (4-part): Part 1 — Power supply chain from 230V AC → 48V DC → 5V DC → 3.3V DC. Part 2 — Motor driver subsystems (horizontal &amp; lateral). Part 3 — Sensor subsystem (4× IMU via I2C multiplexer, force sensors 1–17 via analog multiplexer). Part 4 — Wi-Fi communication to tablet/smartphone.</div>
+      </div>
+      <p class="figure-caption"><em>Figures 27–30.</em> Simplified electrical schematic diagrams (Parts 1–4).</p>
+    </div>
+
+    <h2 id="ui">4.8 UI Design Concepts</h2>
+    <p>The UI serves as the central platform for configuration of the Kinetix device, tracking of patient recovery, and a companion 'instructor' for patients during rehabilitation. Two iterations were developed:</p>
+
+    <h3>Iteration 1 — Initial Two-View Approach</h3>
+    <p>The first design concept featured a two-view approach for both physiotherapists and clients, including biometric login, session scheduling, and an AI report viewer.</p>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+        <div class="fig-label">Figure 34</div>
+        <div class="fig-desc">Iteration 1 user flow diagram — physiotherapist logs in → checks session → client logs in → checks appointments → physiotherapist selects session → confirm attendance with biometrics → Start Session → tablet flips to patient view → treatment cycle → Monitor → Complete → AI report → Session End.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 34.</em> First iteration user flow diagram.</p>
+    </div>
+
+    <h3>Iteration 2 — Revised Therapist-Focused Flow</h3>
+    <p>Feedback on the first UI showed the need for a therapist-focused interface, removal of unnecessary calendar/logging features, and inclusion of gamification to motivate clients.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Aspect</th><th>Issue (Iteration 1)</th><th>Change (Iteration 2)</th><th>Outcome</th></tr></thead>
+        <tbody>
+          <tr><td>Interface Complexity</td><td>Too many features; cluttered; not physiotherapist-friendly</td><td>Simplified layout; reduced menu depth; therapist-driven flow</td><td>Therapists reported clearer navigation and lower cognitive load</td></tr>
+          <tr><td>Gamification</td><td>Suggested to improve client engagement</td><td>Added target-based animations, rep progress cues, point system</td><td>Increased engagement and perceived motivation</td></tr>
+          <tr><td>Session Logging / Calendar</td><td>Unnecessary for clinical use</td><td>Removed; replaced with goals/progress dashboard</td><td>Dashboard considered more clinically meaningful</td></tr>
+          <tr><td>User Journey Flow</td><td>Lacked clarity on therapist–client role transitions</td><td>Structured, colour-coded 5-stage journey</td><td>Improved consistency in operation</td></tr>
+          <tr><td>During-Session Interaction</td><td>Clients not adequately considered</td><td>Tablet rotation during session + real-time visual cues</td><td>Clients found visuals intuitive; therapists liked dual-orientation design</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3"/></svg>
+        <div class="fig-label">Figure 35</div>
+        <div class="fig-desc">Revised user flow diagram — colour-coded 5 stages (Start/End green, Decision pink, Pre-Session blue, During-Session yellow, Post-Session pink): Start → Registered? → Log In → Client Registered? → Select Appointment → Edit Treatment Cycle → Start Session → Reset device → Supervise Warmup → Supervise Treatment → Discomfort? → Pause/Resume → Complete → End Session → View Gamification Points → View AI Report → Compare with Past Data → End.</div>
+      </div>
+      <p class="figure-caption"><em>Figure 35.</em> Revised user flow diagram — Iteration 2 with 5-stage colour-coded journey.</p>
+    </div>
+
+    <nav class="chapter-nav-footer">
+      <a href="chapter3.html" class="nav-btn ghost">
+        <span class="arrow">←</span>
+        <span><span class="label">Previous</span>Ch 3 · User Needs</span>
+      </a>
+      <a href="chapter5.html" class="nav-btn">
+        <span><span class="label">Next Chapter</span>Proposed System Overview</span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+  </main>
+</div>
+
+</body>
+</html>

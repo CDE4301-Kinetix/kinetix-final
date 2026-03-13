@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 1 · Introduction — Kinetix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
+    <nav class="chapter-nav">
+      <a href="index.html">Home</a>
+      <a href="chapter1.html" class="active">Ch 1 · Introduction</a>
+      <a href="chapter2.html">Ch 2 · Literature Review</a>
+      <a href="chapter3.html">Ch 3 · User Needs</a>
+      <a href="chapter4.html">Ch 4 · Concept Dev.</a>
+      <a href="chapter5.html">Ch 5 · System Overview</a>
+      <a href="chapter6.html">Ch 6 · Testing</a>
+      <a href="chapter7.html">Ch 7 · Conclusion</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="chapter-label">Chapter 1</div>
+    <h1>Introduction</h1>
+  </div>
+</div>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#background">1.1 Background</a></li>
+      <li><a href="#stroke-types" class="sub">Stroke Types</a></li>
+      <li><a href="#problem">1.2 Problem Statement</a></li>
+      <li><a href="#objective">1.3 Project Objective</a></li>
+      <li><a href="#value">1.4 Value Proposition</a></li>
+      <li><a href="#scope">1.5 Scope</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <h2 id="abstract">Abstract</h2>
+    <p>Stroke remains a major health challenge in Singapore, ranking as the <strong>fourth leading cause of death</strong> and the <strong>seventh leading cause of adult disability</strong> (World Stroke Organisation, 2017). This project presents the development of Kinetix, a robotic rehabilitation device that integrates mechanical actuation with real-time sensor feedback for the rehabilitation of the lower limb in stroke patients.</p>
+    <p>Kinetix facilitates joint movement, monitors performance, and dynamically adapts to each patient. Its app-based interface fosters interactive engagement, enabling both patients and rehabilitation specialists to track recovery in real time. The system further incorporates adaptive control strategies and feedback mechanisms that encourage active participation, supporting a more personalised, efficient, and motivating rehabilitation experience.</p>
+
+    <h2 id="background">1.1 Background</h2>
+    <h3 id="stroke-types">Types of Stroke</h3>
+    <p>Strokes can be categorised into two primary types:</p>
+    <ul>
+      <li><strong>Ischemic stroke</strong> — occurs when a blood vessel is blocked due to embolism or thrombosis, depriving a region of the brain of blood flow.</li>
+      <li><strong>Hemorrhagic stroke</strong> — involves bleeding in the brain due to a ruptured blood vessel.</li>
+    </ul>
+
+    <div class="figure">
+      <div class="img-placeholder tall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <div class="fig-label">Figure 1</div>
+        <div class="fig-desc">(a) Examples of blood clots due to embolism and thrombosis. (b) Example of a ruptured blood vessel in the brain.</div>
+      </div>
+    </div>
+
+    <p>In both cases, strokes result in key motor, cognitive, and psychological impairment. Motor impairments, such as reduced muscle strength and disrupted inter-limb coordination, shape how patients can perform functional movements, posing a need for effective post-stroke rehabilitation.</p>
+
+    <h3>Neuroplasticity and Rehabilitation Timeline</h3>
+    <p>Post-stroke rehabilitation is most effective during the <em>"golden time"</em> of neuroplasticity, between <strong>seven days and six months</strong> after stroke, covering the acute to late subacute phases (Marek et al., 2024).</p>
+
+    <div class="figure">
+      <div class="img-placeholder medium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l4-8 4 4 4-6 4 3"/><path d="M3 20h18"/></svg>
+        <div class="fig-label">Figure 2</div>
+        <div class="fig-desc">Neuroplasticity and Rehabilitation Timeline — Hyperacute → Acute → Early Subacute → Late Subacute → Chronic phases</div>
+      </div>
+      <p class="figure-caption"><em>Figure 2.</em> Neuroplasticity timeline: the critical window spans from 7 days to 6 months post-stroke.</p>
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec-cell">
+        <div class="label">Hyperacute Phase</div>
+        <div class="value" style="font-size:1rem;">0–24h</div>
+      </div>
+      <div class="spec-cell">
+        <div class="label">Acute Phase</div>
+        <div class="value" style="font-size:1rem;">7 days</div>
+      </div>
+      <div class="spec-cell">
+        <div class="label">Early Subacute</div>
+        <div class="value" style="font-size:1rem;">7d–3mo</div>
+      </div>
+      <div class="spec-cell">
+        <div class="label">Late Subacute</div>
+        <div class="value" style="font-size:1rem;">3–6mo</div>
+      </div>
+      <div class="spec-cell">
+        <div class="label">Chronic Phase</div>
+        <div class="value" style="font-size:1rem;">&gt;6mo</div>
+      </div>
+    </div>
+
+    <h2 id="problem">1.2 Problem Statement</h2>
+    <div class="callout">
+      <strong>Core Problem</strong>
+      Stroke rehabilitation currently depends heavily on manual physiotherapy, which is physically demanding and difficult to scale, while existing rehabilitation systems <strong>lack integrated sensing</strong> to quantitatively track patient recovery and therapy effectiveness.
+    </div>
+
+    <h2 id="objective">1.3 Project Objective</h2>
+    <p>The objective of this project is to develop Kinetix, a robotic lower-limb rehabilitation system that assists stroke patients in performing controlled rehabilitation exercises while capturing quantitative biomechanical data to support therapy monitoring.</p>
+    <p>The specific objectives are:</p>
+    <ul>
+      <li>Design a mechanical system capable of assisting controlled lower-limb movement for progressive lower limb recovery.</li>
+      <li>Develop a sensing system to capture biomechanical parameters such as applied force and range of motion during rehabilitation exercises.</li>
+      <li>Integrate electrical actuation and control systems to enable automated and repeatable rehabilitation movements.</li>
+      <li>Implement a user interface to visualise rehabilitation data, support patient progress monitoring, and improve psychological state.</li>
+      <li>Develop and evaluate a functional prototype to validate the feasibility and performance of the proposed rehabilitation system.</li>
+    </ul>
+
+    <h2 id="value">1.4 Value Proposition</h2>
+    <div class="callout">
+      <strong>Value Proposition</strong>
+      Kinetix is a portable, data-driven rehabilitation solution that empowers therapists, motivates patients through interactive gamification, and supports comprehensive progressive lower-limb recovery — offering both clinical and economic value to healthcare providers.
+    </div>
+
+    <h2 id="scope">1.5 Scope of the Project</h2>
+    <p>The scope of the project includes:</p>
+    <ol>
+      <li>Research on stroke rehabilitation methods and limitations to contextualise the problem and develop design specifications.</li>
+      <li>Design and fabrication of a prototype robotic rehabilitation device for lower-limb stroke therapy.</li>
+      <li>Experimental testing to evaluate the performance of the prototype.</li>
+      <li>Recommendations for future work to improve the prototype.</li>
+    </ol>
+    <div class="callout warning">
+      <strong>Out of Scope</strong>
+      This project does not include clinical trials with stroke patients or full medical device certification, as these require regulatory approval and extended clinical validation.
+    </div>
+
+    <nav class="chapter-nav-footer">
+      <a href="index.html" class="nav-btn ghost">
+        <span class="arrow">←</span>
+        <span>
+          <span class="label">Back to</span>
+          Cover Page
+        </span>
+      </a>
+      <a href="chapter2.html" class="nav-btn">
+        <span>
+          <span class="label">Next Chapter</span>
+          Literature Review
+        </span>
+        <span class="arrow">→</span>
+      </a>
+    </nav>
+
+  </main>
+</div>
+
+</body>
+</html>
