@@ -3,132 +3,194 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 7 · Conclusion — Kinetix</title>
+  <title>References — Kinetix</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
-      <nav class="chapter-nav">
-        <a href="index.html">Home</a>
-        <a href="chapter1.html">Ch 1 · Introduction</a>
-        <a href="chapter2.html">Ch 2 · Context of the Problem</a>
-        <a href="chapter3.html">Ch 3 · Development of Concept</a>
-        <a href="chapter4.html">Ch 4 · Testing and Analysis</a>
-        <a href="chapter5.html">Ch 5 · Integrated System Tests</a>
-        <a href="chapter6.html">Ch 6 · Conclusion</a>
-      </nav>
-    </div>
+        <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
+        <nav class="chapter-nav">
+          <a href="index.html">Home</a>
+          <a href="chapter1.html">Ch 1 · Introduction</a>
+          <a href="chapter2.html">Ch 2 · Context of the Problem</a>
+          <a href="chapter3.html">Ch 3 · Development of Concept</a>
+          <a href="chapter4.html">Ch 4 · Testing and Analysis</a>
+          <a href="chapter5.html">Ch 5 · Integrated System Tests</a>
+          <a href="chapter6.html">Ch 6 · Conclusion</a>
+          <a href="chapter7.html">Ch 7 · References</a>
+          <a href="chapter8.html">Ch 8 · Appendix</a></nav>
+      </div>
   </header>
 
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="chapter-label">Chapter 7</div>
-    <h1>Conclusion &amp; References</h1>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="chapter-label">Supplementary Materials</div>
+      <h1>References</h1>
+    </div>
   </div>
-</div>
 
-<div class="page-layout">
-  <aside class="sidebar">
-    <div class="sidebar-title">On this page</div>
-    <ul class="toc-list">
-      <li><a href="#summary">Project Summary</a></li>
-      <li><a href="#achievements">Key Achievements</a></li>
-      <li><a href="#limitations">Current Limitations</a></li>
-      <li><a href="#future">Future Work</a></li>
-      <li><a href="#references">References</a></li>
-    </ul>
-  </aside>
-
-  <main class="content">
-
-    <h2 id="summary">Project Summary</h2>
-    <p>This project presents the development of <strong>Kinetix</strong>, a robotic lower-limb rehabilitation device designed to support stroke patients through controlled, data-driven rehabilitation exercises. The device integrates mechanical actuation, multi-modal sensing, embedded electronics, and an interactive user interface into a single portable platform.</p>
-
-    <p>The project addressed a clear clinical gap: stroke rehabilitation in Singapore and globally depends heavily on manual physiotherapy that is physically demanding, difficult to scale, and limited in its ability to quantitatively track patient recovery. Kinetix was developed to reduce therapist workload, improve consistency of therapy delivery, and enable objective, real-time monitoring of patient progress.</p>
-
-    <h2 id="achievements">Impact and Visibility</h2>
-
-    <div class="spec-grid">
-
-    </div>
-
-    <ul>
-      <li><strong>Mechanical system:</strong> Foldable frame design supporting 6 exercise types across supine and semi-Fowler positions; arc rail mechanism for lateral movement; ball-screw linear actuator for hip/knee/ankle exercises. FEA confirmed FoS of 28 for the aluminium tube structure.</li>
-      <li><strong>Sensing system:</strong> FIMU concept selected combining 4 IMUs (lower back, thigh, shank, foot) with 17 FlexiForce A301 sensors for plantar, medial-lateral, and thigh force capture. Calibration curves established for voltage-to-force conversion.</li>
-      <li><strong>Electrical system:</strong> Raspberry Pi Pico W2 MCU selected for built-in Wi-Fi/Bluetooth and strong price-to-performance ratio. Nema 23 Bipolar Stepper Motor confirmed with 3.0 Nm holding torque. LDO verified to output 3.3 V with &lt;0.1% deviation.</li>
-      <li><strong>User interface:</strong> Two iterations of UI development; final design features a therapist-focused 5-stage workflow with gamification, tablet rotation for client-facing session view, and AI-generated progress reports.</li>
-    </ul>
-
-    <h2 id="limitations">Current Limitations</h2>
-
-    <div class="callout warning">
-      <strong>Known Limitations</strong>
-      <ul style="margin-top:0.5rem;">
-        <li>FEA analysis covered only a single loading configuration and pivot point — multi-point analysis still required.</li>
-        <li>Lateral stability test showed ~0.4 mm displacement and structural slanting under 9.6 kg load — addressed by design iteration but full re-testing needed.</li>
-        <li>Force sensor calibration was limited to small weights due to small sensing area of A301 sensors.</li>
-        <li>Motor functionality testing was conducted without a load and for a short duration only.</li>
-        <li>MCU GPIO pin count may be insufficient for all force sensors and motors simultaneously — requires schematic redesign or MCU upgrade.</li>
-        <li>UI testing was conducted with a small sample of physiotherapists, not in a full integrated session flow.</li>
-        <li>Clinical trials and formal medical device certification are outside the project scope.</li>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#A">A</a></li>
+        <li><a href="#D">D</a></li>
+        <li><a href="#H">H</a></li>
+        <li><a href="#I">I</a></li>
+        <li><a href="#K">K</a></li>
+        <li><a href="#L">L</a></li>
+        <li><a href="#M">M</a></li>
+        <li><a href="#N">N</a></li>
+        <li><a href="#P">P</a></li>
+        <li><a href="#S">S</a></li>
+        <li><a href="#W">W</a></li>
       </ul>
-    </div>
+    </aside>
 
-    <h2 id="future">Future Work</h2>
-    <p>Recommended future development directions include:</p>
-    <ul>
-      <li><strong>Extended FEA:</strong> Conduct simulations at multiple pivot locations and loading conditions to fully characterise structural performance.</li>
-      <li><strong>Lateral stability redesign:</strong> Validate the revised arc rail repositioning under full load range with repeated cycling tests.</li>
-      <li><strong>Full sensing integration:</strong> Deploy the complete plantar force sensor array on the footplate; conduct full-foot load simulation and stepping motion tests.</li>
-      <li><strong>MCU pin expansion:</strong> Redesign the electrical schematic to accommodate all 17 force sensors plus motor control, or select a higher-pin-count MCU.</li>
-      <li><strong>Long-duration motor testing:</strong> Stress-test the Nema 23 motor under realistic load conditions for extended duration to confirm reliability.</li>
-      <li><strong>Full system integration test:</strong> Conduct active and passive mode performance tests with both artificial and real lower limbs; validate safety override functionality.</li>
-      <li><strong>Clinical validation:</strong> Pursue ethical approval for physiotherapist–patient mock sessions incorporating real sensor data; expand UI testing sample size.</li>
-      <li><strong>Regulatory pathway:</strong> Explore IEC 60601 compliance requirements and develop a roadmap toward medical device certification for clinical deployment.</li>
-      <li><strong>AI reporting:</strong> Integrate the post-session AI-generated report feature using biomechanical data captured during rehabilitation sessions.</li>
-    </ul>
+    <main class="content">
 
-    <h2 id="references">References</h2>
-    <p class="text-muted text-sm">All references cited in this report:</p>
+      <p>All sources cited across this report are listed below in APA format, ordered alphabetically by first author or organisation.</p>
 
-    <ul class="text-sm" style="line-height:2;">
-      <li>Chi, Y. (2022). <em>High physical demand in physiotherapy practice.</em> Physiotherapy Research International.</li>
-      <li>Collins, T. (n.d.). <em>Backdriving torque calculation for ball screws.</em></li>
-      <li>Guevara, D. et al. (2024). <em>Plantar pressure distribution and foot pressure points.</em> Journal of Biomechanics.</li>
-      <li>Hyodo, K. et al. (2017). <em>Joint angles for activities of daily living.</em> Journal of Physical Therapy Science.</li>
-      <li>Indrawati, L. &amp; Sajidin, M. (2018). <em>Active resistance motion in post-stroke rehabilitation.</em></li>
-      <li>Lee, C. M. et al. (2019). <em>Anthropometric data of Singaporean adults.</em> Singapore Health Sciences Authority.</li>
-      <li>Li, Y. (2022). <em>Proprioceptive Neuromuscular Facilitation in post-stroke rehabilitation.</em></li>
-      <li>Marek, P. et al. (2024). <em>Neuroplasticity window in post-stroke recovery.</em> Neurorehabilitation and Neural Repair.</li>
-      <li>Nair, S. (2023). <em>Physiotherapist burnout and workload challenges.</em></li>
-      <li>Nguyen, T. (2022). <em>PNF techniques in acute and subacute stroke rehabilitation.</em></li>
-      <li>Ramachandran, A. K. et al. (2016). <em>Body segment weight percentages for biomechanical analysis.</em></li>
-      <li>Ripin, Z. M. (2018). <em>Continuous passive motion devices in neuroplasticity and stroke recovery.</em></li>
-      <li>Roystonn, K. (2021). <em>Body weight data of adult Singaporeans.</em> Institute of Mental Health / NUS.</li>
-      <li>SingHealth / SGH. (2011). <em>Lower limb rehabilitation exercises for stroke.</em> [Video]. Singapore General Hospital.</li>
-      <li>Stroke Services Improvement. (2017). <em>Types of stroke: ischemic and hemorrhagic.</em></li>
-      <li>THK Co., Ltd. (n.d.). <em>Ball screw technical guide — screw lead and positional accuracy.</em></li>
-      <li>Thorborg, K. et al. (2010). <em>Hip dynamometry assessment protocols for adduction and abduction.</em></li>
-      <li>Washington State Department of Social and Health Services. (2019). <em>Range of joint motion evaluation chart.</em></li>
-      <li>World Stroke Organisation. (2017). <em>Stroke burden in Singapore — leading causes of death and disability.</em></li>
-    </ul>
+      <div class="ref-list">
 
-    <nav class="chapter-nav-footer">
-      <a href="chapter6.html" class="nav-btn ghost">
-        <span class="arrow">←</span>
-        <span><span class="label">Previous</span>Ch 6 · Testing &amp; Evaluation</span>
-      </a>
-      <a href="index.html" class="nav-btn">
-        <span><span class="label">Back to</span>Cover Page</span>
-        <span class="arrow">↑</span>
-      </a>
-    </nav>
+        <div class="ref-letter" id="A">A</div>
 
-  </main>
-</div>
+        <div class="ref-entry">
+          <p>Ansermino, J. M., Dumont, G. A., &amp; Ginsburg, A. S. (2023). Measurement uncertainty in clinical validation studies of sensors. <em>Sensors, 23</em>(6), Article 2900. <a href="https://doi.org/10.3390/s23062900" target="_blank" rel="noopener">https://doi.org/10.3390/s23062900</a></p>
+        </div>
+
+        <div class="ref-letter" id="D">D</div>
+
+        <div class="ref-entry">
+          <p>Demers, L., Monette, M., Lapierre, Y., Arnold, D. L., &amp; Wolfson, C. (2002). Reliability, validity, and applicability of the Quebec User Evaluation of Satisfaction with assistive Technology (QUEST 2.0) for adults with multiple sclerosis. <em>Disability and Rehabilitation, 24</em>(1–3), 21–30. <a href="https://doi.org/10.1080/09638280110066352" target="_blank" rel="noopener">https://doi.org/10.1080/09638280110066352</a></p>
+        </div>
+
+        <div class="ref-letter" id="H">H</div>
+
+        <div class="ref-entry">
+          <p>Harrison, S. L., Laver, K. E., Ninnis, K., Rowett, C., Lannin, N. A., &amp; Crotty, M. (2019). Effectiveness of external cues to facilitate task performance in people with neurological disorders: a systematic review and meta-analysis. <em>Disability and Rehabilitation, 41</em>(16), 1874–1881. <a href="https://doi.org/10.1080/09638288.2018.1448465" target="_blank" rel="noopener">https://doi.org/10.1080/09638288.2018.1448465</a></p>
+        </div>
+
+        <div class="ref-entry">
+          <p>HealthHub. (2019, May 9). <em>Stroke: Types and Causes.</em> <a href="https://www.healthhub.sg/health-conditions/stroke-types-of-stroke" target="_blank" rel="noopener">https://www.healthhub.sg/health-conditions/stroke-types-of-stroke</a></p>
+        </div>
+
+        <div class="ref-letter" id="I">I</div>
+
+        <div class="ref-entry">
+          <p>ISO. (2015). <em>IEC 62366-1:2015.</em> <a href="https://www.iso.org/standard/63179.html" target="_blank" rel="noopener">https://www.iso.org/standard/63179.html</a></p>
+        </div>
+
+        <div class="ref-letter" id="K">K</div>
+
+        <div class="ref-entry">
+          <p>Kanzler, C. M., Rinderknecht, M. D., Schwarz, A., Lamers, I., Gagnon, C., Held, J. P. O., Feys, P., Luft, A. R., Gassert, R., &amp; Lambercy, O. (2020). A data-driven framework for selecting and validating digital health metrics: use-case in neurological sensorimotor impairments. <em>npj Digital Medicine, 3</em>(1), 80. <a href="https://doi.org/10.1038/s41746-020-0286-7" target="_blank" rel="noopener">https://doi.org/10.1038/s41746-020-0286-7</a></p>
+        </div>
+
+        <div class="ref-letter" id="L">L</div>
+
+        <div class="ref-entry">
+          <p>Lee, H. P., Garg, S., Chhua, &amp; Tey, Frederick. (2015). Development of an anthropometric database representing the Singapore population. <em>3D Body Scanning Technologies,</em> 234–241. <a href="https://doi.org/10.15221/15.234" target="_blank" rel="noopener">https://doi.org/10.15221/15.234</a></p>
+        </div>
+
+        <div class="ref-letter" id="M">M</div>
+
+        <div class="ref-entry">
+          <p>Marek, K., Zielińska-Nowak, E., Redlicka, J., Starosta, M., &amp; Miller, E. (2024). Intracranial hemorrhage — is very early rehabilitation safe? A narrative review. <em>Journal of Clinical Medicine, 13</em>(13), 3776. <a href="https://doi.org/10.3390/jcm13133776" target="_blank" rel="noopener">https://doi.org/10.3390/jcm13133776</a></p>
+        </div>
+
+        <div class="ref-entry">
+          <p>Ministry of Health. (2022, March 4). <em>Improve information sharing and integration of processes.</em> <a href="https://www.moh.gov.sg/newsroom/improve-information-sharing-and-integration-of-processes_4mar2022/" target="_blank" rel="noopener">https://www.moh.gov.sg/newsroom/improve-information-sharing-and-integration-of-processes_4mar2022/</a></p>
+        </div>
+
+        <div class="ref-letter" id="N">N</div>
+
+        <div class="ref-entry">
+          <p>Nike. (n.d.). <em>Nike size charts.</em> <a href="https://www.nike.com/size-fit/thigh-sleeves" target="_blank" rel="noopener">https://www.nike.com/size-fit/thigh-sleeves</a></p>
+        </div>
+
+        <div class="ref-letter" id="P">P</div>
+
+        <div class="ref-entry">
+          <p>Palanisamy, N. P. (2016). <em>Filtering of IMU data using Kalman filter</em> [Master's thesis, California State University, Sacramento]. Scholars@CSUS. <a href="https://scholars.csus.edu/esploro/outputs/graduate/Filtering-of-IMU-data-using-Kalman/99257831038101671#file-0" target="_blank" rel="noopener">https://scholars.csus.edu/esploro/outputs/graduate/Filtering-of-IMU-data-using-Kalman/99257831038101671</a></p>
+        </div>
+
+        <div class="ref-letter" id="S">S</div>
+
+        <div class="ref-entry">
+          <p>Sánchez-Gil, J. J., Sáez-Manzano, A., López-Luque, R., Ochoa-Sepúlveda, J., &amp; Cañete-Carmona, E. (2025). Gamified devices for stroke rehabilitation: A systematic review. <em>Computer Methods and Programs in Medicine, 258.</em> <a href="https://doi.org/10.1016/j.cmpb.2024.108476" target="_blank" rel="noopener">https://doi.org/10.1016/j.cmpb.2024.108476</a></p>
+        </div>
+
+        <div class="ref-entry">
+          <p>Synapxe. (n.d.). <em>HealthX Call-for-Innovation: Harnessing speech-to-text technology to translate clinical conversations into medical records.</em> <a href="https://www.synapxe.sg/partner-us/healthx/call-for-innovation/harnessing-speech-to-text-technology-to-translate-clinical-conversations-into-medical-records" target="_blank" rel="noopener">https://www.synapxe.sg/partner-us/healthx/call-for-innovation</a></p>
+        </div>
+
+        <div class="ref-letter" id="W">W</div>
+
+        <div class="ref-entry">
+          <p>World Stroke Organization. (2019, November 19). <em>SSO Spotlight — Singapore.</em> <a href="https://www.world-stroke.org/news-and-blog/news/sso-spotlight-singapore" target="_blank" rel="noopener">https://www.world-stroke.org/news-and-blog/news/sso-spotlight-singapore</a></p>
+        </div>
+
+      </div>
+
+      <nav class="chapter-nav-footer">
+        <a href="chapter6.html" class="nav-btn ghost">
+          <span class="arrow">←</span>
+          <span><span class="label">Previous</span>Ch 6 · Conclusion</span>
+        </a>
+        <a href="chapter8.html" class="nav-btn">
+          <span><span class="label">Also see</span>Appendix</span>
+          <span class="arrow">→</span>
+        </a>
+      </nav>
+
+    </main>
+  </div>
+
+  <style>
+    .ref-list {
+      margin-top: 1.5rem;
+    }
+
+    .ref-letter {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent, #2563eb);
+      border-bottom: 2px solid var(--accent, #2563eb);
+      padding-bottom: 0.25rem;
+      margin: 2rem 0 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .ref-entry {
+      padding: 0.75rem 0 0.75rem 1rem;
+      border-left: 3px solid var(--border, #e5e7eb);
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .ref-entry:hover {
+      border-left-color: var(--accent, #2563eb);
+    }
+
+    .ref-entry p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .ref-entry a {
+      color: var(--accent, #2563eb);
+      word-break: break-all;
+      font-size: 0.85rem;
+    }
+
+    .ref-entry a:hover {
+      opacity: 0.7;
+    }
+  </style>
 
 </body>
 </html>
