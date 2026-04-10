@@ -583,231 +583,869 @@
     <p>To address this, future iterations should incorporate gyroscope data alongside the accelerometer through a sensor fusion approach such as a Kalman filter, which combines the low-frequency accuracy of the accelerometer with the short-term precision of the gyroscope to produce more stable and reliable angle estimates across the full range of motion.</p>
     <p>Additionally, the current test configuration did not constrain the physical mounting of the IMU modules, introducing variability in sensor tilt and alignment between trials. A dedicated IMU holder, designed to mount rigidly onto the device frame and align each sensor consistently with the limb segment axis, would reduce placement-dependent error and improve repeatability across patients and sessions. The design of such a holder is proposed as part of the sensing subsystem iteration.</p>
 
-    <h3 id="linear">4.4.3 Linear Movement</h3>
-    <p>Several mechanisms were evaluated for linear motion. A <strong>ball screw linear actuator</strong> was selected for its relative simplicity, proven reliability, low maintenance, and high user ergonomics.</p>
+        <h3>4.2.5 ST1 Force Sensor Calibration Test</h3>
+    <p>The table (Table 10 and 11) below shows the critical and target force readings we require based on a 100 kg and 150 kg payload (Figure 37).</p>
 
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Mechanism</th><th>Reliability</th><th>Maintenance</th><th>Mechanical Complexity</th><th>User Ergonomics</th></tr></thead>
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Sensors used</th>
+            <th>Nested Subsystem</th>
+            <th>Critical Weight (kg)</th>
+            <th>Maximum Critical Force Per Sensor (N)</th>
+            <th>Target Weight (kg)</th>
+            <th>Maximum Target Force Per Sensor (N)</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Linear Actuator (ball screw)</td><td>High (proven tech)</td><td>Low (minimal upkeep)</td><td>Low</td><td>High (easy to use)</td></tr>
-          <tr><td>Hydraulic Resistance (motor pump)</td><td>High (precise control)</td><td>High (oil changes, pump maintenance)</td><td>High</td><td>Medium (effective but noisy, heavy)</td></tr>
+          <tr>
+            <td>13</td>
+            <td>Plantar Force Sensing</td>
+            <td>100</td>
+            <td>75.4</td>
+            <td>150</td>
+            <td>113.2</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Medial–Lateral Force Sensing</td>
+            <td>20</td>
+            <td>98.1</td>
+            <td>35</td>
+            <td>147.2</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Thigh Force Sensing</td>
+            <td>30</td>
+            <td>147.2</td>
+            <td>45</td>
+            <td>220.7</td>
+          </tr>
         </tbody>
       </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 10.</p>
     </div>
-    <p class="table-caption">Figure 20. Linear movement mechanism comparison.</p>
 
-    <h3 id="lateral">4.4.4 Lateral Movement</h3>
-    <p>The device must move ±40° laterally. An <strong>arc rail mechanism</strong> was selected, building on an initial concept from the UROP predecessor, with the arc rail repositioned beneath the linear sub-assembly to improve load distribution.</p>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Mechanism</th><th>Reliability</th><th>Maintenance</th><th>Mech. Complexity</th><th>User Ergonomics</th><th>Net Score</th></tr></thead>
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Linear Rail (2 rails)</td><td>+</td><td>−</td><td>−</td><td>+</td><td><strong>0</strong></td></tr>
-          <tr><td>Arc Rail (Rotating Base)</td><td>+</td><td>−</td><td>+</td><td>+</td><td style="color:var(--green);font-weight:700;"><strong>3 ✓</strong></td></tr>
-          <tr><td>Pivot (Motorised Slider)</td><td>+</td><td>−</td><td>+</td><td>+</td><td><strong>3</strong></td></tr>
+          <tr><td>1</td><td>Identify the sensing subsystems to be calibrated: plantar force sensors (13 sensors), medial–lateral force sensors (2 sensors), and thigh force sensors (2 sensors).</td></tr>
+          <tr><td>2</td><td>Determine the target and critical force values per sensor based on expected payloads (100 kg and 150 kg users) as specified in Table 19.</td></tr>
+          <tr><td>3</td><td>Assemble the force sensor circuit using the LM324N operational amplifier configuration recommended by the manufacturer.</td></tr>
+          <tr><td>4</td><td>Configure the voltage divider to generate the reference voltage using R1 = 40 kΩ and R2 = 5 kΩ, producing Vref = 0.5 V from a 4.5 V supply voltage (Vss).</td></tr>
+          <tr><td>5</td><td>Set the feedback resistor Rref = 2 kΩ to maintain sensitivity while ensuring the output voltage remains within the microcontroller input range.</td></tr>
+          <tr><td>6</td><td>Connect the force sensor to the op-amp circuit and the microcontroller ADC input.</td></tr>
+          <tr><td>7</td><td>Apply a series of known calibration weights to the force sensor.</td></tr>
+          <tr><td>8</td><td>Record the sensor resistance values and corresponding voltage outputs for each applied weight.</td></tr>
+          <tr><td>9</td><td>Tabulate the resistance values against the applied loads.</td></tr>
+          <tr><td>10</td><td>Plot the force–voltage relationship curve to determine the calibration equation for converting sensor voltage readings into applied force values.</td></tr>
+          <tr><td>11</td><td>Repeat the calibration procedure for all force sensors across the plantar, medial–lateral, and thigh sensing subsystems.</td></tr>
         </tbody>
       </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 11.</p>
     </div>
-    <p class="table-caption">Table 14. Lateral movement mechanism comparison.</p>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 8v8M8 12h8"/></svg>
-        <div class="fig-label">Figure 21</div>
-        <div class="fig-desc">CAD model of final lateral movement assembly with arc rail mechanism repositioned beneath the linear sub-assembly. Nema 23 motor with belt-and-pulley transmission shown.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 21.</em> Final arc-rail-based lateral movement assembly.</p>
+      <img src="images/fig36.png" alt="Critical and target force readings for sensing subsystems" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 36.</em></p>
     </div>
 
-    <p>The lateral movement is driven by a <strong>Nema 23 motor</strong> mounted at the rear of the assembly, with power transmitted through a <strong>belt-and-pulley system</strong> chosen for its light weight and ease of installation compared to gear or chain mechanisms.</p>
+    <h3>4.2.6 ST4, ST5 and ST6 Force Sensing Subsystems</h3>
+    <p>Initial calibration and validation of the force-sensor subsystem showed that although the sensors were able to capture force trends, their accuracy was lower than desired for reliable biomechanical monitoring. In particular, the force sensors exhibited greater deviation from the ideal relationship and a higher root mean square error (RMSE). The table (Table 12) below shows the error percentage between the actual weight and the predicted weight by the A301 force sensors.</p>
 
-    <h2 id="sensing">4.5 Sensing Design Concepts</h2>
-    <p>Three sensing subsystem concepts were evaluated.</p>
-
-    <h3 id="fimu">4.5.1 FIMU (Force + IMU) Design Concept</h3>
-    <p>The IMU subsystem combines an accelerometer, gyroscope, and optionally a magnetometer to measure motion and angular velocity across three axes. This concept employs a <strong>four-IMU setup</strong> (lower back, thigh, shank, and foot).</p>
-    <p>Force sensors target key pressure points on the foot: hallux, metatarsals, midfoot, and heels. For medial-lateral force sensing, sensors are placed near the medial and lateral malleoli.</p>
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Actual weight (g)</th>
+            <th>Predicted weight (g)</th>
+            <th>Error (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2167.37</td><td>1558.57</td><td>28.09</td></tr>
+          <tr><td>2457.69</td><td>2130.00</td><td>13.33</td></tr>
+          <tr><td>2500.00</td><td>1344.29</td><td>46.23</td></tr>
+          <tr><td>3373.08</td><td>4744.29</td><td>40.65</td></tr>
+          <tr><td>3653.85</td><td>3558.57</td><td>2.61</td></tr>
+          <tr><td>6261.11</td><td>6515.71</td><td>4.07</td></tr>
+          <tr><td>8050.00</td><td>9101.43</td><td>13.06</td></tr>
+          <tr><td>9744.44</td><td>9672.86</td><td>0.73</td></tr>
+          <tr><td>12528.57</td><td>11387.14</td><td>9.11</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 12.</p>
+    </div>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 10v12M8 22h8"/><circle cx="8" cy="14" r="1.5" fill="currentColor"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="19" r="1.5" fill="currentColor"/></svg>
-        <div class="fig-label">Figure 31</div>
-        <div class="fig-desc">FIMU sensor placement diagram — IMU sensors (green) at lower back, thigh, shank, and foot for positional sensing; force sensors (orange) for plantar and lateral force sensing at key foot pressure points.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 31.</em> FIMU sensor placement for positional and force sensing.</p>
+      <img src="images/fig37.png" alt="Actual vs predicted weight graph for force sensor" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 37.</em></p>
+    </div>
+
+    <p>From the graph, an RMSE of 828.74 g indicates moderate prediction error, with greater deviation observed at lower weight ranges, suggesting non-linearity or reduced sensor sensitivity in this region. Load cells were therefore investigated as an alternative sensing approach because they are commonly used for direct force measurement, offer more stable output under compression, and are generally less sensitive to placement and contact variability than thin-film force sensors.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Mount the load cells securely onto the load bearing component in the intended orientation.</td></tr>
+          <tr><td>2</td><td>Apply a series of known weights incrementally to the load cells.</td></tr>
+          <tr><td>3</td><td>Record the detected force values corresponding to each applied load.</td></tr>
+          <tr><td>4</td><td>Repeat the measurements for multiple loading points covering the intended force range.</td></tr>
+          <tr><td>5</td><td>Calculate the RMSE between detected and actual force values.</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 13.</p>
+    </div>
+
+    <p><strong>Results:</strong></p>
+    <p>The table below presents the plantar force sensing test results for both the load cell and force sensor configurations. Known weights were applied incrementally up to the critical value of 100 kg (approximately 981 N), representing the maximum expected plantar load under operational conditions, and the corresponding detected force values were recorded for each sensing approach.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th colspan="2">Load Cells</th>
+            <th colspan="2">Force Sensor</th>
+          </tr>
+          <tr>
+            <th>Actual (N)</th>
+            <th>Detected (N)</th>
+            <th>Actual (N)</th>
+            <th>Detected (N)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>0</td><td>0</td><td>-20.41</td></tr>
+          <tr><td>11.18</td><td>10.87</td><td>269.75</td><td>276.77</td></tr>
+          <tr><td>100.55</td><td>99.43</td><td>555.75</td><td>450.06</td></tr>
+          <tr><td>237.7</td><td>234</td><td>634.66</td><td>598.65</td></tr>
+          <tr><td>544.95</td><td>520.33</td><td></td><td></td></tr>
+          <tr><td>555.74</td><td>530</td><td></td><td></td></tr>
+          <tr><td>626.07</td><td>579.67</td><td></td><td></td></tr>
+          <tr><td>873.29</td><td>790</td><td></td><td></td></tr>
+          <tr><td>1000</td><td>928.33</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 14. ST4 Plantar Force Sensing Test Results</p>
     </div>
 
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="18" rx="6" ry="4"/><path d="M6 18V8c0-3.3 2.7-6 6-6s6 2.7 6 6v10"/></svg>
-        <div class="fig-label">Figure 32</div>
-        <div class="fig-desc">Detailed foot pressure map showing 14 force sensor positions (0–13) covering hallux, big toe area, toes 3–5, metatarsal area, middle foot area, and heel area (medial and lateral).</div>
-      </div>
-      <p class="figure-caption"><em>Figure 32.</em> Foot pressure map for plantar force sensor placement.</p>
+      <img src="images/fig38.png" alt="Detected vs actual force comparison for plantar sensing" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 38.</em></p>
     </div>
 
-    <h3 id="hff">4.5.2 Hall-Force-Flex (HFF) Design Concept</h3>
-    <p>The HFF subsystem combines Hall-effect sensors, force sensors, and flex sensors to capture biomechanical data. These sensors are positioned at key regions for hip/knee positional sensing, plantar force sensing, lateral force sensing, and ankle positional sensing.</p>
+    <p>The table (Table 15) below presents the medial-lateral force sensing test results for both the load cell and force sensor configurations. Known weights were applied incrementally up to the critical value of 20 kg (approximately 98.1 N), representing the maximum expected plantar load under operational conditions, and the corresponding detected force values were recorded for each sensing approach.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th colspan="2">Load Cells</th>
+            <th colspan="2">Force Sensor</th>
+          </tr>
+          <tr>
+            <th>Actual (N)</th>
+            <th>Detected (N)</th>
+            <th>Actual (N)</th>
+            <th>Detected (N)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>0</td><td>0</td><td>-0.84</td></tr>
+          <tr><td>4.91</td><td>3.76</td><td>24.55</td><td>32.28</td></tr>
+          <tr><td>53.96</td><td>6.57</td><td>48.96</td><td>28.73</td></tr>
+          <tr><td>107.91</td><td>83.52</td><td>73.58</td><td>67.18</td></tr>
+          <tr><td>154.51</td><td>114.6</td><td>103.99</td><td>29.01</td></tr>
+          <tr><td>202.58</td><td>151.6</td><td>123.61</td><td>73.67</td></tr>
+          <tr><td>256.04</td><td>262.59</td><td>127.53</td><td>111.97</td></tr>
+          <tr><td>295.28</td><td>304.67</td><td>181.8</td><td>101.23</td></tr>
+          <tr><td></td><td></td><td>210.36</td><td>107.3</td></tr>
+          <tr><td></td><td></td><td>220.73</td><td>133.46</td></tr>
+          <tr><td></td><td></td><td>248.62</td><td>145.14</td></tr>
+          <tr><td></td><td></td><td>279.78</td><td>134.4</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 15. ST5 Medial-Lateral Force Sensing Test Results</p>
+    </div>
 
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 10v12"/><circle cx="7" cy="13" r="1.5" fill="currentColor" opacity="0.4"/><circle cx="17" cy="13" r="1.5" fill="currentColor" opacity="0.7"/><circle cx="12" cy="20" r="1.5" fill="currentColor" opacity="0.2"/></svg>
-        <div class="fig-label">Figure 33</div>
-        <div class="fig-desc">HFF sensor placement — Force sensors (orange), Hall sensors (blue), and Flex sensors (pink) at hip/knee, lateral, plantar, and ankle positions.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 33.</em> HFF sensor placement diagram.</p>
+      <img src="images/fig39.png" alt="Detected vs actual force comparison for medial-lateral sensing" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 39.</em></p>
     </div>
 
-    <h3 id="cv">4.5.3 Computer Vision Design Concept</h3>
-    <p>A computer vision sensor uses an RGB camera and pose-estimation algorithms to track 3D joint positions (e.g., hip, knee, ankle) and compute joint angles from relative body segment orientations. Markers are placed on key joints, and movements are processed using Tracker Software to determine marker positions and calculate joint angles.</p>
+    <p>The table (Table 16) below presents the medial-lateral force sensing test results for both the load cell and force sensor configurations. Known weights were applied incrementally up to the critical value of 30 kg (approximately 147.2 N), representing the maximum expected plantar load under operational conditions, and the corresponding detected force values were recorded for each sensing approach.</p>
 
-    <h3 id="eval">4.5.4 Concept Evaluation</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Criteria</th><th>FIMU</th><th>HFF</th><th>Computer Vision</th></tr></thead>
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th colspan="2">Load Cells</th>
+            <th colspan="2">Force Sensor</th>
+          </tr>
+          <tr>
+            <th>Actual (N)</th>
+            <th>Detected (N)</th>
+            <th>Actual (N)</th>
+            <th>Detected (N)</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Force Sensing — Plantar</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
-          <tr><td>Force Sensing — Lateral</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
-          <tr><td>Positional Sensing</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
-          <tr><td>Metrics (ROM, Strength, Reps, Jerk)</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
-          <tr><td>Processing Time</td><td class="check-no">−</td><td class="check-yes">+</td><td class="check-no">−</td></tr>
-          <tr><td>Ease of Set-Up</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-yes">+</td></tr>
-          <tr><td>Output Quality</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-no">−</td></tr>
-          <tr><td>Cost</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
-          <tr><td>Feasibility for Stroke Rehab</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
-          <tr><td><strong>Net Score</strong></td><td style="color:var(--green);font-weight:700;"><strong>6 ✓ Selected</strong></td><td><strong>1</strong></td><td><strong>0</strong></td></tr>
+          <tr><td>0</td><td>0</td><td>0</td><td>-1.68</td></tr>
+          <tr><td>9.81</td><td>10.87</td><td>49.09</td><td>64.57</td></tr>
+          <tr><td>49.54</td><td>49.11</td><td>105.95</td><td>57.46</td></tr>
+          <tr><td>110.36</td><td>90.03</td><td>141.94</td><td>134.37</td></tr>
+          <tr><td>148.13</td><td>124.14</td><td>196.22</td><td>58.03</td></tr>
+          <tr><td>196.69</td><td>175.23</td><td>303.65</td><td>204</td></tr>
+          <tr><td>245.25</td><td>258.56</td><td>432.31</td><td>345.67</td></tr>
+          <tr><td>299.7</td><td>265.81</td><td></td><td></td></tr>
+          <tr><td>348.75</td><td>351</td><td></td><td></td></tr>
+          <tr><td>406.53</td><td>393.49</td><td></td><td></td></tr>
+          <tr><td>450.34</td><td>452.64</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 16. ST6 Thigh Force Sensing Test Results</p>
+    </div>
+
+    <div class="figure">
+      <img src="images/fig40.png" alt="Detected vs actual force comparison for thigh sensing" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 40.</em></p>
+    </div>
+
+    <p>Figure 38, 39 and 40 present three comparisons between load cell and force sensor measurements against actual applied weights. In all three plots, the load cells demonstrate closer alignment with the ideal line (y = x), with RMSE values of 41.51 N, 29.92 N, and 16.39 N for Plantar force, Medial-Lateral, and Thigh force sensing subsystems respectively. In contrast, the force sensors show substantially larger deviations, with RMSE values of 56.86 N, 73.85 N, and 74.82 N. These results indicate that load cells provide more reliable and accurate force detection for the Kinetix device, making them the preferred sensor type for clinical resistance and range-of-motion applications.</p>
+
+    <h3>4.2.7 Footrest Design</h3>
+    <p>Following confirmation of the suitability of the load cells, the footrest subsystem was designed to fulfill both mechanical and sensing requirements within the lower-limb rehabilitation device. The key functional objectives were to:</p>
+    <ul>
+      <li>Withstand plantar and lateral forces applied during rehabilitation exercises</li>
+      <li>Enable accurate measurement of plantar and lateral forces</li>
+      <li>Accommodate a wide range of user foot sizes based on anthropometric data</li>
+      <li>Minimise structural deformation to preserve sensing accuracy</li>
+      <li>Integrate seamlessly with the selected force-sensing system</li>
+    </ul>
+    <p>These requirements formed the basis for evaluating each design iteration (Figure 41).</p>
+
+    <div class="figure">
+      <img src="images/fig41.png" alt="Footrest design iterations overview" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 41.</em></p>
+    </div>
+
+    <h4>4.2.7.1 Iteration 1: Initial Prototype</h4>
+    <p>The initial design, developed during the interim phase, featured a compact footrest. While the design was lightweight and simple to implement, it was observed that the footrest area was insufficient to accommodate users with larger foot sizes (Figure 42).</p>
+    <div class="figure">
+      <img src="images/fig42.png" alt="Initial compact footrest prototype" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 42.</em></p>
+    </div>
+    <p>As shown, this resulted in improper foot positioning, which affected both usability and measurement consistency. Consequently, the design did not meet anthropometric requirements and required further modification.</p>
+
+    <h4>4.2.7.2 Iteration 2: Anthropometric Scaling</h4>
+    <p>To address the limitation in foot coverage, the footrest length was increased to 32 cm based on anthropometric data of Singaporean populations through research done by Lee et al. (2015). This adjustment ensured that the design could accommodate the majority of users.</p>
+    <p>However, experimental testing revealed that the increased length led to structural deformation under load. The footrest exhibited noticeable warping when subjected to plantar forces, which adversely affected the reliability of the force-sensing subsystem (Figure 43).</p>
+    <div class="figure">
+      <img src="images/fig43.png" alt="Anthropometric scaling footrest deformation" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 43.</em></p>
+    </div>
+    <p>This iteration demonstrated that while anthropometric requirements were satisfied, mechanical stability was compromised.</p>
+
+    <h4>4.2.7.3 Iteration 3: Structural Optimisation and Reinforcement</h4>
+    <p>To resolve the structural instability, the footrest length was reduced from 32 cm to 26.2 cm. In addition, an aluminum plate and two aluminum ribs were introduced to reinforce the structure (Figure 44).</p>
+    <div class="figure">
+      <img src="images/fig44.png" alt="Structural reinforcement components for footrest" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 44.</em></p>
+    </div>
+    <p>These modifications were guided by mechanical principles, where reducing the span length decreases bending deformation, and the addition of reinforcement increases structural stiffness. The revised design achieved a balance between user accommodation and mechanical integrity.</p>
+    <p>Testing showed a significant reduction in deformation, resulting in improved stability and more reliable force measurements. Although there was a slight reduction in maximum foot size accommodation, the design remained suitable for the intended user population.</p>
+
+    <h4>4.2.7.4 Iteration 4: Sensing System Redesign</h4>
+    <p>During development, an alternative sensing approach was evaluated. The initial use of thin-film force sensors was found to be limited by high percentage error rates. As a result, the sensing system was redesigned to incorporate load cells.</p>
+    <p>The new design was inspired by the operating principle of electronic weighing scales, which utilise ground reaction forces for measurement. As shown in the diagram, the load cells were positioned such that applied forces from the foot are transmitted through the structure to generate measurable signals. In addition, groves were also made on the structure for the circular section of the load cells to slip in to prevent slipping (Figure 45).</p>
+    <div class="figure">
+      <img src="images/fig45.png" alt="Load cell integration concept for footrest" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 45.</em></p>
+    </div>
+    <p>This transition significantly improved measurement accuracy, repeatability, and overall system robustness.</p>
+
+    <h4>4.2.7.5 Iteration 5: Integration and System Refinement</h4>
+    <p>Following the adoption of load cells, further refinements were made to optimise system integration. A dedicated compartment was incorporated within the footrest to house amplifiers, reducing wire length and minimising the risk of wire damage. Additionally, the position of the Velcro strap slots was shifted from the centre to the upper region of the footplate (Figure 46).</p>
+    <div class="figure">
+      <img src="images/fig46.png" alt="Integrated footplate with load cells in grooves" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 46.</em> Full integrated images of the footplate (left), close-up view of load cells in grooves (right)</p>
+    </div>
+    <p>The final footrest design integrates both structural and sensing considerations. The reinforced structure ensures minimal deformation under load, while the load cell-based sensing system provides accurate and reliable force measurements. The design also incorporates improved user interface features, such as optimised strap placement and adequate foot support, enhancing overall usability.</p>
+    <p>The CAD model below illustrates the integration of the ankle-sensing component. The design comprises two plates mounted onto a U-shaped bracket with a controlled clearance. This allowance enables the plates to translate towards the bracket under applied load, thereby generating a measurable normal force. The same force transmission principle is applied in the plantar force sensing mechanism to ensure consistent and accurate force detection (Figure 47).</p>
+    <div class="figure">
+      <img src="images/fig47.png" alt="CAD assembly of foot plate structure" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 47.</em> CAD Assembly of foot plate structure</p>
+    </div>
+    <p>Each iteration addressed specific limitations identified through testing, resulting in continuous improvement.</p>
+    <p>Key advancements include the following:</p>
+    <ul>
+      <li>Improved anthropometric compatibility</li>
+      <li>Enhanced structural stability through reinforcement</li>
+      <li>Transition to a more reliable sensing system</li>
+      <li>Optimised integration of mechanical and electrical components</li>
+    </ul>
+    <p>Overall, the final design reflects a well-evaluated and comprehensive approach, integrating engineering principles, experimental validation, and user requirements.</p>
+
+    <h3>4.2.8 Thigh force sensing Design</h3>
+    <p>The thigh subsystem was designed to fulfill sensing requirements within the lower-limb rehabilitation device.</p>
+    <p>The key functional objectives were to:</p>
+    <ul>
+      <li>Enable accurate measurement of flexion forces</li>
+      <li>Accommodate a wide range of user thigh sizes based on anthropometric data</li>
+    </ul>
+    <p>To ensure effective force transmission and user compatibility, the contact interface was designed with reference to thigh circumference anthropometric data adapted from Nike.com. Based on this data, a contact arc of 60 degrees was derived to provide sufficient surface contact with the thigh during force exertion. This design ensures measurement accuracy while maintaining user comfort across different body sizes (Figure 48).</p>
+    <div class="figure">
+      <img src="images/fig48.png" alt="Images of the thigh force sensing sub-system" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 48.</em> Images of the thigh force sensing sub-system</p>
+    </div>
+    <p>In addition, similarly to the footrest design, the thigh force sensing structure also has an electrical housing for the amplifiers that connects to the two load cells.</p>
+
+    <h3>4.2.9 IMU Holder Design</h3>
+    <p>The IMU holder was created to serve two purposes (Figure 49):</p>
+    <ul>
+      <li>Remain stable during the movement of the structure to reduce data-recording errors</li>
+      <li>To serve as a protection against mechanical damage and splatter from wipe-down.</li>
+    </ul>
+    <div class="figure">
+      <img src="images/fig49.png" alt="Old and final IMU holder design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 49.</em> A side-by-side comparison of IMU iteration. Old design (left), Final design (right)</p>
+    </div>
+
+    <p><strong>Iteration 1: Initial Holder Design</strong></p>
+    <p>The initial IMU holder was designed with a flat base and enclosed structure to house and protect the sensor. This configuration provided adequate physical protection and ensured that the IMU was securely contained within the holder.</p>
+    <p>However, during testing under movement conditions, it was observed that the flat base did not conform well to the curved surface of the aluminum tube. This resulted in reduced contact area and insufficient frictional resistance, causing slight instability and potential displacement of the IMU during operation.</p>
+    <p>As shown in Figure 49, this limitation highlighted the need for improved geometric compatibility between the holder and the mounting surface.</p>
+
+    <p><strong>Iteration 2: Curvature-Based Design</strong></p>
+    <p>To address the instability observed in the initial design, the base of the IMU holder was redesigned to incorporate a curvature that matches the arc of the aluminum tube.</p>
+    <p>This modification increased the contact surface area between the holder and the mounting structure, thereby improving frictional grip and mechanical stability. The improved conformity reduced micro-movements of the IMU during dynamic operation, leading to more reliable and consistent data acquisition.</p>
+    <p>Additionally, the enclosed structure was retained to continue providing protection against mechanical impact and environmental exposure.</p>
+    <div class="figure">
+      <img src="images/fig50.png" alt="IMU with holders attached on structure" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 50.</em> Image of IMU with holders attached on structure</p>
+    </div>
+
+    <h3>4.2.10 Ultrasonic Sensor Holder Design Iteration</h3>
+    <p>The ultrasonic sensor holder was created to serve two purposes (Figure 51):</p>
+    <ul>
+      <li>To place the sensors at strategic locations to detect the structure</li>
+      <li>To serve as a protection against mechanical damage and splatter from wipe-down.</li>
+    </ul>
+    <div class="figure">
+      <img src="images/fig51.png" alt="Design of ultrasonic sensor holder for lateral movement" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 51.</em> Design of ultrasonic sensor holder for lateral movement</p>
+    </div>
+    <p>In order for the ultrasonic sensor to be able to detect the lateral movement of the structure to prevent it from going out of range, it needs to be elevated to the same level as the aluminum rail. This elevation ensured that the emitted ultrasonic waves are directed accurately towards the rail, allowing reliable detection of lateral displacement and preventing the structure from moving beyond its intended range (Figure 52).</p>
+    <div class="figure">
+      <img src="images/fig52.png" alt="Design of ultrasonic sensor holder for linear movement" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 52.</em> Design of ultrasonic sensor holder for linear movement</p>
+    </div>
+    <p>The design for the ultrasonic sensor to detect the linear motion involves designing the holder around the NEMA motor structure to ensure good fit for stability.</p>
+
+    <h2 id="electrical">4.3 Electrical Sub-System</h2>
+    <p>The table (Table 17) provides the list of tests that were conducted for the electrical sub-system.</p>
+
+    <div class="test-table-wrapper">
+      <table class="test-table">
+        <caption>Table 17.</caption>
+        <thead>
+          <tr>
+            <th>Test Code</th>
+            <th>Name of Test</th>
+            <th>Design Specification Addressed</th>
+            <th>Purpose of Test</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ET1</td>
+            <td class="name-col">Voltage Output Verification Test</td>
+            <td class="design-col">N/A</td>
+            <td class="purpose-col">Verify that the voltage output of DC power subsystem is within datasheet tolerance</td>
+          </tr>
+          <tr>
+            <td>ET2</td>
+            <td class="name-col">I2C Multiplexer Functionality Test</td>
+            <td class="design-col">N/A</td>
+            <td class="purpose-col">Verify the operation of I2C Multiplexer</td>
+          </tr>
+          <tr>
+            <td>ET3</td>
+            <td class="name-col">Linear Range Test</td>
+            <td class="design-col">N/A</td>
+            <td class="purpose-col">Verify the duration that the rail can slide from the device’s maximum extension and flexion</td>
+          </tr>
+          <tr>
+            <td>ET4</td>
+            <td class="name-col">Passive and Active Mode Test</td>
+            <td class="design-col">N/A</td>
+            <td class="purpose-col">Verify motion performance in both active and passive rehabilitation modes</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout">
-      <strong>Selected: FIMU</strong>
-      FIMU balances cost, usability, and clinical relevance. It captures both kinematics and kinetics while remaining wearable and lightweight. IMU drift can be corrected algorithmically.
+    <h3>4.3.1 ET1 Voltage Output Verification Test</h3>
+    <p>Tables 18 and 19 provide the procedures of the voltage output verification test and its results respectively.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Turn on the power supply and allow the system to stabilise.</td></tr>
+          <tr><td>2</td><td>Use a multimeter to measure the output voltage of the DC–DC converter, Raspberry Pi Pico 3.3 V output and LDO.</td></tr>
+          <tr><td>3</td><td>Record three voltage readings to ensure consistency and reduce measurement error.</td></tr>
+          <tr><td>4</td><td>Calculate the average voltage reading for each component.</td></tr>
+          <tr><td>5</td><td>Compare the average voltage against the expected output voltage specified in the component datasheets.</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 18.</p>
     </div>
 
-    <h3 id="components">4.5.5 Component Selection — Force Sensors</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Attribute</th><th>FlexiForce A401</th><th>FlexiForce A502</th><th>FlexiForce A301</th></tr></thead>
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Output Node</th>
+            <th>Test 1 (V)</th>
+            <th>Test 2 (V)</th>
+            <th>Test 3 (V)</th>
+            <th>Average (V)</th>
+            <th>Requirement (V)</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Cost (USD)</td><td>$22.56</td><td>$27.61</td><td>$14.58</td></tr>
-          <tr><td>Sensing Width / Diameter</td><td>56.9 mm (Ø)</td><td>50.8 × 50.8 mm</td><td>9.53 mm (Ø)</td></tr>
-          <tr><td>Shape</td><td>Circle</td><td>Rectangle</td><td>Circle</td></tr>
-          <tr><td>Maximum Force Range</td><td>31,137 N</td><td>44,482 N</td><td>4,448 N</td></tr>
-          <tr><td>Linearity Error</td><td>&lt;±3% FS</td><td>±3% FS</td><td>±3% FS</td></tr>
-          <tr><td><strong>Selection</strong></td><td></td><td></td><td style="color:var(--green);font-weight:600;">✓ Selected — lower cost, shorter lead time, meets 0–1000 N plantar and 0–200 N lateral force ranges; circular shape better conforms to anatomical surfaces.</td></tr>
+          <tr>
+            <td>DC–DC Converter Output</td>
+            <td>5.16</td>
+            <td>5.18</td>
+            <td>5.18</td>
+            <td>5.17</td>
+            <td>5 V ± 5%</td>
+          </tr>
+          <tr>
+            <td>LDO Output</td>
+            <td>3.29</td>
+            <td>3.29</td>
+            <td>3.29</td>
+            <td>3.29</td>
+            <td>3.3 V ± 2%</td>
+          </tr>
+          <tr>
+            <td>Raspberry Pi Pico 2W 3.3 V Output Pin</td>
+            <td>3.29</td>
+            <td>3.3</td>
+            <td>3.29</td>
+            <td>3.29</td>
+            <td>3.3 V ± 2%</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 19.</p>
+    </div>
+
+    <p><strong>Result:</strong></p>
+    <p>The measured output voltages were within the specified tolerance range of the component datasheets, confirming that the DC power subsystem delivers stable and regulated voltage suitable for reliable system performance. However, the 3.3 V output pin of the Raspberry Pi Pico 2W performed equally as the LDO, indicating that it is a reliable replacement as a 3.3 V power supply.</p>
+
+    <h3>4.3.2 ET2 I2C Multiplexer Functionality Test</h3>
+    <p>Tables 20 and 21 provide the procedures of the multiplexer functionality test and its results respectively.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Connect the I2C multiplexer to the microcontroller and attach multiple IMU sensors to different channels of the multiplexer.</td></tr>
+          <tr><td>2</td><td>Upload the I2C communication program in Appendix G.2 to the microcontroller and initialise all connected devices.</td></tr>
+          <tr><td>3</td><td>Place each IMU sensor in distinct positions to produce different readings.</td></tr>
+          <tr><td>4</td><td>Read data from each IMU channel and record its output values.</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 20.</p>
+    </div>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>IMU No.</th>
+            <th>Accel_x (m/s^2)</th>
+            <th>Accel_y (m/s^2)</th>
+            <th>Accel_z (m/s^2)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>IMU1</td><td>-0.863</td><td>-0.392</td><td>9.414</td></tr>
+          <tr><td>IMU2</td><td>0.196</td><td>5.492</td><td>-8.826</td></tr>
+          <tr><td>IMU3</td><td>-0.118</td><td>1.530</td><td>9.454</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 21.</p>
+    </div>
+
+    <p><strong>Result:</strong></p>
+    <p>The I2C multiplexer switched between multiple IMU channels, with each sensor producing distinct and consistent readings corresponding to its orientation. This confirms that the multiplexer enables reliable communication with multiple sensors over a shared I2C bus, supporting the sensing requirements of the KINETIX system.</p>
+
+    <h3>4.3.3 ET3 Linear Range Test</h3>
+    <p>Table 22 and 23 provide the procedures of the linear range verification test and its results respectively.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Attach the structure onto mounting points located at the housing and pivot.</td></tr>
+          <tr><td>2</td><td>Slide the housing backwards until the structure reaches its maximum flexion using the program in Appendix G.1.</td></tr>
+          <tr><td>3</td><td>Upon flashing the program, start the timer. Another group member is responsible for keeping track of the structure, while the other will be on standby near the power supply to cut power to stop the movement.</td></tr>
+          <tr><td>4</td><td>Once the group member confirms that the structure is at maximum extension, instruct the other 2 members to cut off power supply and end the timer. The duration measured by the timer will need to be subtracted by 10 seconds to account for the 10 second delay within the program.</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 22.</p>
+    </div>
+
+<div class="results-table-wrapper">
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Duration/s</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Duration</td>
+        <td>17</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 23.</p>
+</div>
+
+    <p><strong>Result:</strong></p>
+    <p>From the linear range test, maximum duration allowed for the device was obtained. This information is essential in programming the motor control to ensure that the physiotherapist that is using the UI does not exceed this duration value.</p>
+
+    <h3>4.3.4 ET4 Active &amp; Passive Mode Test</h3>
+    <p>Table 24 and 25 provide the procedures of the active and passive mode tests, and their results respectively. Figure 51 provides the operational flowchart of both modes.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Flash the program in Appendix G.4 in the Raspberry Pi Pico 2W.</td></tr>
+          <tr><td>2</td><td>Set up the fully integrated Kinetix device on a stable surface and power on the system.</td></tr>
+          <tr><td>3</td><td>Select Active Mode on the user interface.</td></tr>
+          <tr><td>4</td><td>Define threshold force values.</td></tr>
+          <tr><td>5</td><td>Apply force gradually below the threshold and observe that no motor movement is triggered.</td></tr>
+          <tr><td>6</td><td>Increase the applied force until the motor initiates movement.</td></tr>
+          <tr><td>7</td><td>Record the force value at which motor movement begins and compare against threshold.</td></tr>
+          <tr><td>8</td><td>Switch to Passive Mode and verify that the device performs motion without requiring any user input.</td></tr>
+          <tr><td>9</td><td>Repeat tests to ensure consistent behaviour across multiple trials.</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 24.</p>
+    </div>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Sensing Region</th>
+            <th>Threshold (N)</th>
+            <th>Applied Force (N)</th>
+            <th>Applied Force (N)</th>
+            <th>Applied Force (N)</th>
+            <th>Average Applied Force (N)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Plantar</td>
+            <td>80.0</td>
+            <td>85.2</td>
+            <td>83.5</td>
+            <td>80.1</td>
+            <td>82.9</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 25.</p>
+    </div>
+
+    <div class="figure">
+      <img src="images/fig53.png" alt="Operational flowchart of passive and active modes" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 53.</em></p>
+    </div>
+
+    <p><strong>Result:</strong></p>
+    <p>The device demonstrated controlled motion in both passive and active modes. In passive mode, the system achieved smooth and consistent movement across the required range of motion. In active mode, the device responded appropriately to user-applied force, adjusting motor behaviour based on input, thereby validating the functionality of the active control system.</p>
+
+    <h3>4.3.5 Test Shortcomings and Proposals</h3>
+    <p>After conducting all of the electrical tests, we have identified issues that arose from the initial electronic architecture, which are summarised below (Table 26).</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Issue Identified</th>
+            <th>Reason / Implication</th>
+            <th>Required Follow-Up Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ET1: Voltage Output Verification Test</td>
+            <td>Addition of LDO in electrical architecture is unnecessary.</td>
+            <td>3.3 V output pin of Raspberry Pi Pico 2W performed equally to that of LDO.</td>
+            <td>3.3 V output pin of Raspberry Pi Pico 2W will supply the power for the load cells and IMUs.</td>
+          </tr>
+          <tr>
+            <td>Force Sensing Electrical Schematic Revision</td>
+            <td>Force sensing was switched from force sensitive resistors (FSR) to load cells</td>
+            <td>Load cells were more accurate and consistent with force sampling compared to force sensitive resistors</td>
+            <td>Redesign electrical schematic to suit load cells</td>
+          </tr>
+          <tr>
+            <td>Cable Management and Safety</td>
+            <td>Cables were disorganised and had exposed ends.</td>
+            <td>Disorganised wires and exposed ends could lead to electrical fires and electrocution respectively.</td>
+            <td>Organise the cables according to its components and insulate them.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 26.</p>
+    </div>
+
+    <h4>4.3.5.1 ET1: Voltage Output Verification Test Iteration</h4>
+    <p>From the initial electrical architecture, an LDO was required to step down the 5 V from the buck converter to 3.3 V to supply power to the IMUs and load cells (Figure 54).</p>
+    <div class="figure">
+      <img src="images/fig54.png" alt="Initial electrical architecture with LDO" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 54.</em></p>
+    </div>
+    <p>However, from the ET1 test, the mean voltage output of the LDO and 3.3 V output pin of the Raspberry Pi Pico 2W were of the same value at 3.29 V. Thus, we decided to utilise the 3.3 V output pin of the Raspberry Pi Pico 2W instead to reduce the overall components for the device and simplify the overall electrical architecture.</p>
+
+    <h4>4.3.5.2 Force Sensing Electrical Schematic Revision Iteration</h4>
+    <p>Another modification was the use of load cells for our force sensing instead of the force sensitive resistors that were initially proposed (Figure 55).</p>
+    <div class="figure">
+      <img src="images/fig55.png" alt="Initial FSR-based electrical schematic" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 55.</em></p>
+    </div>
+    <p>As shown above, FSRs complicated the electrical architecture due to its non-linear behaviour and its small area, requiring an op-amp to linearise the voltage output for easier conversion using the analog-to-digital pins of the microcontroller. Lastly, an analog multiplexer was also required to sample a large number of FSRs due to its small surface area, increasing wiring complexity. As such, replacing them with load cells simplified the electrical architecture as it only needed an HX711 amplifier which linearises the analog output, and has a larger surface area compared to FSR, reducing the overall components used (Figure 56).</p>
+    <div class="figure">
+      <img src="images/fig56.png" alt="Revised load-cell electrical schematic" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 56.</em></p>
+    </div>
+
+    <h4>4.3.5.3 Cable Management and Safety Iteration</h4>
+    <p>With all of the sub-systems ready for integration, we eventually ran into the problem of cable management and safety due to the large number of peripherals required in our device (Figure 57).</p>
+    <div class="figure">
+      <img src="images/fig57.png" alt="Cable management and safety issue during integration" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 57.</em></p>
+    </div>
+    <p>This image illustrates this issue as although only the IMUs and motor were present, it was difficult to ascertain which wires belonged to their respective components. Exposed wires were also a safety hazard as it posed a risk of electrocution. It was therefore necessary that we could organise and insulate the wires for easier identification of components to prevent electrical accidents (Figure 57 and 58).</p>
+    <div class="figure">
+      <img src="images/fig58.png" alt="Improved cable organisation and insulation" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 58.</em></p>
+    </div>
+    <p>To resolve this issue, we taped the wires for our peripherals and invested in WAGO connectors to make the identification and insulation of wires easier. Hence, improving the safety of our device.</p>
+
+    <h2 id="data-processing">4.4 Data Processing and Analysis Sub-System</h2>
+    <p>The data processing and analysis sub-system consist of the Core X in the Pico, and the Bluetooth in the UI (Table 27).</p>
+
+    <div class="test-table-wrapper">
+      <table class="test-table">
+        <caption>Table 27.</caption>
+        <thead>
+          <tr>
+            <th>Test Code</th>
+            <th>Name of Test</th>
+            <th>Design Specification Addressed</th>
+            <th>Purpose of Test</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BT1</td>
+            <td class="name-col">Latency Test</td>
+            <td class="design-col">B1</td>
+            <td class="purpose-col">Verify the transfer of data from pico to UI is under 100 ms</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="name-col">Data Sampling Rate</td>
+            <td class="design-col">B2</td>
+            <td class="purpose-col">Verify that no packets are dropped at a sampling rate of 5 Hz</td>
+          </tr>
         </tbody>
       </table>
     </div>
-    <p class="table-caption">Table 15. Force sensor component comparison — FlexiForce A301 selected.</p>
 
-    <h2 id="electrical">4.7 Electrical Design</h2>
-    <p>For motor selection, the maximum torque that the screw bar can resist before backdriving must be determined. Using a 150 kg load and a 10 mm screw lead:</p>
-
-    <div class="formula">
-      T<sub>b</sub> = (F · P · η<sub>2</sub>) / 2π
+    <h3>4.4.1 BT1 Combined Bluetooth Latency and Data Sampling Rate Test</h3>
+    <p>The data analysis system consists of a Bluetooth-enabled pipeline between the Pico microcontroller and the Kinetix UI, where sensor data (IMU angles and force readings) are sampled on the device and transmitted in real time. The Pico aggregates and formats this data into structured packets (e.g., TICK and DATA messages), which are sent at a controlled rate of 5 Hz. On the UI side, incoming data is parsed, visualised, and stored, enabling real-time monitoring, latency evaluation, and post-session analysis such as graph generation and CSV export. A diagnostic module was used to evaluate communication performance by measuring end-to-end latency and packet reliability through controlled test sequences (Figure 59).</p>
+    <div class="figure">
+      <img src="images/fig59.png" alt="Diagnostics module used for Bluetooth latency and packet reliability testing" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 59.</em></p>
     </div>
-    <p class="text-muted text-sm">Where F = load, P = screw lead, η₂ = efficiency of the bar (assumed 0.9). Calculated backdriving torque = <strong>2.15 Nm</strong>.</p>
+    <p>Although the operational update rate is 1 Hz, the system was validated at 5 Hz to ensure robustness under higher data transmission demands. The table (Table 28) below describes the combined test procedure used to verify that Bluetooth communication between the Pico microcontroller and the Kinetix UI satisfies both the end-to-end latency requirement and the 5 Hz data sampling reliability requirement.</p>
 
-    <h3 id="motors">4.7.1 Motor Selection</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Criteria</th><th>Brushed DC</th><th>Brushless DC</th><th>Stepper</th><th>Servo</th></tr></thead>
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Efficiency</td><td>Low</td><td>High</td><td>Low</td><td>Medium</td></tr>
-          <tr><td>Torque Characteristics</td><td>Moderate at low speeds</td><td>High across RPM range</td><td>Excellent at low speeds; decreases at high RPM</td><td>Moderate across RPM range</td></tr>
-          <tr><td>Torque / Weight Ratio</td><td>Low</td><td>Low</td><td>Moderate</td><td>High</td></tr>
-          <tr><td>Control Type</td><td>Closed-loop</td><td>Closed-loop</td><td><strong>Open-loop</strong></td><td>Closed-loop</td></tr>
-          <tr><td>Control Complexity</td><td>High</td><td>High</td><td><strong>Low</strong></td><td>High</td></tr>
-          <tr><td><strong>Total Grade</strong></td><td>−5</td><td>0</td><td style="color:var(--green);font-weight:700;"><strong>4 ✓</strong></td><td>−2</td></tr>
+          <tr><td>1</td><td>Power on the microcontroller and ensure the Bluetooth module is properly connected and initialised.</td></tr>
+          <tr><td>2</td><td>Open the Kinetix UI application on the external tablet and establish a Bluetooth connection.</td></tr>
+          <tr><td>3</td><td>Initiate a known input event on the microcontroller (e.g., generate a sensor reading or trigger a signal).</td></tr>
+          <tr><td>4</td><td>Record the timestamp at which the data is transmitted from the microcontroller.</td></tr>
+          <tr><td>5</td><td>Observe the corresponding update on the Diagnostics page of the UI and record the timestamp when the data is displayed.</td></tr>
+          <tr><td>6</td><td>Calculate the latency as the time difference between transmission and display.</td></tr>
+          <tr><td>7</td><td>Repeat the test multiple times (at least three trials) to ensure consistency.</td></tr>
+          <tr><td>8</td><td>Compute the average latency and compare it against the design requirement of &lt;100 ms end-to-end.</td></tr>
         </tbody>
       </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 28.</p>
     </div>
-    <p class="table-caption">Figure 25. Motor concept evaluation.</p>
-
-    <div class="callout">
-      <strong>Selected: Nema 23 Bipolar Stepper Motor</strong>
-      Selected for its high torque at low speeds and ability to maintain stable fixed positions — ideal for active mode where users must overcome a preset force threshold. Its open-loop control avoids jitter issues found in closed-loop systems under static loads.
-      <br><br>Holding torque: <strong>3.0 Nm</strong> (exceeds the 2.15 Nm backdriving torque requirement).
+    <p><strong>Result:</strong></p>
+    <p>In the initial implementation, Kinetix adopted a single-core architecture where Bluetooth communication, motor control, and sensor processing were executed within the same processing loop. This resulted in blocking behaviour, particularly during motor actuation where delays (e.g., sleep_us) prevented the BLE stack from being serviced in a timely manner. Consequently, the system experienced high latency (up to 564 ms) and frequent Bluetooth disconnections, as the communication subsystem failed to meet required servicing intervals (Figure 60).</p>
+    <div class="figure">
+      <img src="images/fig60.png" alt="High latency observed in initial single-core implementation" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 60.</em></p>
     </div>
 
-    <h3 id="mcu">4.7.3 MCU Selection</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Attribute</th><th>Teensy 4.1</th><th>Arduino UNO R4 Wi-Fi</th><th>Raspberry Pi Pico W2</th><th>STM32F103RCT6</th></tr></thead>
-        <tbody>
-          <tr><td>Architecture</td><td>ARM Cortex-M7 (32-bit)</td><td>ARM Cortex-M4 (32-bit)</td><td>Dual ARM Cortex-M33 / Hazard3 RISC-V (32-bit)</td><td>ARM Cortex-M3 (32-bit)</td></tr>
-          <tr><td>Clock Speed</td><td>600 MHz</td><td>48 MHz</td><td>150 MHz</td><td>72 MHz</td></tr>
-          <tr><td>Flash Memory</td><td>7936 kB</td><td>256 kB</td><td>4 MB</td><td>512 kB</td></tr>
-          <tr><td>RAM</td><td>1024 kB</td><td>32 kB</td><td>520 kB</td><td>64 kB</td></tr>
-          <tr><td>Network Protocol</td><td>Ext. Wi-Fi module</td><td>Wi-Fi &amp; Bluetooth</td><td>Wi-Fi &amp; Bluetooth</td><td>Ext. Wi-Fi module</td></tr>
-          <tr><td>Cost</td><td>$50.80–$57.80</td><td>$38.02</td><td>$9.62</td><td>$10.86</td></tr>
-          <tr><td><strong>Total Grade</strong></td><td>2</td><td>−1</td><td style="color:var(--green);font-weight:700;"><strong>7 ✓ Selected</strong></td><td>3</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Figure 26. MCU comparison. Raspberry Pi Pico W2 selected for best price-to-performance ratio with built-in Wi-Fi and Bluetooth.</p>
-
-    <h3 id="schematic">4.7.4 Simplified Electrical Schematic</h3>
-    <p>The power architecture flows as follows:</p>
+    <p><strong>Design iteration:</strong></p>
+    <p>To address this limitation, the system architecture was redesigned into a dual-core distributed architecture (Figure 61). In the improved design:</p>
     <ol>
-      <li><strong>230V / 50Hz</strong> wall plug → AC-DC Power Adapter → <strong>48 VDC</strong> for motors.</li>
-      <li>DC-DC Buck Converter → <strong>5 VDC</strong> for the MCU (Raspberry Pi Pico W2).</li>
-      <li>Low-Dropout Regulator (LDO) → <strong>3.3 VDC</strong> for sensors (IMU, force sensors).</li>
+      <li>Core 0 is dedicated to handling BLE communication and command processing, ensuring continuous and non-blocking servicing of the Bluetooth stack.</li>
+      <li>Core 1 is responsible for motor control, sensor acquisition (IMU and force sensors), and data processing, where blocking operations can be safely executed without affecting communication performance.</li>
+      <li>A shared memory interface was introduced to enable communication between the two cores.</li>
     </ol>
-    <p>Communication protocols: IMU uses <strong>I2C</strong> via multiplexer; force sensors and other peripherals use standard <strong>GPIO and ADC</strong>.</p>
-    <p>The MCU connects to the tablet/smartphone via <strong>Wi-Fi</strong> for user interface communication.</p>
-
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="5" height="4" rx="1"/><rect x="10" y="4" width="5" height="4" rx="1"/><rect x="18" y="4" width="4" height="4" rx="1"/><path d="M4.5 8v4h7V8M12.5 8v4h7V8M7 10h3M15 10h3"/><rect x="2" y="14" width="20" height="4" rx="1"/></svg>
-        <div class="fig-label">Figure 27–30</div>
-        <div class="fig-desc">Simplified electrical schematic (4-part): Part 1 — Power supply chain from 230V AC → 48V DC → 5V DC → 3.3V DC. Part 2 — Motor driver subsystems (horizontal &amp; lateral). Part 3 — Sensor subsystem (4× IMU via I2C multiplexer, force sensors 1–17 via analog multiplexer). Part 4 — Wi-Fi communication to tablet/smartphone.</div>
-      </div>
-      <p class="figure-caption"><em>Figures 27–30.</em> Simplified electrical schematic diagrams (Parts 1–4).</p>
+      <img src="images/fig61.png" alt="Dual-core distributed architecture for BLE and hardware separation" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 61.</em></p>
     </div>
 
-    <h2 id="ui">4.8 UI Design Concepts</h2>
-    <p>The UI serves as the central platform for configuration of the Kinetix device, tracking of patient recovery, and a companion 'instructor' for patients during rehabilitation. Two iterations were developed:</p>
-
-    <h3>Iteration 1 — Initial Two-View Approach</h3>
-    <p>The first design concept featured a two-view approach for both physiotherapists and clients, including biometric login, session scheduling, and an AI report viewer.</p>
+    <p>Commands received via BLE are written to shared variables (e.g., motor requests), while processed sensor data is updated by Core 1 and read by Core 0 for transmission to the UI. Following these changes, the test was repeated using a diagnostics module that tested the throughput of 25 packets over 5 trials at 5 Hz (Figure 62 and Table 29).</p>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
-        <div class="fig-label">Figure 34</div>
-        <div class="fig-desc">Iteration 1 user flow diagram — physiotherapist logs in → checks session → client logs in → checks appointments → physiotherapist selects session → confirm attendance with biometrics → Start Session → tablet flips to patient view → treatment cycle → Monitor → Complete → AI report → Session End.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 34.</em> First iteration user flow diagram.</p>
+      <img src="images/fig62.png" alt="Diagnostics throughput test after dual-core redesign" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 62.</em></p>
     </div>
 
-    <h3>Iteration 2 — Revised Therapist-Focused Flow</h3>
-    <p>Feedback on the first UI showed the need for a therapist-focused interface, removal of unnecessary calendar/logging features, and inclusion of gamification to motivate clients.</p>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Aspect</th><th>Issue (Iteration 1)</th><th>Change (Iteration 2)</th><th>Outcome</th></tr></thead>
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Trial</th>
+            <th>Latency (ms)</th>
+            <th>Packets Received</th>
+            <th>Packet Loss (%)</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Interface Complexity</td><td>Too many features; cluttered; not physiotherapist-friendly</td><td>Simplified layout; reduced menu depth; therapist-driven flow</td><td>Therapists reported clearer navigation and lower cognitive load</td></tr>
-          <tr><td>Gamification</td><td>Suggested to improve client engagement</td><td>Added target-based animations, rep progress cues, point system</td><td>Increased engagement and perceived motivation</td></tr>
-          <tr><td>Session Logging / Calendar</td><td>Unnecessary for clinical use</td><td>Removed; replaced with goals/progress dashboard</td><td>Dashboard considered more clinically meaningful</td></tr>
-          <tr><td>User Journey Flow</td><td>Lacked clarity on therapist–client role transitions</td><td>Structured, colour-coded 5-stage journey</td><td>Improved consistency in operation</td></tr>
-          <tr><td>During-Session Interaction</td><td>Clients not adequately considered</td><td>Tablet rotation during session + real-time visual cues</td><td>Clients found visuals intuitive; therapists liked dual-orientation design</td></tr>
+          <tr><td>1</td><td>33.6</td><td>25/25</td><td>0.0</td></tr>
+          <tr><td>2</td><td>37.8</td><td>25/25</td><td>0.0</td></tr>
+          <tr><td>3</td><td>26.2</td><td>25/25</td><td>0.0</td></tr>
+          <tr><td>4</td><td>26.9</td><td>25/25</td><td>0.0</td></tr>
+          <tr><td>5</td><td>31.1</td><td>25/25</td><td>0.0</td></tr>
+          <tr><td>Average</td><td>31.1</td><td>25/25</td><td>0.0</td></tr>
         </tbody>
       </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 29.</p>
     </div>
 
-    <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3"/></svg>
-        <div class="fig-label">Figure 35</div>
-        <div class="fig-desc">Revised user flow diagram — colour-coded 5 stages (Start/End green, Decision pink, Pre-Session blue, During-Session yellow, Post-Session pink): Start → Registered? → Log In → Client Registered? → Select Appointment → Edit Treatment Cycle → Start Session → Reset device → Supervise Warmup → Supervise Treatment → Discomfort? → Pause/Resume → Complete → End Session → View Gamification Points → View AI Report → Compare with Past Data → End.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 35.</em> Revised user flow diagram — Iteration 2 with 5-stage colour-coded journey.</p>
+    <p><strong>Result:</strong></p>
+    <p>Following this iteration, the system demonstrated a significant improvement in performance. The measured end-to-end latency ranged between 26.2 ms and 37.8 ms, with an average latency of 31.1 ms, which is well within the required threshold of &lt;100 ms. All packets were successfully received with 0% packet loss. This confirms that the redesigned architecture successfully resolves the limitations of the initial implementation and provides a stable foundation for real-time rehabilitation applications.</p>
+
+    <h2 id="ui">4.5 User Interface Sub-System</h2>
+
+    <h3>4.5.1 Design Iteration</h3>
+    <p>Testing for the User Interface Sub-System was conducted through user tests in Section 6.4.</p>
+    <p>Iteration 2 focused on simplifying the interface, improving therapist workflow, and enhancing client engagement through gamification and real-time feedback. Key changes included replacing the session calendar with a goals/progress dashboard and restructuring the system into a clear 5-stage user flow with improved therapist–client interaction.</p>
+    <p>These updates improved usability, clarity, and motivation, with detailed changes documented in the Interim Report.</p>
+    <p>While the Therapist-Led UI resolved many workflow and engagement issues, user testing and physiotherapist interviews revealed several clinical and technical gaps that a purely structural interface could not address. In addition to integrating BLE directly into the UI, the third and final iteration, referred to as the Clinically Integrated UI, directly addressed each of these issues, as summarized in the table below (Table 30).</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Issue Identified in Iteration 2: Therapist-Led UI</th>
+            <th>Feature Added to Iteration 3: Clinically Integrated UI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fixed starting position cannot accommodate inter-patient variability in range of motion</td>
+            <td>Manual positional control via BLE for physiotherapists to adjust each patient's leg starting position</td>
+          </tr>
+          <tr>
+            <td>Bluetooth latency and packet loss undermine clinical trust and reliability</td>
+            <td>Diagnostics page monitors latency and packet loss in real time, as well as support performance reports in scaled application</td>
+          </tr>
+          <tr>
+            <td>Physiotherapists cannot select appropriate resistance level without objective strength data</td>
+            <td>Live IMU joint angle and force sensor readings to observe force output before prescribing resistance</td>
+          </tr>
+          <tr>
+            <td>Post-stroke patients may struggle to follow visual cues alone</td>
+            <td>Auditory cues guiding each repetition on both warm-up and session screens</td>
+          </tr>
+          <tr>
+            <td>Patients confused by extra warm-up reps indistinguishable from main session</td>
+            <td>Dedicated warm-up screen to delineate preparatory phase from active treatment</td>
+          </tr>
+          <tr>
+            <td>Patients confused by how to perform exercises</td>
+            <td>Videos added to the session page to provide a reference for patients to follow</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 30.</p>
     </div>
+
+    <p>Full videos can be found in the Appendix J. As a result of the features introduced in the Clinically Integrated UI, the user flow diverges from that of the Therapist-Led UI. All changes relative to Iteration 2 are illustrated in orange in the user flow diagrams below (Figure 63).</p>
+    <div class="figure">
+      <img src="images/fig63.png" alt="User flow diagram for clinically integrated UI" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 63.</em></p>
+    </div>
+
+    <h3>4.5.2 Test Shortcomings and Proposals</h3>
+    <p>User testing was conducted through role-playing with volunteers, which provided initial insights into usability and interaction flow. However, as the Kinetix UI is designed for clinical rehabilitation contexts, validation by professional physiotherapists or rehabilitation specialists is necessary to assess its effectiveness and suitability for real-world therapeutic use.</p>
 
     <nav class="chapter-nav-footer">
       <a href="chapter3.html" class="nav-btn ghost">
