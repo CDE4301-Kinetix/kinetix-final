@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 5 · Proposed System Overview — Kinetix</title>
+  <title>Chapter 6 · Integrated System Tests — Kinetix</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
-    <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
-    <nav class="chapter-nav">
-      <a href="index.html">Home</a>
-      <a href="chapter1.html">Ch 1 · Introduction</a>
-      <a href="chapter2.html">Ch 2 · Literature Review</a>
-      <a href="chapter3.html">Ch 3 · User Needs</a>
-      <a href="chapter4.html">Ch 4 · Concept Dev.</a>
-      <a href="chapter5.html" class="active">Ch 5 · System Overview</a>
-      <a href="chapter6.html">Ch 6 · Testing</a>
-      <a href="chapter7.html">Ch 7 · Conclusion</a>
-    </nav>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-logo" href="index.html">Kinetix <span>Report</span></a>
+      <nav class="chapter-nav">
+        <a href="index.html">Home</a>
+        <a href="chapter1.html">Ch 1 · Introduction</a>
+        <a href="chapter2.html">Ch 2 · Context of the Problem</a>
+        <a href="chapter3.html">Ch 3 · Development of Concept</a>
+        <a href="chapter4.html">Ch 4 · Testing and Analysis</a>
+        <a href="chapter5.html">Ch 5 · Integrated System Tests</a>
+        <a href="chapter6.html">Ch 6 · Conclusion</a>
+        <a href="chapter7.html">Ch 7 · References</a>
+        <a href="chapter8.html">Ch 8 · Appendix</a></nav>
+    </div>
+  </header>
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="chapter-label">Chapter 5</div>
-    <h1>Proposed System Overview</h1>
+    <div class="chapter-label">Chapter 6</div>
+    <h1>Integrated System Tests</h1>
   </div>
 </div>
 
@@ -35,143 +35,200 @@
   <aside class="sidebar">
     <div class="sidebar-title">On this page</div>
     <ul class="toc-list">
-      <li><a href="#sketch">4.9 Final Design Sketch</a></li>
-      <li><a href="#blockdiagram">4.10 System Block Diagram</a></li>
-      <li><a href="#bootup" class="sub">Boot-Up Sequence</a></li>
-      <li><a href="#passive" class="sub">Passive Mode</a></li>
-      <li><a href="#active" class="sub">Active Mode</a></li>
-      <li><a href="#emergency" class="sub">Emergency Override</a></li>
+      <li><a href="#overview">5.1 System Overview</a></li>
+      <li><a href="#comfort">5.2 Device Comfort</a></li>
+      <li><a href="#protocol">5.3 User Protocol & Tests</a></li>
+      <li><a href="#process" class="sub">5.3.1 Test Process</a></li>
+      <li><a href="#demographic" class="sub">5.3.2 Demographic</a></li>
+      <li><a href="#usability" class="sub">5.3.3 Comfort & Usability</a></li>
+      <li><a href="#safety" class="sub">5.3.4 Safety & Emergency</a></li>
+      <li><a href="#integration" class="sub">5.3.5 System Integration</a></li>
+      <li><a href="#conclusion">6. Conclusion</a></li>
+      <li><a href="#deliverables" class="sub">6.1 Fulfilment of Deliverables</a></li>
     </ul>
   </aside>
 
   <main class="content">
 
-    <h2 id="sketch">4.9 Proposed System Overview — Final Sketch</h2>
-    <p>The sketches below show the proposed design for Kinetix. The first sketch provides an overview of the main components while the second shows sensor placement, connections, and the tablet user interface.</p>
+    <!-- 5.1 Integrated System Overview -->
+    <h2 id="overview">5.1 Integrated System Overview</h2>
+    <p>The final integrated system consists of the physical Kinetix device and the UI. This was used to conduct the user tests in Section 5.3.</p>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="2" y="16" width="20" height="3" rx="1"/>
-          <path d="M4 16V10l4-4h8l4 4v6"/>
-          <path d="M10 10h4v6h-4z"/>
-          <circle cx="7" cy="19" r="1.5"/>
-          <circle cx="17" cy="19" r="1.5"/>
-        </svg>
-        <div class="fig-label">Figure 36</div>
-        <div class="fig-desc">Final design sketch of Kinetix — labelled components: aluminium tube frame, leg rest support, foot rest, slots (adjustable length), lead screw, slider, stepper motor (linear movement), belt system (lateral movement), housing, arc rail (lateral movement), caster wheel support.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 36.</em> Final design sketch of Kinetix with component labels.</p>
+      <img src="images/fig62.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 62.</em> Integrated Kinetix system — physical device.</p>
     </div>
 
-    <h2 id="blockdiagram">4.10 System Block Diagram</h2>
-    <p>The system block diagrams below describe the operational flow of Kinetix across four scenarios: Boot-Up, Passive Mode, Active Mode, and Emergency Override.</p>
-
-    <h3 id="bootup">Boot-Up Sequence</h3>
-    <p>When KINETIX is plugged in, the mechanical switch determines the device state. In the 'On' state, the device enters Warm-Up Mode — the MCU commands the motor driver (horizontal), which drives the motor and ball-screw nut, placing the footrest at the starting position (full flexion). The device then awaits commands from the tablet via Wi-Fi.</p>
-
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="8" y="2" width="8" height="3" rx="1"/>
-          <path d="M12 5v3"/>
-          <rect x="6" y="8" width="12" height="3" rx="1"/>
-          <path d="M12 11v2"/>
-          <rect x="7" y="13" width="10" height="3" rx="1"/>
-          <path d="M12 16v2"/>
-          <rect x="8" y="18" width="8" height="3" rx="1"/>
-        </svg>
-        <div class="fig-label">Figure 37</div>
-        <div class="fig-desc">KINETIX Boot-Up Sequence flowchart — KINETIX plugged in → Mechanical Switch (Open → Off State / Closed → On State) → On State → Warm Up Mode → MCU → Motor Driver (Horizontal) → Motor → Ball-Screw Nut → Footrest at start position (Full Flexion) → Awaits tablet command to determine Active or Passive Mode.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 37.</em> KINETIX Boot-Up Sequence.</p>
+      <img src="images/fig63.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 63.</em> Integrated Kinetix system — UI on tablet.</p>
     </div>
 
-    <h3 id="passive">Passive Mode</h3>
-    <p>In passive mode, the device automatically drives the footrest along the screw bar for horizontal motion and along the arc rail for lateral motion. An <strong>ultrasonic sensor</strong> is used to track the footrest's position during horizontal movement.</p>
+    <!-- 5.2 Device Comfort -->
+    <h2 id="comfort">5.2 Device Comfort</h2>
+    <p>Device comfort is a critical aspect of usability, as it affects user compliance and safety during rehabilitation.</p>
+    <ul>
+      <li><strong>Leg support</strong> — low-density foam reduces localised pressure; a 50 mm Velcro strap ensures secure stabilisation without excessive compression; leather covering provides a smooth, waterproof surface for improved comfort and ease of cleaning.</li>
+      <li><strong>Footplate</strong> — EVA foam added at the contact interface to enhance cushioning and distribute pressure more evenly across the plantar surface, reducing localised stress.</li>
+    </ul>
+    <p>This design minimises pressure on the leg while providing adequate cushioning at the footplate to prevent discomfort or injury.</p>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="2" y="2" width="9" height="3" rx="1"/>
-          <rect x="13" y="2" width="9" height="3" rx="1"/>
-          <path d="M6.5 5v2M17.5 5v2"/>
-          <rect x="4" y="7" width="5" height="3" rx="1"/>
-          <rect x="15" y="7" width="5" height="3" rx="1"/>
-          <path d="M6.5 10v2M17.5 10v2"/>
-          <rect x="4" y="12" width="5" height="3" rx="1"/>
-          <rect x="15" y="12" width="5" height="3" rx="1"/>
-          <path d="M6.5 15v2M17.5 15v2"/>
-          <rect x="3" y="17" width="7" height="3" rx="1"/>
-          <rect x="14" y="17" width="7" height="3" rx="1"/>
-          <rect x="1" y="10" width="3" height="5" rx="1"/>
-        </svg>
-        <div class="fig-label">Figure 38</div>
-        <div class="fig-desc">KINETIX Passive Mode Flowchart — Exercise commands issued; splits into Horizontal Movement path (MCU → Motor Driver Horizontal → Motor → Ball-Screw Nut → Linear Motion ← Ultrasonic Sensor feedback) and Lateral Movement path (MCU → Motor Driver Lateral → Motor → Arc-Rail Joint → Lateral Motion). Both paths loop.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 38.</em> KINETIX Passive Mode Flowchart — automatic footrest actuation for horizontal and lateral movement.</p>
+      <img src="images/fig64.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 65.</em> Footrest with foam cushion (left), leather support cushion (right).</p>
     </div>
 
-    <h3 id="active">Active Mode</h3>
-    <p>Active mode adds force and IMU sensors. The force sensors set a resistance threshold the user must overcome, recording exerted force to adjust difficulty and track progress. The IMU monitors range of motion, providing further rehabilitation performance data. Sensor data is transmitted via Wi-Fi to a database.</p>
+    <!-- 5.3 User Protocol and Tests -->
+    <h2 id="protocol">5.3 User Protocol and Tests</h2>
+    <p>A user protocol was developed to address the main purpose, use case, and setting with step-by-step guides on how to operate Kinetix. Both of which can be found in Appendix J.</p>
+
+    <!-- 5.3.1 -->
+    <h3 id="process">5.3.1 User Test Process</h3>
+    <p>To evaluate the usability, effectiveness, and comfort of Kinetix, user tests were conducted on ten volunteers categorised as either physiotherapist or patient to role-play and perform the critical tasks associated with the function and purpose of Kinetix. All participants were briefed through a guided demonstration.</p>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="2" y="2" width="9" height="3" rx="1"/>
-          <rect x="13" y="2" width="9" height="3" rx="1"/>
-          <path d="M6.5 5v2M17.5 5v2"/>
-          <rect x="4" y="7" width="5" height="3" rx="1"/>
-          <rect x="15" y="7" width="5" height="3" rx="1"/>
-          <path d="M6.5 10v2M17.5 10v2M12 5v4"/>
-          <rect x="9" y="9" width="6" height="3" rx="1"/>
-          <rect x="4" y="12" width="5" height="3" rx="1"/>
-          <rect x="15" y="12" width="5" height="3" rx="1"/>
-          <path d="M6.5 15v2M17.5 15v2"/>
-          <rect x="3" y="17" width="7" height="3" rx="1"/>
-          <rect x="14" y="17" width="7" height="3" rx="1"/>
-          <rect x="1" y="10" width="3" height="5" rx="1"/>
-          <rect x="20" y="10" width="3" height="5" rx="1"/>
-        </svg>
-        <div class="fig-label">Figure 39</div>
-        <div class="fig-desc">KINETIX Active Mode Flowchart — extends Passive Mode with: Ultrasonic + IMU + Force Sensors on horizontal path; IMU &amp; Force Sensors on lateral path; Database node connected via Wi-Fi from MCU for data storage and progress tracking.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 39.</em> KINETIX Active Mode Flowchart — force and IMU sensing added for interactive rehabilitation.</p>
+      <img src="images/fig65.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 65.</em> User test process overview.</p>
     </div>
 
-    <h3 id="emergency">Emergency Override</h3>
-    <p>Upon pressing the physical emergency stop button (or issuing an emergency stop command from the tablet), the MCU immediately halts both motor drivers (horizontal and lateral), causing the device to cease all movement. The physiotherapist then uses the tablet to recalibrate the footrest to its starting position before beginning a new session.</p>
+    <!-- 5.3.2 -->
+    <h3 id="demographic">5.3.2 User Test Demographic</h3>
+
+    <div class="spec-grid">
+      <div class="spec-cell">
+        <div class="label">Number of Participants</div>
+        <div class="value">10</div>
+      </div>
+      <div class="spec-cell">
+        <div class="label">Age Range</div>
+        <div class="value" style="font-size:1rem;">18–25</div>
+      </div>
+    </div>
+    <p class="table-caption">Table 31. Participant demographic.</p>
+
+    <p>Kinetix users are categorised into two groups — Physiotherapists and Patients — with respective tasks assigned to each role.</p>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M12 7v5M12 16h.01"/>
-        </svg>
-        <div class="fig-label">Figures 40–41</div>
-        <div class="fig-desc">KINETIX Emergency Override Sub-System (2 parts): Part 1 — Emergency Stop Button or Tablet Wi-Fi command → MCU → Motor Driver (Horizontal + Lateral) → Motors stop → KINETIX ceases movement. Part 2 — Tablet → Wi-Fi → Warm Up Mode → MCU → Motor w/ Encoder → Ball-Screw Nut → Footrest at start position (Full Flexion), completing reset cycle.</div>
-      </div>
-      <p class="figure-caption"><em>Figures 40–41.</em> KINETIX Emergency Override system — immediate stop and reset via tablet recalibration.</p>
+      <img src="images/fig66.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 66.</em> Task breakdown by user role — physiotherapist and patient.</p>
+    </div>
+
+    <p>The tables below describe the test procedures and show examples of testees role-playing as physiotherapist and patient with a role swap.</p>
+
+    <div class="figure">
+      <img src="images/table32.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Table 32.</em> Physiotherapist role-play test procedure.</p>
+    </div>
+
+    <div class="figure">
+      <img src="images/table33.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Table 33.</em> Patient role-play test procedure.</p>
+    </div>
+
+    <p>The table below shows task completion results from user testing:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Success Rate (%)</th>
+            <th>Observations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Device Setup (e.g. moving the patient's lower limb onto the device)</td>
+            <td>100%</td>
+            <td>All testees able to complete the task</td>
+          </tr>
+          <tr>
+            <td>UI Navigation (e.g. Treatment Start)</td>
+            <td>100%</td>
+            <td>All testees able to send the treatment plan to initiate the exercise</td>
+          </tr>
+          <tr>
+            <td>Session Completion (e.g. Wipe-down)</td>
+            <td>100%</td>
+            <td>All testees able to remove the patient's leg easily and wipe-down the device</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 34. User task completion results.</p>
+
+    <div class="callout">
+      <strong>Result</strong>
+      Users were all able to complete the required tasks with minimal assistance after the briefing protocol, indicating that the system is intuitive and usable for its intended users.
+    </div>
+
+    <!-- 5.3.3 -->
+    <h3 id="usability">5.3.3 Comfort and Usability Evaluation Test</h3>
+    <p>Following each test session, participants completed two survey forms: one from the perspective of a physiotherapist and another from that of a patient. The surveys utilised a Likert scale for quantitative ratings across sections, alongside open-ended questions for qualitative feedback.</p>
+    <p>The survey was developed as a hybrid, source-traceable instrument. Individual items were adapted from validated tools, including the System Usability Scale (SUS), QUEST 2.0 (Demers et al., 2002), and NASA-TLX, while the overall structure and risk-based approach were guided by ISO 62366-1 usability engineering principles (International Organization for Standardization, 2015). Additional items were informed by recent lower-limb rehabilitation and exoskeleton studies to ensure relevance to both patient and physiotherapist contexts. The full survey is provided in Appendix D.</p>
+    <p>As participants were not rehabilitation professionals, the physiotherapist-focused survey was modified to exclude technical items related to treatment effectiveness. The revised versions are included in Appendices E–F.</p>
+
+    <div class="figure">
+      <img src="images/table35.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Table 35.</em> Images of testees filling up survey.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Patients (Avg. 1–5)</th>
+            <th>Physiotherapist (Avg. 1–5)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>A: Usability</td><td>4.4</td><td>4.6</td></tr>
+          <tr><td>B: Setup</td><td>4.4</td><td>4.4</td></tr>
+          <tr><td>C: Comfort</td><td>4.3</td><td>4.3</td></tr>
+          <tr><td>D: Exercise</td><td>4.4</td><td>4.7</td></tr>
+          <tr><td>E: Safety</td><td>4.3</td><td>4.4</td></tr>
+          <tr><td>F: Design</td><td>4.4</td><td>4.4</td></tr>
+          <tr><td>G: Workload</td><td>4.8</td><td>4.6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 36. UT2 Comfort and Usability Evaluation Test results.</p>
+
+    <div class="callout">
+      <strong>Result</strong>
+      The usability evaluation demonstrated strong performance across all domains, with both participant groups reporting mean scores above 4.0. For the patient group, ratings were consistently high for usability, setup, exercise experience, and design (≈4.3–4.4), with a notably high workload score (4.8), indicating that the device was not perceived as physically or mentally demanding. For the physiotherapist group, scores were similarly high, particularly for exercise experience (4.7) and workload reduction (4.6). Overall, the device demonstrates strong usability, safety, and user acceptance, with minor refinements needed in adjustability and structural stability.
+    </div>
+
+    <!-- 5.3.4 -->
+    <h3 id="safety">5.3.4 Safety and Emergency Response Test</h3>
+
+    <div class="figure">
+      <img src="images/fig67.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 67.</em> Testee trying the stop button on the UI.</p>
     </div>
 
     <div class="callout">
-      <strong>Key System Properties</strong>
-      <ul style="margin-top:0.5rem;">
-        <li>Two motors: one for horizontal (linear) movement, one for lateral movement.</li>
-        <li>Wireless control via Wi-Fi (Raspberry Pi Pico W2 MCU).</li>
-        <li>Ultrasonic sensor for horizontal position tracking in passive mode.</li>
-        <li>IMU + force sensors added in active mode for biomechanical feedback.</li>
-        <li>Physical emergency stop button plus tablet-based software stop.</li>
-      </ul>
+      <strong>Result</strong>
+      The STOP and HELP functions were easily accessible and effectively halted the device, ensuring user safety during operation.
+    </div>
+
+    <!-- 5.3.5 -->
+    <h3 id="integration">5.3.5 System Integration Test</h3>
+    <p>The system integration test was conducted in conjunction with the user test. System integration was considered successful as users were able to interact with the UI without assistance, the BLE connection was stable throughout the session, and the system did not experience any interruptions.</p>
+
+    <div class="callout">
+      <strong>Result</strong>
+      The system demonstrated successful integration between hardware and UI, with stable communication and functional end-to-end workflow.
     </div>
 
     <nav class="chapter-nav-footer">
       <a href="chapter4.html" class="nav-btn ghost">
         <span class="arrow">←</span>
-        <span><span class="label">Previous</span>Ch 4 · Concept Development</span>
+        <span><span class="label">Previous</span>Chapter 4</span>
       </a>
       <a href="chapter6.html" class="nav-btn">
-        <span><span class="label">Next Chapter</span>Testing &amp; Evaluation</span>
+        <span><span class="label">Next Chapter</span>Conclusion</span>
         <span class="arrow">→</span>
       </a>
     </nav>
