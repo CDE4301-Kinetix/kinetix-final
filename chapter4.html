@@ -27,7 +27,7 @@
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="chapter-label">Chapter 4</div>
-    <h1>Concept Development</h1>
+    <h1>Testing & Analysis </h1>
   </div>
 </div>
 
@@ -56,92 +56,288 @@
   </aside>
 
   <main class="content">
+  <p>This section explains the tests conducted on the various iterations of the Kinetix subsystems and prototypes based on the design specifications. The results were analysed to determine if the requirements for Kinetix were met.</p>
 
-    <h2 id="mechanical">4.1 Mechanical Design</h2>
-    <p>The mechanical design encompasses design inspiration, initial sketches, sub-assemblies of the device, and mechanism comparisons.</p>
+    <h2 id="mechanical">4.1 Mechanical Sub-System</h2>
+    <p>The table (Table 5) below presents the set of mechanical tests designed to evaluate the Kinetix system against its design specifications, including portability, range of motion, and structural performance.</p>
+    <style>
+  .test-table-wrapper {
+    margin: 1.5rem 0 2rem 0;
+    overflow-x: auto;
+  }
 
-    <h3 id="inspiration">4.1.1 Design Inspiration</h3>
-    <p>The initial device concept uses a motor-driven ball screw to create linear motion along an aluminium profile, transferred through a linkage system to produce controlled angular movement of the footrest for simulating lower-limb flexion and extension. Several issues were identified in this version:</p>
-    <ul>
-      <li>Many components are difficult to fabricate.</li>
-      <li>Custom rod assemblies limit part interchangeability.</li>
-      <li>The frame lacks structural rigidity.</li>
-      <li>The CPM-based design only supports passive motion, preventing active or resistive rehabilitation.</li>
-    </ul>
+  .test-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    background: #fff;
+  }
 
+  .test-table caption {
+    caption-side: bottom;
+    text-align: center;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #333;
+    margin-top: 0.65rem;
+  }
+
+  .test-table th,
+  .test-table td {
+    border: 2px solid #222;
+    padding: 12px 14px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .test-table thead th {
+    background: #d9d9d9;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+  }
+
+  /* First column green, all others white */
+  .test-table tbody td:first-child {
+    background: #dfead8;
+    font-weight: 600;
+    text-align: center;
+    width: 12%;
+  }
+
+  .test-table tbody td:not(:first-child) {
+    background: #fff;
+  }
+
+  .test-table .name-col {
+    width: 24%;
+  }
+
+  .test-table .design-col {
+    width: 16%;
+  }
+
+  .test-table .purpose-col {
+    width: 48%;
+  }
+
+  @media (max-width: 768px) {
+    .test-table {
+      min-width: 950px;
+    }
+  }
+</style>
+
+<div class="test-table-wrapper">
+  <table class="test-table">
+    <caption>Table 5. Design Verification Test Plan</caption>
+    <thead>
+      <tr>
+        <th>Test Code</th>
+        <th>Name of Test</th>
+        <th>Design Specification Addressed</th>
+        <th>Purpose of Test</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DT1</td>
+        <td class="name-col">Weight Test</td>
+        <td class="design-col">D1</td>
+        <td class="purpose-col">Verify the weight is less than 13 kg.</td>
+      </tr>
+      <tr>
+        <td>DT2</td>
+        <td class="name-col">Size Test</td>
+        <td class="design-col">D2</td>
+        <td class="purpose-col">Verify the size is less than 100 × 33 × 33 cm.</td>
+      </tr>
+      <tr>
+        <td>DT3</td>
+        <td class="name-col">ADL Range of Motion Test</td>
+        <td class="design-col">D4<br>D5<br>D6<br>D7</td>
+        <td class="purpose-col">Verify that the physical device of Kinetix has sufficient range of motion for ADL mode in all planes of movement.</td>
+      </tr>
+      <tr>
+        <td>DT4</td>
+        <td class="name-col">Aluminium Tube Load Test</td>
+        <td class="design-col">NA</td>
+        <td class="purpose-col">Verify the minimum factor of safety of the aluminium tubes.</td>
+      </tr>
+      <tr>
+        <td>DT5</td>
+        <td class="name-col">Lateral Stability Test</td>
+        <td class="design-col">NA</td>
+        <td class="purpose-col">Verify lateral displacements of the structure.</td>
+      </tr>
+      <tr>
+        <td>DT6</td>
+        <td class="name-col">Durability Test</td>
+        <td class="design-col">D8<br>D9</td>
+        <td class="purpose-col">Verify the ability of the structure to withstand reasonable use in a clinical context.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    <h3 id="inspiration">4.1.1 Weight Test</h3>
+
+    <p>The test procedure used to verify that the total weight of the Kinetix device complies with the specified design requirement can be seen Appendix O.</p>
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="14" width="20" height="6" rx="1"/><path d="M6 14V8l5-4 5 4v6M10 20v-4h4v4"/></svg>
-        <div class="fig-label">Figure 13</div>
-        <div class="fig-desc">CAD model of Version 0 design — shows rod ends, barrel dampers, bearing house, links, footrest, rod 1 &amp; 2, aluminium profile, base plate, ball screw conveyor, motor, conveyor covers, and standing cover.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 13.</em> Initial prototype CAD model (Version 0) with component labels.</p>
+      <img src="images/fig17.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 17.</em>
     </div>
+    <p>The measured weight of the device was found to be within the specified limit of ≤ 13 kg, confirming compliance with the portability requirement and ensuring ease of transport and handling in rehabilitation settings such as community care facilities (Figure 17).</p>
 
-    <h3 id="concepts">4.1.2 Design Concepts</h3>
-    <p>Based on preliminary research from an SGH exercise video (SingHealth, 2011), the team narrowed exercise capabilities to focus on <strong>6 key movements</strong>:</p>
-    <ul>
-      <li>Hip flexion &amp; extension</li>
-      <li>Hip abduction &amp; adduction</li>
-      <li>Knee flexion &amp; extension</li>
-      <li>Ankle plantarflexion &amp; dorsiflexion</li>
-    </ul>
-
+    <h3 id="concepts">4.1.2 Size Test</h3>
+    <p>The measured dimensions indicate that while the device length meets the specified requirement of 100 cm, both the width and height exceed the allowable limits of 33 cm. This deviation from the target specification of 100 × 33 × 33 cm suggests that further design optimisation is required to improve the device’s compactness and compliance with dimensional constraints (Figure 18, 19 and 20).</p>
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c-4 0-7-2-7-6V8a7 7 0 0 1 14 0v8c0 4-3 6-7 6z"/><path d="M9 12l2 2 4-4"/></svg>
-        <div class="fig-label">Figure 15</div>
-        <div class="fig-desc">Version 0 CAD prototype (two views) — lower-limb actuation system driven by a linear actuator on a ball screw with parallel multi-link mechanism for coordinated leg flexion and extension.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 15.</em> Version 0 prototype — ball screw linear actuator with parallel multi-link mechanism.</p>
+      <img src="images/fig18.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 18.</em> Length (left), Width (right)</p>
+    </div>
+        <div class="figure">
+      <img src="images/fig19.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 19.</em> Height</p>
     </div>
 
-    <h3 id="folding">4.4.2.1 Folding Concept</h3>
-    <p>For the second prototype, interviews with physiotherapists indicated the device should support both sitting and lying positions. Three design concepts were developed:</p>
-
+    <h3 id="folding">4.1.3 ADL range of motion test</h3>
+    <p>The figure below shows how the lateral movements are tracked on the Tracker software (Figure 20).</p>
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
-        <div class="fig-label">Figure 17 — Concept 1</div>
-        <div class="fig-desc">Stand Design — separate metal stand supporting the leg assembly; sketches for sitting-down and lying-down positions.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 17.</em> Concept 1 — Stand Design.</p>
+      <img src="images/fig20.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 20.</em> Hip Abduction and Adduction angle tracking on structure</p>
     </div>
-
+    <p>The moving coordinates are then converted into angles using the formula (Figure 21 and 22):</p>
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 18L18 6M6 6l12 12"/></svg>
-        <div class="fig-label">Figure 18 — Concept 2</div>
-        <div class="fig-desc">Scissors Design — scissor linkage mechanism for both sitting and lying positions; adjustable base structure.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 18.</em> Concept 2 — Scissors Design.</p>
+      <img src="images/fig21.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 21.</em>Formula for conversion of coordinates to angle.</p>
     </div>
-
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14l8-8 8 8"/><path d="M4 18h16"/></svg>
-        <div class="fig-label">Figure 19 — Concept 3</div>
-        <div class="fig-desc">Foldable Design — device folds between sitting and lying positions; aluminium structure with fold point, moveable pivot, and lateral motor integration.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 19.</em> Concept 3 — Foldable Design (selected).</p>
+      <img src="images/fig22.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 22.</em> Results for 3 samples of lateral motion.</p>
     </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Criteria</th><th>Stand Design</th><th>Scissors Design</th><th>Foldable Design</th></tr></thead>
-        <tbody>
-          <tr><td>Usability</td><td class="check-no">−</td><td class="check-yes">+</td><td class="check-yes">+</td></tr>
-          <tr><td>Portability</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
-          <tr><td>Stability</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
-          <tr><td>Adjustability</td><td class="check-yes">+</td><td class="check-yes">+</td><td class="check-yes">+</td></tr>
-          <tr><td>Manufacturability</td><td class="check-yes">+</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
-          <tr><td>Safety</td><td class="check-no">−</td><td class="check-no">−</td><td class="check-yes">+</td></tr>
-          <tr><td><strong>Net Score</strong></td><td><strong>−2</strong></td><td><strong>−1</strong></td><td style="color:var(--green);font-weight:700;">6 ✓ Selected</td></tr>
-        </tbody>
-      </table>
+    <p>The maximum hip and knee joint angles were quantified using the protractor measurement tool within the software, as illustrated in the figures below (Figure 23 and 24).</p>
+    <div class="figure">
+      <img src="images/fig23.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 23.</em> Maximum Hip Angle on structure. </p>
     </div>
-    <p class="table-caption">Table 13. Design concept evaluation matrix.</p>
+    <div class="figure">
+      <img src="images/fig24.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 24.</em>  Maximum Knee Angle on structure. </p>
+    </div>
+<style>
+  .test-table-wrapper {
+    margin: 1.5rem 0 2rem 0;
+    overflow-x: auto;
+  }
 
+  .test-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    background: #fff;
+  }
+
+  .test-table caption {
+    caption-side: bottom;
+    text-align: center;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #333;
+    margin-top: 0.65rem;
+  }
+
+  .test-table th,
+  .test-table td {
+    border: 2px solid #222;
+    padding: 12px 14px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  /* Header styling */
+  .test-table thead th {
+    background: #d9d9d9;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+  }
+
+  /* All body cells white */
+  .test-table tbody td {
+    background: #fff;
+  }
+
+  /* Column widths for clean layout */
+  .test-table td:nth-child(1) { width: 12%; text-align: center; }
+  .test-table td:nth-child(2) { width: 24%; }
+  .test-table td:nth-child(3) { width: 16%; }
+  .test-table td:nth-child(4) { width: 48%; }
+
+  /* Optional subtle striping (recommended) */
+  .test-table tbody tr:nth-child(even) td {
+    background: #f7f7f7;
+  }
+
+  @media (max-width: 768px) {
+    .test-table {
+      min-width: 950px;
+    }
+  }
+</style>
+
+<div class="test-table-wrapper">
+  <table class="test-table">
+    <caption>Table 5. Design Verification Test Plan</caption>
+    <thead>
+      <tr>
+        <th>Test Code</th>
+        <th>Name of Test</th>
+        <th>Design Specification Addressed</th>
+        <th>Purpose of Test</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>DT1</td>
+        <td>Weight Test</td>
+        <td>D1</td>
+        <td>Verify the weight is less than 13 kg.</td>
+      </tr>
+      <tr>
+        <td>DT2</td>
+        <td>Size Test</td>
+        <td>D2</td>
+        <td>Verify the size is less than 100 × 33 × 33 cm.</td>
+      </tr>
+      <tr>
+        <td>DT3</td>
+        <td>ADL Range of Motion Test</td>
+        <td>D4<br>D5<br>D6<br>D7</td>
+        <td>Verify that the physical device of Kinetix has sufficient range of motion for ADL mode in all planes of movement.</td>
+      </tr>
+      <tr>
+        <td>DT4</td>
+        <td>Aluminium Tube Load Test</td>
+        <td>NA</td>
+        <td>Verify the minimum factor of safety of the aluminium tubes.</td>
+      </tr>
+      <tr>
+        <td>DT5</td>
+        <td>Lateral Stability Test</td>
+        <td>NA</td>
+        <td>Verify lateral displacements of the structure.</td>
+      </tr>
+      <tr>
+        <td>DT6</td>
+        <td>Durability Test</td>
+        <td>D8<br>D9</td>
+        <td>Verify the ability of the structure to withstand reasonable use in a clinical context.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
     <h3 id="linear">4.4.3 Linear Movement</h3>
     <p>Several mechanisms were evaluated for linear motion. A <strong>ball screw linear actuator</strong> was selected for its relative simplicity, proven reliability, low maintenance, and high user ergonomics.</p>
 
