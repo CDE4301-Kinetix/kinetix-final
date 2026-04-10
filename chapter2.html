@@ -26,8 +26,8 @@
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="chapter-label">Chapter 2</div>
-    <h1>Stroke Rehabilitation — Background &amp; Methods</h1>
+    <div class="chapter-label">Chapter </div>
+    <h1> Context of the problem </h1>
   </div>
 </div>
 
@@ -45,251 +45,389 @@
 
   <main class="content">
 
-    <p>This chapter contextualises the development of a stroke rehabilitation device through a comprehensive overview of existing approaches to lower limb rehabilitation in stroke patients, including both traditional and device-assisted rehabilitation.</p>
+    <p>This section aims to present the distinction of Kinetix from current devices in the market, design specifications, and the explanation of the device requirements, including the context of use. A comprehensive literature review of current rehabilitation methods and challenges faced by physiotherapists has been documented in the Interim Report.</p>
 
-    <h2 id="challenges">2.1 Challenges in Stroke Rehabilitation</h2>
-    <p>Lower limb rehabilitation places substantial physical and time demands on physiotherapists. This burden contributes to high levels of burnout, with physiotherapists reporting stress from long working hours and the physically intensive nature of hands-on therapy (Nair, 2023).</p>
+    <h2 id="challenges">2.1 Comparison of current marketed device</h2>
+    <p>Two devices with similar intended use target the acute and late subacute phases of stroke recovery, including the Sidra LEG and the Kinetic Spectra Knee CPM. Table 3. below distinguishes our proposed device from those in the current market.</p>
 
-    <div class="spec-grid">
-      <div class="spec-cell">
-        <div class="label">Physiotherapists reporting high physical demand</div>
-        <div class="value">81.5<span class="unit">%</span></div>
-      </div>
-      <div class="spec-cell">
-        <div class="label">Key challenge cited (Chi, 2022)</div>
-        <div class="value" style="font-size:0.9rem;">High Physical<br>Demand</div>
-      </div>
-      <div class="spec-cell">
-        <div class="label">Critical rehabilitation window</div>
-        <div class="value">7d–6<span class="unit">mo</span></div>
-      </div>
-    </div>
+    <style>
+  .comparison-table-wrapper {
+    margin: 1.5rem 0 2rem 0;
+    overflow-x: auto;
+  }
 
-    <h2 id="methods">2.2 Stroke Rehabilitation Methods</h2>
-    <p>Stroke rehabilitation typically integrates manual therapies and robotic-assisted systems across different stages of recovery.</p>
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    background: #fff;
+  }
 
-    <h3>Proprioceptive Neuromuscular Facilitation (PNF)</h3>
-    <p>PNF is a widely used manual technique that supports neuromuscular re-education through therapist-guided, multi-planar movements that mimic real functional tasks, making it particularly effective in the acute and subacute phases for improving balance, coordination, and mobility (Li, 2022; Nguyen, 2022).</p>
+  .comparison-table caption {
+    caption-side: bottom;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.6rem;
+  }
 
-    <h3>Robotic Rehabilitation Systems</h3>
-    <p>Robotic rehabilitation systems — such as exoskeletons, Body Weight Supported Treadmill Training (BWSTT) with Device Guided Orthoses (DGO), and end-effector platforms — are typically introduced in the late subacute to chronic stages. These systems deliver repetitive, task-specific movement training aimed at improving gait, walking performance, and overall functional independence.</p>
+  .comparison-table th,
+  .comparison-table td {
+    border: 2px solid #222;
+    padding: 14px 14px;
+    vertical-align: top;
+    text-align: left;
+  }
 
+  .comparison-table thead th {
+    background: #d9d9d9;
+    font-weight: 700;
+  }
+
+  .comparison-table .aspect {
+    background: #efefef;
+    font-weight: 700;
+    width: 16%;
+  }
+
+  .comparison-table .feature {
+    background: #f7f7f7;
+    width: 25%;
+  }
+
+  .comparison-table .yes {
+    background: #dfead8;
+    font-weight: 600;
+  }
+
+  .comparison-table .no {
+    background: #efd0d0;
+    font-weight: 600;
+  }
+
+  .comparison-table .limited {
+    background: #f4e7c7;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .comparison-table {
+      min-width: 900px;
+    }
+  }
+</style>
+
+<div class="comparison-table-wrapper">
+  <table class="comparison-table">
+    <caption>
+      Table 3. Comparison of Kinetix against current marketed rehabilitation devices.
+    </caption>
+    <thead>
+      <tr>
+        <th>Aspect</th>
+        <th>Feature</th>
+        <th>Kinetix</th>
+        <th>Sidra LEG</th>
+        <th>Kinetec Spectra Knee CPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="aspect" rowspan="3">Exercise Customization</td>
+        <td class="feature">Supports 6 exercise types in supine and semi-Fowler position</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="no">No</td>
+      </tr>
+      <tr>
+        <td class="feature">Supports Activities of Daily Living (ADL) and Full Range Recovery</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="no">No</td>
+      </tr>
+      <tr>
+        <td class="feature">Supports Active &amp; Passive Recovery</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+      </tr>
+
+      <tr>
+        <td class="aspect" rowspan="2">Sensing Capabilities</td>
+        <td class="feature">Positional Sensing</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+      </tr>
+      <tr>
+        <td class="feature">Force Sensing</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="no">No</td>
+      </tr>
+
+      <tr>
+        <td class="aspect">Ergonomics</td>
+        <td class="feature">Supports diverse limb dimensions</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td class="limited">Limited</td>
+      </tr>
+
+      <tr>
+        <td class="aspect" rowspan="4">Data Sensing/Computation Capabilities</td>
+        <td class="feature">Range of Motion (1&deg; increments)</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+        <td class="yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="feature">Strength Estimation</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="no">No</td>
+      </tr>
+      <tr>
+        <td class="feature">Repetition Counting &amp; Segmentation</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="no">No</td>
+      </tr>
+      <tr>
+        <td class="feature">Jerk (Smoothness Metric)</td>
+        <td class="yes">Yes</td>
+        <td class="no">No</td>
+        <td class="no">No</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    <h2 id="methods">2.2 Design requirements</h2>
+    <p>This section will document the final design specifications table based on the identified user needs from our literature review, such as anthropometric data, site visits, and interviews with rehabilitation professionals conducted during the interim phase of the project. The rationale for the requirements can be found in the Interim Report, and slight changes have been made to the values to align more closely with existing literature (Table 4).</p>
+  
+    <style>
+  .requirements-table-wrapper {
+    margin: 1.5rem 0 2rem 0;
+    overflow-x: auto;
+  }
+
+  .requirements-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    background: #fff;
+  }
+
+  .requirements-table caption {
+    caption-side: bottom;
+    text-align: center;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #333;
+    margin-top: 0.65rem;
+  }
+
+  .requirements-table th,
+  .requirements-table td {
+    border: 2px solid #222;
+    padding: 12px 10px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .requirements-table thead th {
+    background: #e3e3e3;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .requirements-table .section-row td {
+    background: #bdbdbd;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+  }
+
+  .requirements-table .nested {
+    width: 22%;
+  }
+
+  .requirements-table .variable {
+    width: 31%;
+  }
+
+  .requirements-table .range {
+    width: 25%;
+  }
+
+  .requirements-table .needs {
+    width: 22%;
+  }
+
+  @media (max-width: 768px) {
+    .requirements-table {
+      min-width: 980px;
+    }
+  }
+</style>
+
+<div class="requirements-table-wrapper">
+  <table class="requirements-table">
+    <caption>Table 4. Table of Design Requirements</caption>
+    <thead>
+      <tr>
+        <th>Nested Sub-System</th>
+        <th>Variables</th>
+        <th>Range/Requirements</th>
+        <th>User Needs Addressed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="section-row">
+        <td colspan="4">Sensing</td>
+      </tr>
+      <tr>
+        <td class="nested" rowspan="2">Plantar Force Sensing</td>
+        <td class="variable">Range of Force</td>
+        <td class="range">0–1500 N<br>(safety factor of 1.5)</td>
+        <td class="needs">U01, R05, R06</td>
+      </tr>
+      <tr>
+        <td class="variable">Sampling Rate</td>
+        <td class="range">5 Hz</td>
+        <td class="needs">U01, R05, R06</td>
+      </tr>
+      <tr>
+        <td class="nested">Medial-Lateral Force Sensing</td>
+        <td class="variable">Range of Force</td>
+        <td class="range">0-272 N</td>
+        <td class="needs">U01, R05, R06</td>
+      </tr>
+      <tr>
+        <td class="nested">Thigh Force Sensing</td>
+        <td class="variable">Range of Force</td>
+        <td class="range">0-450 N</td>
+        <td class="needs">U01, R05, R06</td>
+      </tr>
+      <tr>
+        <td class="nested">Positional Sensing</td>
+        <td class="variable">Accuracy of Joint Angles</td>
+        <td class="range">12&deg;</td>
+        <td class="needs">U01, R05, R06</td>
+      </tr>
+
+      <tr class="section-row">
+        <td colspan="4">Data Processing and Analysis</td>
+      </tr>
+      <tr>
+        <td class="nested">Latency</td>
+        <td class="variable">End-to-end</td>
+        <td class="range">&lt;100 ms edge-to-UI</td>
+        <td class="needs">R06</td>
+      </tr>
+
+      <tr class="section-row">
+        <td colspan="4">Electrical</td>
+      </tr>
+      <tr>
+        <td class="nested" rowspan="2">Linear/Lateral movement</td>
+        <td class="variable">Minimum Motor Holding torque</td>
+        <td class="range">&gt;1.0 Nm</td>
+        <td class="needs" rowspan="2">S01, R01, R02, R03</td>
+      </tr>
+      <tr>
+        <td class="variable">Precise Movement Control</td>
+        <td class="range">10 mm screw lead and screw diameter &lt; 20 mm</td>
+      </tr>
+      <tr>
+        <td class="nested" rowspan="4">Microcontroller Unit (MCU)</td>
+        <td class="variable">Flash Size</td>
+        <td class="range">&gt; 4 kB</td>
+        <td class="needs" rowspan="4">R01, R02, R03, R04, R05</td>
+      </tr>
+      <tr>
+        <td class="variable">Clock Speed</td>
+        <td class="range">&gt;16 MHz</td>
+      </tr>
+      <tr>
+        <td class="variable">RAM Size</td>
+        <td class="range">&gt;32 kB</td>
+      </tr>
+      <tr>
+        <td class="variable">Processor</td>
+        <td class="range">32-bit</td>
+      </tr>
+      <tr>
+        <td class="nested" rowspan="2">Power delivery</td>
+        <td class="variable">DC-DC Buck Converter</td>
+        <td class="range">(72-12 VDC to 5-3 V)</td>
+        <td class="needs" rowspan="2">R01, R02, R03, R04, R05</td>
+      </tr>
+      <tr>
+        <td class="variable">AC-to-DC Adapter</td>
+        <td class="range">(240 VAC to 72-12 VDC)</td>
+      </tr>
+
+      <tr class="section-row">
+        <td colspan="4">Mechanical</td>
+      </tr>
+      <tr>
+        <td class="nested" rowspan="2">Portability</td>
+        <td class="variable">Weight</td>
+        <td class="range">&lt;13 kg</td>
+        <td class="needs" rowspan="2">DS03</td>
+      </tr>
+      <tr>
+        <td class="variable">Size</td>
+        <td class="range">100 x 33 x 33 (cm)</td>
+      </tr>
+      <tr>
+        <td class="nested">Structure</td>
+        <td class="variable">Type of structure</td>
+        <td class="range">Hollow Structural Sections</td>
+        <td class="needs">D01</td>
+      </tr>
+      <tr>
+        <td class="nested" rowspan="4">Range of Motion (ADL mode)</td>
+        <td class="variable">Max angle of Hip Adduction</td>
+        <td class="range">15 degrees</td>
+        <td class="needs" rowspan="4">R03, R04</td>
+      </tr>
+      <tr>
+        <td class="variable">Max angle of Hip Abduction</td>
+        <td class="range">20 degrees</td>
+      </tr>
+      <tr>
+        <td class="variable">Max angle of Hip Flexion</td>
+        <td class="range">100 degrees</td>
+      </tr>
+      <tr>
+        <td class="variable">Max angle of knee Flexion</td>
+        <td class="range">120 degrees</td>
+      </tr>
+      <tr>
+        <td class="nested" rowspan="2">Durability</td>
+        <td class="variable">Duration of Usage per Treatment Cycles</td>
+        <td class="range">5 min</td>
+        <td class="needs">D8</td>
+      </tr>
+      <tr>
+        <td class="variable">Number of Treatment Cycles a Day</td>
+        <td class="range">10 cycles</td>
+        <td class="needs">D9</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    <h2 id="shortcomings">2.3 User Journey</h2>
+    <p>Following an in-person interview with a physiotherapist from the stroke support station (S3) we mapped out a user journey documenting actions done by both the client and physiotherapist at every stage of the rehabilitation session. The purpose of this user journey is to educate us on how we can design for the context of usage, promoting better user experience through purposeful designing. The use of the device has been demonstrated in the user tests, explained in further detail in Figure 4. </p>
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
-        <div class="fig-label">Figure 3</div>
-        <div class="fig-desc">An illustration of Body Weight Supported Treadmill Training (BWSTT) showing harness, counter weight, winch, and treadmill components.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 3.</em> Body Weight Supported Treadmill Training (BWSTT) setup.</p>
+      <img src="images/fig4.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 4.</em> User Journey.</p>
     </div>
-
-    <h3>Continuous Passive Motion (CPM)</h3>
-    <p>CPM machines are also implemented early in recovery to provide repetitive movement that promotes neuroplasticity and enhances post-stroke outcomes (Ripin, 2018).</p>
-
-    <h2 id="shortcomings">2.3 Shortcomings of Current Rehabilitation Methods</h2>
-    <p>Despite their benefits, manual, CPM, and robotic approaches all face notable limitations.</p>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>Key Limitation</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Manual (PNF)</td>
-            <td>Depends heavily on therapist skill and consistency; variable treatment quality; limited standardised outcome tracking and long-term progress monitoring.</td>
-          </tr>
-          <tr>
-            <td>CPM Devices</td>
-            <td>Support neuroplasticity but lack active resistance motion (ARM), essential for muscle engagement and improving range of motion (Indrawati &amp; Sajidin, 2018).</td>
-          </tr>
-          <tr>
-            <td>BWSTT / DGO</td>
-            <td>Still require substantial physiotherapist involvement during early rehabilitation, limiting scalability.</td>
-          </tr>
-          <tr>
-            <td>End-Effector Robots</td>
-            <td>Less suitable for early-stage patients confined to supine or semi-Fowler positions, as they require partial body-weight support.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
-        <div class="fig-label">Figure 4</div>
-        <div class="fig-desc">Illustration of Semi-Fowler Position (15–45°) vs Supine Position (0°) for patient rehabilitation.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 4.</em> Semi-Fowler (15–45°) and Supine (0°) patient positions referenced in rehabilitation planning.</p>
-    </div>
-
-    <div class="callout">
-      <strong>Key Gap</strong>
-      Across all modalities, there remains a need for accessible, standardised, data-integrated solutions that support acute to late-subacute recovery, reduce therapist workload, and enable meaningful progress tracking.
-    </div>
-
-    <h2 id="interviews">2.4 Interviews with Stroke Rehabilitation Specialists</h2>
-    <p>The team engaged a physiotherapist from the <strong>Stroke Support Station (S3)</strong> and an occupational therapist from <strong>Woodlands Health</strong> to understand rehabilitation workflows across acute to late sub-acute settings. An on-site visit to S3 further informed understanding of the rehabilitation environment.</p>
-
-    <h4>Must-Have Features</h4>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Feature</th><th>Quote from Interviewees</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Active Mode</td>
-            <td><em>"You don't need to make it completely passive… that one is more important for standard rehab in Singapore."</em> — PT A</td>
-          </tr>
-          <tr>
-            <td>Adjustable ROM</td>
-            <td><em>"Make sure the range can be controlled… you don't want to overdo it."</em> — PT A</td>
-          </tr>
-          <tr>
-            <td>Slow, controlled movement + fail-safe</td>
-            <td><em>"It cannot be fast at all… make sure there's a fail-safe mechanism."</em> — PT A</td>
-          </tr>
-          <tr>
-            <td>Quick setup (&lt;10 min)</td>
-            <td><em>"At the end of the day, using something like that may increase the load… it's faster than having something to set up."</em> — OT A</td>
-          </tr>
-          <tr>
-            <td>Adjustable fit for different leg lengths</td>
-            <td><em>"Different patients — their leg length is different… if they have a bit of tightness… is it adjustable?"</em> — OT A</td>
-          </tr>
-          <tr>
-            <td>Comfortable, padded straps</td>
-            <td><em>"Comfort isn't optional, it's essential for safety… straps should be gentle, maybe padded with foam."</em> — PT B</td>
-          </tr>
-          <tr>
-            <td>Visual guidance / animation cues</td>
-            <td><em>"It's a very good external cue… when they hit that target, they know that it's their maximum."</em> — OT A</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Table 1. Must-have features identified through specialist interviews.</p>
-
-    <h4>Good-to-Have Features</h4>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Feature</th><th>Quote from Interviewees</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Data logging (ROM, strength, smoothness)</td>
-            <td><em>"All are useful… we'll emphasise ROM and strength."</em> — PT B</td>
-          </tr>
-          <tr>
-            <td>Quantitative metrics</td>
-            <td><em>"Anything quantifiable and objective is useful for the physiotherapist."</em> — PT B</td>
-          </tr>
-          <tr>
-            <td>Multi-mode switching (passive ↔ active-assisted)</td>
-            <td><em>"Having the ability to switch from passive to active-assisted mode will be helpful."</em> — OT A</td>
-          </tr>
-          <tr>
-            <td>Hip abduction / adduction &amp; ankle modules</td>
-            <td><em>"Ankle movement is very useful… there are many things out there to help them passively move their ankle, but not so much beyond that."</em> — OT A</td>
-          </tr>
-          <tr>
-            <td>Competitive scoring</td>
-            <td><em>"Patients are very competitive… another patient will say, 'I can beat that.'"</em> — OT A</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Table 2. Good-to-have features identified through specialist interviews.</p>
-
-    <h2 id="comparison">2.5 Comparison with Similar Devices</h2>
-    <p>Several existing devices with similar intended use target the acute and late subacute phases of stroke recovery, including the <strong>Sidra LEG</strong> and the <strong>Kinetec Spectra Knee CPM</strong>.</p>
-
-    <div class="table-wrap">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Aspect</th>
-            <th>Feature</th>
-            <th>Kinetix</th>
-            <th>Sidra LEG</th>
-            <th>Kinetec Spectra Knee CPM</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowspan="3">Exercise Customization</td>
-            <td>Supports 6 Exercise Types (supine &amp; semi-Fowler)</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-          <tr>
-            <td>Supports ADL / Full Range Recovery</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-          <tr>
-            <td>Supports Active &amp; Passive Recovery</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-          <tr>
-            <td rowspan="2">Sensing Capabilities</td>
-            <td>Positional Sensing</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-          <tr>
-            <td>Force Sensing</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-          <tr>
-            <td>Ergonomics</td>
-            <td>Supports diverse limb dimensions</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-yes">✓ Yes</td>
-            <td>Limited</td>
-          </tr>
-          <tr>
-            <td rowspan="4">Data / Computation</td>
-            <td>ROM (1° increments)</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-yes">✓ Yes</td>
-          </tr>
-          <tr>
-            <td>Strength Estimation</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-          <tr>
-            <td>Repetition Counting &amp; Segmentation</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-          <tr>
-            <td>Jerk (Smoothness Metric)</td>
-            <td class="check-yes">✓ Yes</td>
-            <td class="check-no">✗ No</td>
-            <td class="check-no">✗ No</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Table 3. Comparative evaluation of Kinetix against existing devices.</p>
 
     <nav class="chapter-nav-footer">
       <a href="chapter1.html" class="nav-btn ghost">
