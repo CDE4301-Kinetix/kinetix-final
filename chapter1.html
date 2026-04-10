@@ -60,11 +60,8 @@
     </ul>
 
     <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <div class="fig-label">Figure 1</div>
-        <div class="fig-desc">(a) Examples of blood clots due to embolism and thrombosis. (b) Example of a ruptured blood vessel in the brain.</div>
-      </div>
+      <img src="images/fig1.png" alt="(a) Examples of blood clots due to embolism and thrombosis. (b) Example of a ruptured blood vessel in the brain." style="width: 100%; border-radius: 8px;">
+      <p class="figure-caption"><strong>Figure 1.</strong> (a) Examples of blood clots due to embolism and thrombosis. (b) Example of a ruptured blood vessel in the brain.</p>
     </div>
 
     <p>In both cases, strokes result in key motor, cognitive, and psychological impairment. Motor impairments, such as reduced muscle strength and disrupted inter-limb coordination, shape how patients can perform functional movements, posing a need for effective post-stroke rehabilitation.</p>
@@ -73,46 +70,18 @@
     <p>Post-stroke rehabilitation is most effective during the <em>"golden time"</em> of neuroplasticity, between <strong>seven days and six months</strong> after stroke, covering the acute to late subacute phases (Marek et al., 2024).</p>
 
     <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l4-8 4 4 4-6 4 3"/><path d="M3 20h18"/></svg>
-        <div class="fig-label">Figure 2</div>
-        <div class="fig-desc">Neuroplasticity and Rehabilitation Timeline — Hyperacute → Acute → Early Subacute → Late Subacute → Chronic phases</div>
-      </div>
-      <p class="figure-caption"><em>Figure 2.</em> Neuroplasticity timeline: the critical window spans from 7 days to 6 months post-stroke.</p>
-    </div>
-
-    <div class="spec-grid">
-      <div class="spec-cell">
-        <div class="label">Hyperacute Phase</div>
-        <div class="value" style="font-size:1rem;">0–24h</div>
-      </div>
-      <div class="spec-cell">
-        <div class="label">Acute Phase</div>
-        <div class="value" style="font-size:1rem;">7 days</div>
-      </div>
-      <div class="spec-cell">
-        <div class="label">Early Subacute</div>
-        <div class="value" style="font-size:1rem;">7d–3mo</div>
-      </div>
-      <div class="spec-cell">
-        <div class="label">Late Subacute</div>
-        <div class="value" style="font-size:1rem;">3–6mo</div>
-      </div>
-      <div class="spec-cell">
-        <div class="label">Chronic Phase</div>
-        <div class="value" style="font-size:1rem;">&gt;6mo</div>
-      </div>
+      <img src="images/fig2.png" alt="Post-Stroke Rehab Timeline" style="width: 100%; border-radius: 8px;">
+      <p class="figure-caption"><strong>Figure 2.</strong> Critical Period for Neuroplasticity</p>
     </div>
 
     <h2 id="problem">1.2 Problem Statement</h2>
     <div class="callout">
       <strong>Core Problem</strong>
-      Stroke rehabilitation currently depends heavily on manual physiotherapy, which is physically demanding and difficult to scale, while existing rehabilitation systems <strong>lack integrated sensing</strong> to quantitatively track patient recovery and therapy effectiveness.
+      Stroke rehabilitation currently depends heavily on manual physiotherapy, which is physically demanding and difficult to scale, while existing rehabilitation systems lack integrated sensing to quantitatively track patient progress and have limited types of exercises. 
     </div>
 
     <h2 id="objective">1.3 Project Objective</h2>
-    <p>The objective of this project is to develop Kinetix, a robotic lower-limb rehabilitation system that assists stroke patients in performing controlled rehabilitation exercises while capturing quantitative biomechanical data to support therapy monitoring.</p>
-    <p>The specific objectives are:</p>
+    <p>The objective of this project is to develop Kinetix, a robotic lower-limb rehabilitation system that assists stroke patients in performing controlled rehabilitation exercises while capturing quantitative biomechanical data to support therapy monitoring. The specific objectives are:</p>
     <ul>
       <li>Design a mechanical system capable of assisting controlled lower-limb movement for progressive lower limb recovery.</li>
       <li>Develop a sensing system to capture biomechanical parameters such as applied force and range of motion during rehabilitation exercises.</li>
@@ -124,7 +93,7 @@
     <h2 id="value">1.4 Value Proposition</h2>
     <div class="callout">
       <strong>Value Proposition</strong>
-      Kinetix is a portable, data-driven rehabilitation solution that empowers therapists, motivates patients through interactive gamification, and supports comprehensive progressive lower-limb recovery — offering both clinical and economic value to healthcare providers.
+      The value proposition of Kinetix is a portable, data-driven rehabilitation solution that reduces the physical workload for rehabilitation specialists, motivates patients through interactive gamification and relevant neurological cues, and supports comprehensive progressive lower-limb recovery, offering both clinical and economic value to stroke healthcare providers.
     </div>
 
     <h2 id="scope">1.5 Scope of the Project</h2>
@@ -140,6 +109,71 @@
       This project does not include clinical trials with stroke patients or full medical device certification, as these require regulatory approval and extended clinical validation.
     </div>
 
+    <h2 id="scope">1.6 Table of Responsibilities</h2>
+    <p>To support the division of workload within the scope of this project, Table 2 outlines team responsibilities by subsystem, detailing which members worked on each subsystem and describing their key activities.
+    </p>
+    <ol>
+      <li>Research on stroke rehabilitation methods and limitations to contextualise the problem and develop design specifications.</li>
+      <li>Design and fabrication of a prototype robotic rehabilitation device for lower-limb stroke therapy.</li>
+      <li>Experimental testing to evaluate the performance of the prototype.</li>
+      <li>Recommendations for future work to improve the prototype.</li>
+    </ol>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th>Role</th>
+            <th>Mechanical</th>
+            <th>Electrical</th>
+            <th>Sensing</th>
+            <th>Data Processing & Analysis</th>
+            <th>User Interface / Usability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ron</td>
+            <td>Biomedical Engineer</td>
+            <td>Designed and iterated footrest, ankle, thigh IMU, ultrasonic, and structural components for sensor integration; assembled device</td>
+            <td>Designed electrical housing for components</td>
+            <td>Tested and iterated force sensing and positional sensing subsystem</td>
+            <td>Performed angle validation using tracker software; analysed error rate for force sensors</td>
+            <td>Developed user test protocols; tested Kinetix UI iterations with a rehabilitation specialist</td>
+          </tr>
+          <tr>
+            <td>Rizqi</td>
+            <td>Mechanical Engineer</td>
+            <td>Designed, assembled, and tested all mechanical components (mechanism)</td>
+            <td>Assisted with soldering and wiring of components</td>
+            <td>Tested positional sensing subsystem</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Nadia</td>
+            <td>Electrical Engineer</td>
+            <td>Designed early footrest iteration</td>
+            <td>Assisted with soldering and components</td>
+            <td>Tested and iterated force sensing and positional sensing subsystem</td>
+            <td>Designed and tested BLE data pipeline</td>
+            <td>Developed Kinetix UI iterations</td>
+          </tr>
+          <tr>
+            <td>Sebastian</td>
+            <td>Electrical Engineer</td>
+            <td>Assisted in mechanical structure iteration and device assembly</td>
+            <td>Designed and developed full electronic architecture and codebase</td>
+            <td>Tested and iterated force sensing and positional sensing subsystem</td>
+            <td>Designed and tested BLE data pipeline</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-caption">Table 2. Table of Work Done by Project Team</p>
+    
     <nav class="chapter-nav-footer">
       <a href="index.html" class="nav-btn ghost">
         <span class="arrow">←</span>
