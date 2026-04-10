@@ -638,3 +638,13 @@ code {
   .cover-meta { gap: 1.5rem; }
   .chapter-grid { grid-template-columns: 1fr 1fr; }
 }
+
+.pass {
+  color: green;
+  font-weight: 600;
+}
+
+.fail {
+  color: red;
+  font-weight: 600;
+}

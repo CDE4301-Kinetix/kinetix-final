@@ -224,13 +224,14 @@
       <img src="images/fig24.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
       <p class="figure-caption"><em>Figure 24.</em>  Maximum Knee Angle on structure. </p>
     </div>
-<style>
-  .test-table-wrapper {
+
+    <style>
+  .results-table-wrapper {
     margin: 1.5rem 0 2rem 0;
     overflow-x: auto;
   }
 
-  .test-table {
+  .results-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.98rem;
@@ -238,105 +239,350 @@
     background: #fff;
   }
 
-  .test-table caption {
-    caption-side: bottom;
+  .results-table caption {
+    caption-side: top;
     text-align: center;
-    font-size: 0.95rem;
-    font-style: italic;
-    color: #333;
-    margin-top: 0.65rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
   }
 
-  .test-table th,
-  .test-table td {
+  .results-table th,
+  .results-table td {
     border: 2px solid #222;
     padding: 12px 14px;
-    vertical-align: top;
-    text-align: left;
+    text-align: center;
   }
 
-  /* Header styling */
-  .test-table thead th {
+  /* Header row */
+  .results-table thead th {
     background: #d9d9d9;
     font-weight: 700;
     color: #000;
-    text-align: center;
   }
 
-  /* All body cells white */
-  .test-table tbody td {
+  /* First column left-aligned (movement names) */
+  .results-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  /* All cells white */
+  .results-table tbody td {
     background: #fff;
   }
 
-  /* Column widths for clean layout */
-  .test-table td:nth-child(1) { width: 12%; text-align: center; }
-  .test-table td:nth-child(2) { width: 24%; }
-  .test-table td:nth-child(3) { width: 16%; }
-  .test-table td:nth-child(4) { width: 48%; }
-
-  /* Optional subtle striping (recommended) */
-  .test-table tbody tr:nth-child(even) td {
+  /* Optional subtle striping */
+  .results-table tbody tr:nth-child(even) td {
     background: #f7f7f7;
   }
 
   @media (max-width: 768px) {
-    .test-table {
-      min-width: 950px;
+    .results-table {
+      min-width: 900px;
     }
   }
 </style>
 
-<div class="test-table-wrapper">
-  <table class="test-table">
-    <caption>Table 5. Design Verification Test Plan</caption>
+<div class="results-table-wrapper">
+  <table class="results-table">
     <thead>
       <tr>
-        <th>Test Code</th>
-        <th>Name of Test</th>
-        <th>Design Specification Addressed</th>
-        <th>Purpose of Test</th>
+        <th>Movement</th>
+        <th>Test 1 (°)</th>
+        <th>Test 2 (°)</th>
+        <th>Test 3 (°)</th>
+        <th>Average (°)</th>
+        <th>Requirement (°)</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>DT1</td>
-        <td>Weight Test</td>
-        <td>D1</td>
-        <td>Verify the weight is less than 13 kg.</td>
+        <td>Hip Adduction</td>
+        <td>30.9</td>
+        <td>30.1</td>
+        <td>32.0</td>
+        <td>31.0</td>
+        <td>0–15</td>
       </tr>
+
       <tr>
-        <td>DT2</td>
-        <td>Size Test</td>
-        <td>D2</td>
-        <td>Verify the size is less than 100 × 33 × 33 cm.</td>
+        <td>Hip Abduction</td>
+        <td>30.9</td>
+        <td>30.1</td>
+        <td>32.0</td>
+        <td>31.0</td>
+        <td>0–15</td>
       </tr>
+
       <tr>
-        <td>DT3</td>
-        <td>ADL Range of Motion Test</td>
-        <td>D4<br>D5<br>D6<br>D7</td>
-        <td>Verify that the physical device of Kinetix has sufficient range of motion for ADL mode in all planes of movement.</td>
+        <td>Hip Flexion</td>
+        <td colspan="4">101.1</td>
+        <td>100</td>
       </tr>
+
       <tr>
-        <td>DT4</td>
-        <td>Aluminium Tube Load Test</td>
-        <td>NA</td>
-        <td>Verify the minimum factor of safety of the aluminium tubes.</td>
+        <td>Knee Flexion</td>
+        <td colspan="4">100.6</td>
+        <td>120</td>
       </tr>
-      <tr>
-        <td>DT5</td>
-        <td>Lateral Stability Test</td>
-        <td>NA</td>
-        <td>Verify lateral displacements of the structure.</td>
-      </tr>
-      <tr>
-        <td>DT6</td>
-        <td>Durability Test</td>
-        <td>D8<br>D9</td>
-        <td>Verify the ability of the structure to withstand reasonable use in a clinical context.</td>
-      </tr>
+
     </tbody>
   </table>
+  <p style="text-align:center; font-style:italic; margin-top:0.5rem;">
+    Table 6. DT3 ADL Range of Motion Test Results
+  </p>
 </div>
+<p>The measured joint angles were within the specified ADL range of motion and maximum limits for all targeted joints, demonstrating overall compliance with functional rehabilitation requirements (Table 6). However, the knee flexion range did not achieve the required maximum value, indicating a design limitation. This highlights the need for further mechanical optimisation to enhance adjustability and enable the full intended range of motion.</p>
+
+    <h3>4.1.4 Aluminium Tube Load Test</h3>
+    <p>As detailed in the Interim Report, simulation results yielded a minimum Factor of Safety (FoS) of 28, indicating that the structure can withstand approximately 28 times the applied load before failure. Subsequent inspections following full frame assembly further confirmed that the structure is capable of safely supporting loads during user testing (Figure 25).</p>
+    <div class="figure">
+      <img src="images/fig25.png" alt="Aluminium tube load test simulation result" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 25.</em></p>
+    </div>
+
+    <h3>4.1.5 Durability Test</h3>
+    <p>This test aims to see whether the device is able to run a certain number of cycles and durations without any issue in the structural and mechanical part. Our based line number for the test is 10 cycles with durations of 5 minutes. The result is the device able to run based on the design specification requirement.</p>
+
+    <h3>4.1.7 Mechanical Design Iteration</h3>
+    <p>To address this issue, the design was modified by relocating the arc rail beneath the linear actuator and the main structural sub-assembly. This configuration improves load distribution by allowing the structural frame to directly support the applied forces, thereby reducing bending moments acting on the arc rail slider. The revised design also increases the effective contact area between structural components, improving overall stability and reducing the likelihood of deformation during operation (Figure 27).</p>
+    <div class="figure">
+      <img src="images/fig26.png" alt="Mechanical design iteration with relocated arc rail" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 26.</em></p>
+    </div>
+    <p>After further consideration of the price range of the curve rail we opted to use a custom middle section design connected to the main frame, which is sufficient for our needs (Figure 28).</p>
+    <div class="figure">
+      <img src="images/fig27.png" alt="Custom middle section design connected to main frame" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 27.</em></p>
+    </div>
+
+    <h3>4.1.8 Mechanical Design Short comings</h3>
+
+    <h4>4.1.8.1 Middle Structure Section</h4>
+    <p>While assembling the overall device for the first time there were issues with the stability middle section with the supports starting to bend due to the vertical load. On top of that, the mounting holes for the section are hard to reach thus making it hard for any maintenance (Figure 29).</p>
+    <div class="figure">
+      <img src="images/fig28.png" alt="Middle structure section issue and revised support geometry" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 28.</em></p>
+    </div>
+    <p>To resolve this issue, ribs were added to the structure and mountings were shifted towards a more accessible angle.</p>
+
+    <h4>4.1.8.2 Belt Lateral mechanism</h4>
+    <p>During the development phase, tightening issues were encountered with the belt used for the lateral mechanism (Figure 30).</p>
+    <div class="figure">
+      <img src="images/fig29.png" alt="Timing belt used for lateral mechanism" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 29.</em></p>
+    </div>
+    <p>The mechanism consists of two pulleys connected by a timing belt, with one pulley mounted to the stepper motor and the other to the main structure. To address tensioning issues, a belt tensioner was initially designed and implemented using 3D-printed components (Figure 31).</p>
+    <div class="figure">
+      <img src="images/fig30.png" alt="Initial belt tensioner design" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 30.</em></p>
+    </div>
+    <p>The 3D printed parts did not manage to sustain the friction and bending force. Thus, we opted to use a shorter timing belt which resolved this issue.</p>
+
+    <h4>4.1.8.3 Lateral Driving Shaft</h4>
+    <p>Another issue encountered involved the lateral shaft connected to the main structure for side-to-side motion. Initially, a shaft torque lock was used to secure the shaft through outward expansion; however, this was later replaced with a nut-based fastening method to provide a more stable and reliable fixation (Figure 32).</p>
+    <div class="figure">
+      <img src="images/fig31.png" alt="Initial lateral driving shaft fixation method" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 31.</em></p>
+    </div>
+    <p>The limitation of this design was that it relied solely on friction between the 3D-printed components and the shaft, resulting in insufficient clamping force and slippage. To resolve this, the system was revised to use a flange coupler with mounting holes, and the shaft was changed to a 6 mm round shaft with a field D-profile end to improve torque transmission and mechanical locking (Figure 33).</p>
+    <div class="figure">
+      <img src="images/fig32.png" alt="Revised lateral driving shaft with D-profile end" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 32.</em></p>
+    </div>
+    <p>The D-profile was introduced to provide a flat surface for the flange coupler’s set screw, ensuring a more secure grip and preventing slippage. As a result, the mechanism was able to achieve lateral movement.</p>
+
+    <h2 id="sensing">4.2 Sensing Sub-System</h2>
+    <p>The table (Table 7) below provides a list of tests conducted for the sensing sub-system.</p>
+
+    <div class="test-table-wrapper">
+      <table class="test-table">
+        <caption>Table 7.</caption>
+        <thead>
+          <tr>
+            <th>Test Code</th>
+            <th>Name of Test</th>
+            <th>Design Specification Addressed</th>
+            <th>Purpose of Test</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ST1</td>
+            <td class="name-col">Force Sensor Calibration Test</td>
+            <td class="design-col">N/A</td>
+            <td class="purpose-col">Verify the relationship between voltage output of the force sensor configuration and the applied force</td>
+          </tr>
+          <tr>
+            <td>ST2</td>
+            <td class="name-col">IMU Orientation Response Test</td>
+            <td class="design-col">N/A</td>
+            <td class="purpose-col">Verify the acceleration values of the IMU</td>
+          </tr>
+          <tr>
+            <td>ST3</td>
+            <td class="name-col">IMU Joint Accuracy Test</td>
+            <td class="design-col">N/A</td>
+            <td class="purpose-col">Verify the accuracy of joint angle measurements using IMU data</td>
+          </tr>
+          <tr>
+            <td>ST4</td>
+            <td class="name-col">Plantar Force Sensing Test</td>
+            <td class="design-col">A1</td>
+            <td class="purpose-col">Verify the performance of plantar force sensing configuration by comparing values of the true weight and recorded weight</td>
+          </tr>
+          <tr>
+            <td>ST5</td>
+            <td class="name-col">Medial-Lateral Force Sensing Test</td>
+            <td class="design-col">A2</td>
+            <td class="purpose-col">Verify the performance of medial-lateral force sensing configuration by comparing values of the true weight and recorded weight</td>
+          </tr>
+          <tr>
+            <td>ST6</td>
+            <td class="name-col">Thigh Force Sensing Test</td>
+            <td class="design-col">A3</td>
+            <td class="purpose-col">Verify the performance of plantar force sensing configuration by comparing values of the true weight and recorded weight</td>
+          </tr>
+          <tr>
+            <td>ST7</td>
+            <td class="name-col">IMU Accuracy and Maximum Range Test</td>
+            <td class="design-col">A4, A5</td>
+            <td class="purpose-col">Verify if IMU accuracy and maximum range matches the design specification values of 12° and 150° respectively</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4.2.1 ST1 Force Sensor Calibration Test</h3>
+    <p>The ST1 force sensor calibration procedure and associated results are detailed in the interim report and are not reproduced here. Briefly, known masses spanning the operational range were applied incrementally, and the resulting resistance measurements were tabulated. The results confirm an inverse exponential relationship between applied force and resistance, consistent with the characteristic response of piezoresistive force sensors (Figure 34).</p>
+    <div class="figure">
+      <img src="images/fig33.png" alt="Force sensor calibration curve" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 33.</em></p>
+    </div>
+
+    <h3>4.2.2 ST2 IMU Orientation Response Test</h3>
+    <p>The table below describes the test procedure used to verify the acceleration values of the IMU. The test procedure for ST2 can be seen in Appendix O.</p>
+    <p><strong>Results:</strong></p>
+    <p>The table (Table 8) below presents the measured acceleration values recorded by the IMU across six orthogonal orientations, alongside the expected gravitational acceleration values and the corresponding error for each axis.</p>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Orientation</th>
+            <th>Axis</th>
+            <th>Expected (g)</th>
+            <th>Measured (g)</th>
+            <th>Error (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="3">Flat (face up)</td>
+            <td>X</td>
+            <td>0.00</td>
+            <td>0.10</td>
+            <td>+100</td>
+          </tr>
+          <tr>
+            <td>Y</td>
+            <td>0.00</td>
+            <td>−0.12</td>
+            <td>−100</td>
+          </tr>
+          <tr>
+            <td>Z</td>
+            <td>9.81</td>
+            <td>8.72</td>
+            <td>−11.1</td>
+          </tr>
+          <tr>
+            <td rowspan="3">Right side up (X-axis vertical)</td>
+            <td>X</td>
+            <td>9.81</td>
+            <td>8.45</td>
+            <td>−13.9</td>
+          </tr>
+          <tr>
+            <td>Y</td>
+            <td>0.00</td>
+            <td>−0.15</td>
+            <td>−100</td>
+          </tr>
+          <tr>
+            <td>Z</td>
+            <td>0.00</td>
+            <td>0.14</td>
+            <td>+100</td>
+          </tr>
+          <tr>
+            <td rowspan="3">Front face up (Y-axis vertical)</td>
+            <td>X</td>
+            <td>0.00</td>
+            <td>−0.09</td>
+            <td>−100</td>
+          </tr>
+          <tr>
+            <td>Y</td>
+            <td>9.81</td>
+            <td>8.58</td>
+            <td>−12.5</td>
+          </tr>
+          <tr>
+            <td>Z</td>
+            <td>0.00</td>
+            <td>0.15</td>
+            <td>+100</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 8.</p>
+    </div>
+    <p>The IMU readings were consistent with expected gravitational values, confirming correct orientation sensing.</p>
+
+    <h3>4.2.3 ST3 IMU Joint Accuracy Test</h3>
+    <p>The table (Table 9) below describes the test procedure used to verify the accuracy of IMU-derived joint angle measurements against reference angles obtained from both a physical protractor and pose estimation tracking software. The exercise of knee flexion was chosen to demonstrate joint accuracy capabilities of the IMU sensor following the angles depicted in Figure 35.</p>
+    <div class="figure">
+      <img src="images/fig34.png" alt="IMU joint accuracy test setup for knee flexion" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 34.</em></p>
+    </div>
+
+    <div class="results-table-wrapper">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Procedure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Attach the IMU modules to the relevant limb segments according to the intended sensing configuration.</td></tr>
+          <tr><td>2</td><td>Position the subject or limb model so that the target joint angle can be set and maintained.</td></tr>
+          <tr><td>3</td><td>Measure the reference joint angle using a protractor.</td></tr>
+          <tr><td>4</td><td>Simultaneously record the motion using pose estimation tracking software to obtain an additional reference measurement.</td></tr>
+          <tr><td>5</td><td>Capture the corresponding joint angle output from the IMU subsystem.</td></tr>
+          <tr><td>6</td><td>Repeat the measurement for multiple joint positions across the intended range of motion.</td></tr>
+          <tr><td>7</td><td>Compare the IMU-derived joint angles with the reference angles obtained from the protractor and pose estimation tracking software.</td></tr>
+          <tr><td>8</td><td>Calculate the angle error for each trial to evaluate the accuracy of the IMU-based joint angle estimation.</td></tr>
+        </tbody>
+      </table>
+      <p style="text-align:center; font-style:italic; margin-top:0.5rem;">Table 9.</p>
+    </div>
+
+    <p><strong>Result:</strong></p>
+    <p>While the ideal MSE is below 12° to outperform “by-eye” clinical judgment, our results showed that the IMU was not able to consistently achieve this error (Figure 36).</p>
+    <div class="figure">
+      <img src="images/fig35.png" alt="IMU joint angle comparison plot" style="width: 100%; border-radius: 8px;"> 
+      <p class="figure-caption"><em>Figure 35.</em></p>
+    </div>
+    <p>The IMU signal exhibits both overestimation and underestimation of joint angles at critical moments. These inconsistencies contribute to elevated error values, preventing reliable adherence to the &lt;12° MSE benchmark. Full results are contained in Appendix K-N due to the volume of data.</p>
+
+    <h3>4.2.4 Test Shortcoming and Proposals</h3>
+    <p>The observed angular errors are suspected to arise from reliance on accelerometer data alone, which is sensitive to dynamic acceleration components during movement. When the limb is in motion, non-gravitational accelerations are superimposed on the gravitational signal, causing the computed joint angles to deviate from the true orientation.</p>
+    <p>To address this, future iterations should incorporate gyroscope data alongside the accelerometer through a sensor fusion approach such as a Kalman filter, which combines the low-frequency accuracy of the accelerometer with the short-term precision of the gyroscope to produce more stable and reliable angle estimates across the full range of motion.</p>
+    <p>Additionally, the current test configuration did not constrain the physical mounting of the IMU modules, introducing variability in sensor tilt and alignment between trials. A dedicated IMU holder, designed to mount rigidly onto the device frame and align each sensor consistently with the limb segment axis, would reduce placement-dependent error and improve repeatability across patients and sessions. The design of such a holder is proposed as part of the sensing subsystem iteration.</p>
+
     <h3 id="linear">4.4.3 Linear Movement</h3>
     <p>Several mechanisms were evaluated for linear motion. A <strong>ball screw linear actuator</strong> was selected for its relative simplicity, proven reliability, low maintenance, and high user ergonomics.</p>
 
