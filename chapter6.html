@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter 6 · Testing &amp; Evaluation — Kinetix</title>
+  <title>Chapter 7 · Conclusion — Kinetix</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,404 +23,135 @@
     </div>
   </header>
 
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <div class="chapter-label">Chapter 6</div>
-    <h1>Testing &amp; Evaluation</h1>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="chapter-label">Chapter 6</div>
+      <h1>Conclusion</h1>
+    </div>
   </div>
-</div>
 
-<div class="page-layout">
-  <aside class="sidebar">
-    <div class="sidebar-title">On this page</div>
-    <ul class="toc-list">
-      <li><a href="#mechanical">6.1 Mechanical Sub-System</a></li>
-      <li><a href="#fea" class="sub">A1 · FEA Tube Load Test</a></li>
-      <li><a href="#lateral-test" class="sub">A2 · Lateral Stability Test</a></li>
-      <li><a href="#mech-iteration" class="sub">Design Iteration</a></li>
-      <li><a href="#sensing">6.2 Sensing Sub-System</a></li>
-      <li><a href="#force-cal" class="sub">B1 · Force Sensor Calibration</a></li>
-      <li><a href="#imu-orient" class="sub">B2 · IMU Orientation Test</a></li>
-      <li><a href="#imu-joint" class="sub">B3 · IMU Joint Accuracy</a></li>
-      <li><a href="#electrical">6.3 Electrical Sub-System</a></li>
-      <li><a href="#ldo-test" class="sub">LDO Voltage Test</a></li>
-      <li><a href="#motor-test" class="sub">Motor Functionality Test</a></li>
-      <li><a href="#planned" class="sub">Planned Tests</a></li>
-      <li><a href="#ui-testing">6.4 UI Testing</a></li>
-    </ul>
-  </aside>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">On this page</div>
+      <ul class="toc-list">
+        <li><a href="#conclusion">6. Conclusion</a></li>
+        <li><a href="#deliverables">6.1 Fulfilment of Deliverables</a></li>
+        <li><a href="#future-work">6.3 Future Work</a></li>
+        <li><a href="#sensing-future" class="sub">6.3.1 Sensing Subsystem</a></li>
+        <li><a href="#mechanical-future" class="sub">6.3.2 Mechanical Subsystem</a></li>
+        <li><a href="#electrical-future" class="sub">6.3.3 Electrical Subsystem</a></li>
+        <li><a href="#ui-future" class="sub">6.3.4 User Interface Subsystem</a></li>
+        <li><a href="#user-tests-future" class="sub">6.3.5 User Tests</a></li>
+        <li><a href="#data-future" class="sub">6.3.6 Data Processing &amp; Analysis</a></li>
+        <li><a href="#impact">6.2 Impact and Visibility</a></li>
+      </ul>
+    </aside>
 
-  <main class="content">
+    <main class="content">
 
-    <h2 id="mechanical">6.1 Mechanical Sub-System</h2>
+      <h2 id="conclusion">6. Conclusion</h2>
+      <p>Based on all of our tests and evaluation of the final Kinetix device we can conclude that we meet all of our key critical functions. The details regarding deliverables, future works, and impact would be explained further in the following sections.</p>
 
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Test Code</th><th>Name</th><th>Design Spec</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>A1</td>
-            <td>Aluminium Tube Load Test</td>
-            <td>D01 — Load-bearing capability</td>
-            <td>FEA in SolidWorks to calculate stress distribution and Factor of Safety</td>
-          </tr>
-          <tr>
-            <td>A2</td>
-            <td>Lateral Stability Test</td>
-            <td>Lateral stability during side-to-side movement</td>
-            <td>Apply lower limb load; measure vertical displacement with ruler</td>
-          </tr>
-          <tr>
-            <td>A3</td>
-            <td>ROM Verification Test</td>
-            <td>Verify full range of motion</td>
-            <td>Place reference markers at Hip, Knee and Ankle pivots; simulate joint angles in CAD</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Table 17. Mechanical sub-system tests.</p>
+      <h2 id="deliverables">6.1 Fulfilment of Deliverables</h2>
+      <p>By the final stage, the Kinetix integrated system consisting of both the User Interface and physical device successfully met the majority of its design specifications, with a fully functional prototype demonstrating integrated mechanical movement, sensing, control, and user interface capabilities. Overall, most key deliverables were fulfilled, including system integration, user validation, and prototype development, with remaining limitations primarily in advanced sensing validation and quantitative performance metrics, which are addressed in future work (Table 37).</p>
 
-    <h3 id="fea">A1 · Aluminium Tube Load Test (FEA)</h3>
-
-    <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="2" y="10" width="20" height="5" rx="2.5"/>
-          <path d="M6 10V7M10 10V5M14 10V7M18 10V5"/>
-          <path d="M6 15v3M10 15v4M14 15v3M18 15v4"/>
-        </svg>
-        <div class="fig-label">Figure 42</div>
-        <div class="fig-desc">SolidWorks FEA result — aluminium tube under distributed load. Factor of Safety distribution shown: Min FOS = 28 (green/blue region). Load arrows applied along top face; fixed supports at tube ends. Colour scale from 2.808e+01 (min, red-end) to 1.087e+04 (max, blue).</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Test</th>
+              <th>Achievement</th>
+              <th>Test Code</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>A1</td><td>Plantar Force Sensing</td><td>Range of Force</td><td>ST4</td><td>✅ Successful</td></tr>
+            <tr><td>A2</td><td>Medial-Lateral Force Sensing</td><td>Range of Force</td><td>ST5</td><td>✅ Successful</td></tr>
+            <tr><td>A3</td><td>Thigh Force Sensing</td><td>Range of Force</td><td>ST6</td><td>✅ Successful</td></tr>
+            <tr><td>A4</td><td>Positional Sensing</td><td>Accuracy of Joint Angles</td><td>ST7</td><td>⚠️ Partially</td></tr>
+            <tr><td>B1</td><td>Latency</td><td>End-to-end</td><td>BT1</td><td>✅ Successful</td></tr>
+            <tr><td>B2</td><td>Data Sampling Rate</td><td>Sampling Rate</td><td>—</td><td>✅ Successful</td></tr>
+            <tr><td>D1</td><td>Portability</td><td>Weight</td><td>DT1</td><td>✅ Successful</td></tr>
+            <tr><td>D2</td><td>Size</td><td>—</td><td>DT2</td><td>✅ Successful</td></tr>
+            <tr><td>D3</td><td>Structure</td><td>Type of structure</td><td>—</td><td>—</td></tr>
+            <tr><td>D4</td><td>Range of Motion (ADL mode)</td><td>Range of Hip Adduction</td><td>DT3</td><td>✅ Successful</td></tr>
+            <tr><td>D5</td><td>Range of Hip Abduction</td><td>—</td><td>—</td><td>✅ Successful</td></tr>
+            <tr><td>D6</td><td>Range of Hip Flexion</td><td>—</td><td>—</td><td>✅ Successful</td></tr>
+            <tr><td>D7</td><td>Range of Knee Flexion</td><td>—</td><td>—</td><td>⚠️ Partially</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="figure-caption"><em>Figure 42.</em> FEA Factor of Safety distribution for aluminium support tube.</p>
-    </div>
+      <p class="table-caption">Table 37. Fulfilment of deliverables summary.</p>
 
-    <h4>Test Procedure</h4>
-    <ol>
-      <li>Identify the structural component — aluminium support tube selected as reference.</li>
-      <li>Model structural geometry in SolidWorks FEA environment.</li>
-      <li>Apply boundary conditions representing fixed supports.</li>
-      <li>Determine loading: maximum assumed leg weight = <strong>20 kg</strong>.</li>
-      <li>Convert load to force: <strong>100 N</strong> applied as representative loading condition.</li>
-      <li>Divide load equally across two parallel support tubes: ~<strong>10 kg per tube</strong>.</li>
-      <li>Run simulation; determine stress distribution and Factor of Safety.</li>
-    </ol>
 
-    <div class="callout">
-      <strong>Result</strong>
-      Minimum Factor of Safety (FoS) = <strong>28</strong>. The tube would require approximately 28× the applied load before structural deformation occurs. This greatly exceeds the minimum FoS of 2 specified in design requirements.
-    </div>
+      <h2 id="future-work">6.3 Future Work</h2>
 
-    <h3 id="lateral-test">A2 · Lateral Stability Test</h3>
+      <h3 id="sensing-future">6.3.1 Sensing Subsystem</h3>
+      <p>Based on the Kinetix design specifications, the current priority is to improve the IMU joint angle accuracy such that it falls below 12 degrees consistently. This will be done through the use of Kalman filtering. There is also the possibility of exploring other sensors such as the flex sensor considering that Kinetix have opted for a device-mount sensing subsystem, which eliminates the need for the flexible placement that IMUs offer.</p>
+      <p>Further research is required to establish clinically acceptable thresholds for force sensing accuracy, as current design targets are primarily based on engineering feasibility rather than validated clinical standards. In clinical validation studies, measurement uncertainty plays a critical role in determining whether sensor outputs are reliable enough for clinical decision-making (Ansermino et al., 2023).</p>
+      <p>As such, defining acceptable levels of accuracy and uncertainty is essential to ensure that the measured forces are both precise and clinically meaningful. This will guide future iterations of the Kinetix system, enabling refinement of the sensing subsystem to achieve performance that aligns with clinical validation requirements and supports reliable rehabilitation assessment.</p>
 
-    <h4>Test Procedure</h4>
-    <ol>
-      <li>Assemble arc rail mechanism with slider and supporting structure.</li>
-      <li>Apply vertical load of <strong>9.6 kg</strong> to simulate lower limb load during operation.</li>
-      <li>Measure displacement of arc rail structure under applied load.</li>
-      <li>Observe any structural deformation or instability.</li>
-      <li>Record displacement and inspect alignment of connected structural components.</li>
-    </ol>
+      <h3 id="mechanical-future">6.3.2 Mechanical Subsystem</h3>
+      <p>One potential improvement is the incorporation of enhanced ankle rehabilitation capabilities. While current systems and existing solutions primarily support passive ankle movement, there is an opportunity to extend functionality to include active and resistive ankle exercises, enabling more comprehensive lower-limb rehabilitation, as quoted during the interviews.</p>
 
-    <div class="callout warning">
-      <strong>Result &amp; Observation</strong>
-      Displacement recorded: <strong>≈0.4 mm</strong>, indicating potential long-term deformation under repeated loading. The structure connected to the arc rail slider was observed to be <strong>slanted</strong>, likely due to insufficient structural support or small contact surface area between components, which may compromise long-term stability.
-    </div>
+      <blockquote class="pull-quote">
+        "Ankle movement is very useful… there are many things out there to help them passively move their ankle, but not so much beyond that." — OT A
+      </blockquote>
 
-    <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="3" width="2" height="18"/><rect x="12" y="3" width="2" height="18"/><path d="M6 6h12M6 10h12M6 14h12M6 18h6"/></svg>
-        <div class="fig-label">Figure 43</div>
-        <div class="fig-desc">Three photographs from lateral stability test: (left) arc rail assembly with ruler showing unloaded displacement; (centre) loaded position measurement; (right) actual lower limb on device showing strapping and structural alignment assessment.</div>
+      <p>Future iterations of Kinetix could include a seated mode configuration to support rehabilitation in an upright position. This would allow the device to accommodate a wider range of recovery stages and clinical settings, improving usability for patients who are able to perform exercises outside of supine or semi-Fowler positions (Figure 69).</p>
+
+      <div class="figure">
+        <div class="img-placeholder medium">
+          <img src="images/fig68.png" alt="CAD model of Version 0 design" style="width: 100%; border-radius: 8px;"> 
+          <div class="fig-label">Figure 68</div>
+          <div class="fig-desc">Seated mode configuration concept for future Kinetix iteration — upright rehabilitation positioning.</div>
+        </div>
+        <p class="figure-caption"><em>Figure 68.</em> Proposed seated mode configuration for future Kinetix iterations.</p>
       </div>
-      <p class="figure-caption"><em>Figure 43.</em> Lateral stability test photographs — displacement measured with ruler under 9.6 kg load.</p>
-    </div>
 
-    <h3 id="mech-iteration">A2 · Design Iteration — Arc Rail Repositioning</h3>
-    <p>To address the slanting issue, the design was modified by <strong>relocating the arc rail beneath the linear actuator and the main structural sub-assembly</strong>. This configuration:</p>
-    <ul>
-      <li>Improves load distribution by allowing the structural frame to directly support applied forces.</li>
-      <li>Reduces bending moments acting on the arc rail slider.</li>
-      <li>Increases the effective contact area between structural components.</li>
-      <li>Improves overall stability and reduces the likelihood of deformation during operation.</li>
-    </ul>
+      <p>On top of that, the current device only has 2 pivot points in the main structure. This resulted in the structure leaning slightly to one side. Adding more pivot points should be able to resolve this issue. The lateral mechanism has much room to be improved upon. A threaded hole could be added on the D-profile shaft to make the connection more secured. Another improvement that could be done is by shifting the motor position to the back to reduce the moment, thus reducing the required torque to move the lateral assembly.</p>
 
-    <div class="figure">
-      <div class="img-placeholder tall">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="16" width="20" height="3" rx="1"/><path d="M5 16v-6l3-4h8l3 4v6"/><path d="M9 10h6v6H9z"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/></svg>
-        <div class="fig-label">Figure 44</div>
-        <div class="fig-desc">Updated CAD model — arc rail repositioned below the linear actuator and main structural sub-assembly. Improved load distribution; increased contact area between components; lateral motor (Nema 23) with belt-pulley system at rear.</div>
+      <h3 id="electrical-future">6.3.3 Electrical Subsystem</h3>
+      <p>In terms of the electrical sub-system, a possible improvement is designing printed circuit boards (PCBs) for the overall electrical circuitry when integrating the peripherals and microcontroller together. The current set-up utilises a protoboard with wires and components soldered together for connection. However, it is too bulky and cable management is difficult, and thus makes the overall integration complicated. PCB resolves this issue entirely by reducing the overall package of the electrical circuitry and lightening the weight of the device.</p>
+      <p>Lastly, there were no tests that were conducted to verify the current and power consumption of the whole system. Although the voltage demand for each component were known, the absence of current and power ratings for each component poses a challenge in scaling the device to Singapore's stroke rehabilitation context.</p>
+
+      <h3 id="ui-future">6.3.4 User Interface Subsystem</h3>
+      <p>While the user interface has comprehensive features related to stroke rehabilitation, contextualisation to Singapore's healthcare can be improved through:</p>
+      <ul>
+        <li>Localisation and accessibility (language, text-to-voice, etc.) features, which is particularly relevant given Singapore's officially multilingual environment and documented language barriers in clinical care (Synapxe, n.d.).</li>
+        <li>Integration with Singapore's National Electronic Health Record (NEHR) or hospital patient management systems to allow session data to flow into existing clinical documentation workflows (MOH, 2022).</li>
+        <li>A longitudinal progress dashboard that tracks patient improvement across multiple sessions over weeks or months, rather than single-session reporting, according to our preliminary interviews as seen in Appendix S.</li>
+      </ul>
+
+      <h3 id="user-tests-future">6.3.5 User Tests</h3>
+      <p>The current user testing was limited to assessing device comfort and usability in passive linear mode. Future work will extend testing to active mode conditions, where user-applied forces exceeding predefined thresholds will be evaluated. This will allow for a more comprehensive assessment of system behaviour, particularly the interaction between applied forces, motor response, and lateral motion under both passive and active operation.</p>
+
+      <h3 id="data-future">6.3.6 Data Processing and Analysis Subsystem</h3>
+      <p>A future iteration could incorporate pattern recognition or machine learning models trained on longitudinal rehabilitation data to suggest progressive treatment parameters such as resistance level, range of motion targets, and session frequency.</p>
+      <p>However, realising this capability would require large-scale clinical studies involving stroke patients across multiple rehabilitation centres to generate sufficiently diverse and representative training data, as well as regulatory consideration given the clinical implications of algorithmically informed treatment decisions.</p>
+      <p>The current system generates range metrics such as strength and fatigue, but the relative clinical significance of these metrics, and whether the derived quantities provide additional diagnostic value, has not been formally evaluated (Ranjan et al., 2020). Conducting large-scale targeted metric validation studies would allow the sensing and analysis pipeline to be refined around the indicators that matter most clinically to inform future iterations (Ranjan et al., 2020).</p>
+
+      <h2 id="impact">6.2 Impact and Visibility</h2>
+      <p>Kinetix demonstrably reduces the physical workload of rehabilitation specialists while enabling consistent, repeatable, and data-driven therapy sessions. The system enhances engagement through its interactive user interface and gamified feedback, encouraging active participation during rehabilitation (Juan et al., 2025). The ability to support both passive and active modes further enables progressive recovery tailored to individual patient capabilities. An early prototype of the UI and structure of Kinetix was showcased at Industrial Transformation ASIA-Pacific (ITAP) 2025 where the MOS Alvin Tan recognised the potential of gamification in the stroke rehabilitation context.</p>
+
+      <div class="callout">
+        <strong>Estimated Cost Savings</strong>
+        Kinetix has the potential to reduce manpower requirements and increase treatment throughput in rehabilitation centres. This translates to an estimated cost saving of approximately S$25,000–30,000 per device annually, making it a scalable solution for both hospitals and community care facilities (see Appendix A).
       </div>
-      <p class="figure-caption"><em>Figure 44.</em> Revised design with arc rail relocated beneath the linear actuator sub-assembly.</p>
-    </div>
 
-    <h2 id="sensing">6.2 Sensing Sub-System</h2>
+      <p>As found during our interviews with physiotherapist X, the data collected by the system also opens opportunities for long-term patient monitoring and machine learning-driven optimisation of therapy protocols. With further validation and refinement, Kinetix has strong potential for clinical deployment, patentability, and broader impact within the healthcare technology sector.</p>
 
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Code</th><th>Test</th><th>Design Spec</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr><td>B1</td><td>Force Sensor Calibration</td><td>R05, R06</td><td>Apply known weights; record voltage output; generate force–voltage calibration curve</td></tr>
-          <tr><td>B2</td><td>IMU Orientation Response</td><td>R05, R06</td><td>Rotate IMU through 6 orthogonal orientations; evaluate orientation accuracy and drift</td></tr>
-          <tr><td>B3</td><td>IMU Joint Accuracy</td><td>R05, R06</td><td>Compare IMU-derived joint angles vs. protractor and pose-estimation software reference</td></tr>
-          <tr><td>B4</td><td>Plantar Force Sensing</td><td>R05</td><td>Apply loads to footplate; multiplexer samples all sensors; evaluate distributed load response</td></tr>
-          <tr><td>B5</td><td>Medial–Lateral Force Sensing</td><td>R05</td><td>Apply known lateral loads; evaluate sensing range for hip adduction/abduction simulation</td></tr>
-          <tr><td>B6</td><td>Thigh Force Sensing</td><td>R05</td><td>Apply thigh-level loads; verify force capture within design specification</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Sensing sub-system test methodology.</p>
+      <nav class="chapter-nav-footer">
+        <a href="chapter6.html" class="nav-btn ghost">
+          <span class="arrow">←</span>
+          <span><span class="label">Previous</span>Chapter 5</span>
+        </a>
+      </nav>
 
-    <h3 id="force-cal">B1 · Force Sensor Calibration Test</h3>
-    <p>Critical and target force requirements per sensor (based on 100 kg and 150 kg payloads):</p>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Sensors</th><th>Sub-System</th><th>Critical Weight (kg)</th><th>Max Critical Force / Sensor (N)</th><th>Target Weight (kg)</th><th>Max Target Force / Sensor (N)</th></tr></thead>
-        <tbody>
-          <tr><td>13</td><td>Plantar</td><td>100</td><td>75.4</td><td>150</td><td>113.2</td></tr>
-          <tr><td>2</td><td>Medial–Lateral</td><td>20</td><td>98.1</td><td>35</td><td>147.2</td></tr>
-          <tr><td>2</td><td>Thigh</td><td>30</td><td>147.2</td><td>45</td><td>220.7</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Table 19. Critical and target force values per sensor.</p>
-
-    <p>An <strong>Op-Amp circuit (LM324N)</strong> was used for calibration, as recommended by the manufacturer. Circuit design equations:</p>
-
-    <div class="formula">
-      V<sub>ref</sub> = (R2 / (R1 + R2)) × V<sub>ss</sub>
-    </div>
-    <div class="formula">
-      V<sub>out</sub> = (1 + R<sub>ref</sub> / R<sub>force sensor</sub>) × V<sub>ref</sub>
-    </div>
-
-    <p>Circuit component values:</p>
-    <div class="spec-grid">
-      <div class="spec-cell"><div class="label">Supply Voltage (V<sub>ss</sub>)</div><div class="value">4.5<span class="unit"> V</span></div></div>
-      <div class="spec-cell"><div class="label">Reference Voltage (V<sub>ref</sub>)</div><div class="value">0.5<span class="unit"> V</span></div></div>
-      <div class="spec-cell"><div class="label">R1 (voltage divider)</div><div class="value">40<span class="unit"> kΩ</span></div></div>
-      <div class="spec-cell"><div class="label">R2 (voltage divider)</div><div class="value">5<span class="unit"> kΩ</span></div></div>
-      <div class="spec-cell"><div class="label">R<sub>ref</sub> (feedback)</div><div class="value">2<span class="unit"> kΩ</span></div></div>
-      <div class="spec-cell"><div class="label">Output Voltage Range</div><div class="value" style="font-size:0.9rem;">0.5–3.0<span class="unit"> V</span></div></div>
-    </div>
-
-    <h4>Resistance vs Load Data</h4>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Weight (g)</th><th>Resistance — Force Sensor (Ω)</th></tr></thead>
-        <tbody>
-          <tr><td>341</td><td>53,000</td></tr>
-          <tr><td>682</td><td>25,000</td></tr>
-          <tr><td>1,023</td><td>16,000</td></tr>
-          <tr><td>1,364</td><td>9,000</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Table 20. Force sensor resistance vs applied weight — exponential decay relationship (y = 88,333e<sup>−0.002x</sup>).</p>
-
-    <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20V6l4 2 3-5 3 3 3-2 3 3v13H3z"/><path d="M3 20h18"/></svg>
-        <div class="fig-label">Figure 45</div>
-        <div class="fig-desc">Resistance Force Sensor (Ω) vs Weight (g) scatter plot — exponential decay curve fitted: y = 88,333e^(-0.002x). Points plotted at (341, 53,000), (682, 25,000), (1,023, 16,000), (1,364, 9,000).</div>
-      </div>
-      <p class="figure-caption"><em>Figure 45.</em> Force sensor resistance vs weight — exponential decay characteristic.</p>
-    </div>
-
-    <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="15" rx="2"/><path d="M7 17v5M17 17v5M4 22h16"/></svg>
-        <div class="fig-label">Figure 46</div>
-        <div class="fig-desc">LM324N Op-Amp circuit diagram: Vss = 4.5V inputs; R1 = 40kΩ and R2 = 5kΩ voltage divider producing Vref = 0.5V; LM324N non-inverting configuration; Rref = 2kΩ feedback; Force Sensor in feedback loop; Vout = 0.5V to 3.0V output.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 46.</em> Op-Amp circuit (LM324N) used for force sensor calibration.</p>
-    </div>
-
-    <h4>Voltage Output Calibration Results</h4>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Weight (g)</th><th>Reading 1 (V)</th><th>Reading 2 (V)</th><th>Reading 3 (V)</th><th>Average (V)</th></tr></thead>
-        <tbody>
-          <tr><td>200</td><td>0.51</td><td>0.51</td><td>0.52</td><td>0.51</td></tr>
-          <tr><td>250</td><td>0.52</td><td>0.52</td><td>0.52</td><td>0.52</td></tr>
-          <tr><td>500</td><td>0.54</td><td>0.54</td><td>0.54</td><td>0.54</td></tr>
-          <tr><td>2,268</td><td>0.66</td><td>0.66</td><td>0.67</td><td>0.66</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Table 23. Force sensor voltage output vs weight — linear relationship. Calibration equation: y = 7×10<sup>−5</sup>x + 0.5002.</p>
-
-    <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20V8l18 0M3 20h18"/><path d="M5 18l2-4 3 1 4-4 3 1 3-3" stroke-dasharray="2 1"/></svg>
-        <div class="fig-label">Figure 48</div>
-        <div class="fig-desc">Voltage (V) vs Weight (g) scatter plot with linear trend line — four data points with Reading 1, 2, 3, and Average series. Linear fit: y = 7E-05x + 0.5002. X-axis: 0–2500g; Y-axis: 0–0.8V.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 48.</em> Force sensor voltage output vs weight — linear calibration curve.</p>
-    </div>
-
-    <div class="callout warning">
-      <strong>Test Shortcomings</strong>
-      Each A301 sensor has a small sensing area, restricting calibration range. Future testing will use the full plantar sensor array on the foot plate for wider load ranges, and include a simulated stepping motion to better reflect real usage conditions.
-    </div>
-
-    <h3 id="imu-orient">B2 · IMU Orientation Response Test</h3>
-    <p>The IMU module was mounted on a smartphone and rotated through six orthogonal orientations (±X, ±Y, ±Z axes). Sensor outputs were recorded and compared against expected gravitational acceleration values.</p>
-    <p>The test verified orientation accuracy, sensor responsiveness, and potential drift in angular measurements.</p>
-
-    <h3 id="imu-joint">B3 · IMU Joint Accuracy Test</h3>
-    <p>IMU modules were attached to relevant limb segments. Reference joint angles were measured using a <strong>protractor</strong> and simultaneously recorded with <strong>pose-estimation tracking software</strong>. IMU-derived angles were compared to both reference methods to calculate angle error across the intended ROM.</p>
-
-    <h2 id="electrical">6.3 Electrical Sub-System</h2>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>#</th><th>Test</th><th>Purpose</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Voltage Output Verification</td><td>Verify DC power subsystem output within datasheet tolerance</td><td>In progress</td></tr>
-          <tr><td>2</td><td>Motor Functionality &amp; Steps/Rev Test</td><td>Validate Nema 23 operation and step requirements per revolution</td><td>In progress</td></tr>
-          <tr><td>3</td><td>Motor–Stage Angular Displacement Ratio</td><td>Determine angular displacement ratio between motor and moving stage</td><td>Planned</td></tr>
-          <tr><td>4</td><td>I2C Multiplexer Functionality</td><td>Verify correct switching and reading of IMU channels</td><td>Planned</td></tr>
-          <tr><td>5</td><td>Wi-Fi Connectivity Validation</td><td>Confirm successful wireless communication with MCU</td><td>Planned</td></tr>
-          <tr><td>6</td><td>Active &amp; Passive Mode Performance</td><td>Evaluate motion performance in both rehab modes using artificial and real legs</td><td>Planned</td></tr>
-          <tr><td>7</td><td>Safety Override Functionality</td><td>Verify physical and software-based emergency stop functions</td><td>Planned</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-caption">Figure 49. Electrical sub-system test plan and status.</p>
-
-    <h3 id="ldo-test">Test 1 · LDO Voltage Output Verification</h3>
-    <p>The LM1117T-3.3/NOPB-ND IC Low Dropout Regulator was tested by connecting its input to the DC power supply positive terminal and measuring the output with a multimeter.</p>
-
-    <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 18v2M16 18v2M8 20h8"/><path d="M7 9h2v4H7zM15 9h2v4h-2zM11 11h2"/></svg>
-        <div class="fig-label">Figure 50</div>
-        <div class="fig-desc">LDO test setup photograph — DC power supply (showing 05.0V / 09.0V output), multimeter (Fluke, measuring ~3.294V), LM1117T-3.3 IC connected with alligator clips to DC supply terminals.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 50.</em> LM1117T-3.3/NOPB-ND IC Low Dropout Regulator test setup.</p>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Component</th><th>V_out (V)</th><th>V_sd (V)</th><th>Expected V_out (V)</th></tr></thead>
-        <tbody>
-          <tr><td rowspan="3">LM1117T-3.3 (w/ no capacitor)</td><td>3.293</td><td>0.0035</td><td rowspan="3">3.3</td></tr>
-          <tr><td>3.294</td><td>0.003</td></tr>
-          <tr><td>3.294</td><td>0.003</td></tr>
-          <tr><td></td><td><strong>Mean: 3.2937</strong></td><td><strong>Mean: 0.0032</strong></td><td></td></tr>
-          <tr><td></td><td colspan="2">% Deviation: <strong>0.096%</strong></td><td></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout">
-      <strong>Result</strong>
-      LDO consistently outputs around <strong>3.3 V</strong> with a mean deviation of only <strong>3.17 mV (0.096%)</strong>. This aligns closely with the datasheet minimum output of 3.267 V, confirming the LDO is functioning properly and suitable for integration.
-    </div>
-
-    <h3 id="motor-test">Test 2 · Nema 23 Motor Functionality Test</h3>
-    <p>The DM556T motor driver was configured in a <strong>common anode setup</strong>:</p>
-    <ul>
-      <li>PUL+ and DIR+ connected to 3.3 V pin of MCU.</li>
-      <li>PUL− and DIR− connected to MCU GPIO 0 and GPIO 1 pins respectively.</li>
-      <li>Motor voltage supply: <strong>24 V DC power supply</strong>.</li>
-    </ul>
-
-    <div class="figure">
-      <div class="img-placeholder medium">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="10" height="16" rx="2"/><rect x="14" y="8" width="8" height="8" rx="2"/><path d="M12 12h2"/></svg>
-        <div class="fig-label">Figure 52</div>
-        <div class="fig-desc">Motor functionality test setup — DC power supply (showing 24.093V / 16.67A output), DM556T motor driver (black box with terminal connections), Nema 23 stepper motor, MCU (Raspberry Pi Pico W2), laptop for serial monitoring.</div>
-      </div>
-      <p class="figure-caption"><em>Figure 52.</em> Nema 23 Stepper Motor and DM556T Motor Driver functionality test setup.</p>
-    </div>
-
-    <div class="callout">
-      <strong>Result</strong>
-      Varying the steps per revolution affects motor speed — a <strong>lower steps per revolution yields faster motor speed</strong>. This allows adjustment of horizontal and lateral speed for rehabilitation exercises. The Nema 23 successfully operated under the 24V supply, confirming compatibility with the DM556T driver.
-    </div>
-
-    <h3 id="planned">6.3.3 Test Shortcomings &amp; Planned Follow-Up</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Area</th><th>Issue Identified</th><th>Implication</th><th>Required Follow-Up</th></tr></thead>
-        <tbody>
-          <tr><td>Voltage Output</td><td>Test not conducted using recommended datasheet circuit</td><td>Actual output may differ; readings may be inaccurate</td><td>Re-run using proper recommended circuit</td></tr>
-          <tr><td>Voltage Output</td><td>Test conducted in isolation (not integrated)</td><td>Integration with other components may affect voltage</td><td>Re-test after full electronic integration</td></tr>
-          <tr><td>Motor Functionality</td><td>Experiment conducted for only a few minutes</td><td>Does not reflect long-term performance</td><td>Extended duration stress tests</td></tr>
-          <tr><td>Motor Functionality</td><td>Conducted without a load</td><td>Speed/torque may vary significantly under load</td><td>Test under realistic load conditions</td></tr>
-          <tr><td>MCU Pin Limitation</td><td>Insufficient GPIO pins for all sensors + motors</td><td>Force sensors and motors require more pins than available</td><td>Redesign schematic or select higher-pin-count MCU</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 id="ui-testing">6.4 UI Testing</h2>
-
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Aspect</th><th>Feedback (Iteration 1)</th><th>Changes (Iteration 2)</th><th>Outcome</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface Complexity</td>
-            <td>Too many features; cluttered; not physiotherapist-friendly</td>
-            <td>Simplified layout; reduced menu depth; therapist-driven flow emphasised</td>
-            <td>Therapists reported clearer navigation and lower cognitive load</td>
-          </tr>
-          <tr>
-            <td>Gamification</td>
-            <td>Suggested to improve client engagement</td>
-            <td>Added target-based animations, rep progress cues, simple point system</td>
-            <td>Increased engagement; animations understood easily</td>
-          </tr>
-          <tr>
-            <td>Session Logging / Calendar</td>
-            <td>Unnecessary for clinical use</td>
-            <td>Removed; replaced with goals / progress dashboard</td>
-            <td>Dashboard considered more clinically relevant</td>
-          </tr>
-          <tr>
-            <td>User Journey Flow</td>
-            <td>Lacked clarity on role transitions</td>
-            <td>Colour-coded 5-stage journey (Start / Decision / Pre / During / Post)</td>
-            <td>Improved consistency in operation</td>
-          </tr>
-          <tr>
-            <td>During-Session Interaction</td>
-            <td>Clients not adequately considered</td>
-            <td>Tablet rotation during session + real-time visual cues</td>
-            <td>Clients found visuals intuitive; therapists liked dual-orientation design</td>
-          </tr>
-          <tr>
-            <td>Motivational Feedback</td>
-            <td>Needed movement reinforcement mechanisms</td>
-            <td>Integrated point-based effort scoring and corrective cues</td>
-            <td>Encouraged effort-based participation, aligned with motor-learning studies</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout warning">
-      <strong>UI Testing Shortcomings</strong>
-      Feedback was gathered using early prototypes and relied on a small number of physiotherapists, reducing diversity of perspectives. Client-side interactions (gamified elements, visual cue clarity) were tested in isolation rather than within a full session flow. Future testing should involve a larger pool of physiotherapists and clients together, incorporate real sensor data, and include full therapist–client mock sessions.
-    </div>
-
-    <nav class="chapter-nav-footer">
-      <a href="chapter5.html" class="nav-btn ghost">
-        <span class="arrow">←</span>
-        <span><span class="label">Previous</span>Ch 5 · System Overview</span>
-      </a>
-      <a href="chapter7.html" class="nav-btn">
-        <span><span class="label">Next Chapter</span>Conclusion &amp; References</span>
-        <span class="arrow">→</span>
-      </a>
-    </nav>
-
-  </main>
-</div>
+    </main>
+  </div>
 
 </body>
 </html>
